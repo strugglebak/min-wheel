@@ -1,0 +1,24 @@
+{
+  "name": "min-wheel",
+  "version": "0.0.1",
+  "description": "一个小型的基于 Vue 的 UI 框架",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strugglebak/min-wheel.git"
+  },
+  "keywords": [
+    "min-wheel",
+    "vue",
+    "ui"
+  ],
+  "author": "strugglebak",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/strugglebak/min-wheel/issues"
+  },
+  "homepage": "https://github.com/strugglebak/min-wheel#readme"
+}
