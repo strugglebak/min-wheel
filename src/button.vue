@@ -1,5 +1,7 @@
 <template>
-  <button class="mw-button">按钮</button>
+  <button class="mw-button">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
