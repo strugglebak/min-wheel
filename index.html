@@ -25,23 +25,6 @@
       }
     </style>
     <style>
-      .mw-button {
-        font-size: var(--font-size);
-        height: var(--button-height);
-        padding: var(--button-padding);
-        background-color: var(--button-bg-color);
-        border: var(--button-border);
-        border-radius: var(--button-border-radius);
-      }
-      .mw-button:hover {
-        border-color: var(--button-hover-border-color);
-      }
-      .mw-button:active {
-        background-color: var(--button-active-bg-color);
-      }
-      .mw-button:focus {
-        outline: none;
-      }
     </style>
     <body>
 
@@ -49,12 +32,6 @@
         <mw-button></mw-button>
       </div>
 
-      <script src="./node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
-      <script src="./button.js" charset="utf-8"></script>
-      <script charset="utf-8">
-        new Vue({
-          el: '#app'
-        });
-      </script>
+      <script src="./src/app.js" charset="utf-8"></script>
     </body>
   </html>
