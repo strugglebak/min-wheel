@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/strugglebak/min-wheel/issues"
   },
-  "homepage": "https://github.com/strugglebak/min-wheel#readme"
+  "homepage": "https://github.com/strugglebak/min-wheel#readme",
+  "dependencies": {
+    "vue": "^2.5.21"
+  }
 }
