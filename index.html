@@ -1,0 +1,42 @@
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+      <title>min-wheel button</title>
+    </head>
+    <style>
+      * {
+        margin:0; 
+        padding: 0; 
+        box-sizing: border-box;
+      }
+      #app { 
+        padding: 20px; 
+      }
+    </style>
+    <style>
+      .mw-button {
+        font-size: 14px;
+        height: 32px;
+        padding: 0 1em;
+        background: #FFFFFF;
+        border: 1px solid rgba(153,153,153,1);
+        border-radius: 4px;
+      }
+    </style>
+    <body>
+
+      <div id="app">
+        <mw-button></mw-button>
+      </div>
+
+      <script src="./node_modules/vue/dist/vue.min.js" charset="utf-8"></script>
+      <script src="./button.js" charset="utf-8"></script>
+      <script charset="utf-8">
+        new Vue({
+          el: '#app'
+        });
+      </script>
+    </body>
+  </html>
