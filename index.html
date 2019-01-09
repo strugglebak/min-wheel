@@ -14,21 +14,34 @@
       #app { 
         padding: 20px; 
       }
+      :root {
+        --font-size: 14px;
+        --button-height: 32px;
+        --button-padding: 0 1em;
+        --button-bg-color: #FFFFFF;
+        --button-active-bg-color: #EEEEEE;
+        --button-border: 1px solid #C8C8C8;
+        --button-border-radius: 4px;
+        --button-hover-border-color: #666666;
+      }
+      body {
+        font-size: var(--font-size);
+      }
     </style>
     <style>
       .mw-button {
-        font-size: 14px;
-        height: 32px;
-        padding: 0 1em;
-        background: #FFFFFF;
-        border: 1px solid #C8C8C8;
-        border-radius: 4px;
+        font-size: var(--font-size);
+        height: var(--button-height);
+        padding: var(--button-padding);
+        background-color: var(--button-bg-color);
+        border: var(--button-border);
+        border-radius: var(--button-border-radius);
       }
       .mw-button:hover {
-        border: 1px solid #666666;
+        border-color: var(--button-hover-border-color);
       }
       .mw-button:active {
-        background-color: #eeeeee;
+        background-color: var(--button-active-bg-color);
       }
       .mw-button:focus {
         outline: none;
