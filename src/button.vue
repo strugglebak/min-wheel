@@ -1,6 +1,7 @@
 <template>
   <button class="mw-button" v-bind:class="{[`icon-${iconPosition}`]: true}">
     <mw-icon class="icon" v-bind:name="icon"></mw-icon>
+    <mw-icon class="loading" name="loading"></mw-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -14,6 +15,10 @@
 </script>
 
 <style lang="scss">
+  @keyframes roll {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
   .mw-button {
     font-size: var(--font-size);
     height: var(--button-height);
@@ -34,5 +39,9 @@
       > .content { order: 1; margin-left: 0; margin-right: 0.1em;}
       > .icon { order: 2; } 
     } 
+
+    .loading {
+      animation: roll 2s infinite linear;
+    }
   } 
 </style>
