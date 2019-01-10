@@ -8,3 +8,7 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
 ```
 * { margin:0; padding: 0; box-sizing: border-box; }
 ```
+
+## 更新日志
+- 2019.1.10
+基本完成 button 以及 icon 组件，以及最后的四个测试用例
