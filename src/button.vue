@@ -16,7 +16,16 @@
       icon: {}, 
       iconPosition: {
         type: String,
-        default: 'left'
+        default: 'left',
+        validator: function (value) {
+          if (value !== 'left' && value !== 'right') {
+            console.warn('your icon-position is "' + value + 
+              '"' + ', but the icon position we need is just "left" or "right"');
+              return false;
+          } else {
+            return true;
+          }
+        }
       },
       loading: {
         type: Boolean,
