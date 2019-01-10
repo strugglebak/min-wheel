@@ -1,8 +1,6 @@
 <template>
   <button class="mw-button" v-bind:class="{[`icon-${iconPosition}`]: true}">
-    <svg v-if="icon" class="icon">
-        <use v-bind:xlink:href="`#icon-${icon}`"></use>
-    </svg> 
+    <mw-icon class="icon" v-bind:name="icon"></mw-icon>
     <div class="content">
       <slot></slot>
     </div>
