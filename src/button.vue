@@ -2,8 +2,8 @@
   <button class="mw-button" 
     v-bind:class="{[`icon-${iconPosition}`]: true}" 
     v-on:click="$emit('click')">
-    <mw-icon class="icon" v-bind:name="icon"></mw-icon>
-    <mw-icon class="loading" v-if="loading" name="loading"></mw-icon>
+    <mw-icon class="icon"  v-if="!loading" v-bind:name="icon"></mw-icon>
+    <mw-icon class="icon loading" v-if="loading" name="loading"></mw-icon>
     <div class="content">
       <slot></slot>
     </div>
