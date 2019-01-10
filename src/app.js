@@ -6,5 +6,10 @@ Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
 
 new Vue({
-    el: '#app'
+    el: '#app',
+    data: {
+        loadingState1: false,
+        loadingState2: false,
+        loadingState3: false,
+    },
 });

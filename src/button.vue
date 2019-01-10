@@ -1,7 +1,9 @@
 <template>
-  <button class="mw-button" v-bind:class="{[`icon-${iconPosition}`]: true}">
+  <button class="mw-button" 
+    v-bind:class="{[`icon-${iconPosition}`]: true}" 
+    v-on:click="$emit('click')">
     <mw-icon class="icon" v-bind:name="icon"></mw-icon>
-    <mw-icon class="loading" name="loading"></mw-icon>
+    <mw-icon class="loading" v-if="loading" name="loading"></mw-icon>
     <div class="content">
       <slot></slot>
     </div>
@@ -10,7 +12,17 @@
 
 <script>
   export default {
-    props: ['icon', 'iconPosition']
+    props: {
+      icon: {}, 
+      iconPosition: {
+        type: String,
+        default: 'left'
+      },
+      loading: {
+        type: Boolean,
+        default: false
+      }
+    }
   }
 </script>
 
