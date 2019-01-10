@@ -1,11 +1,18 @@
 <template>
-  <button class="mw-button">
-    <slot></slot>
+  <button class="mw-button" v-bind:class="{[`icon-${iconPosition}`]: true}">
+    <svg v-if="icon" class="icon">
+        <use v-bind:xlink:href="`#icon-${icon}`"></use>
+    </svg> 
+    <div class="content">
+      <slot></slot>
+    </div>
   </button>
 </template>
 
 <script>
-  export default {}
+  export default {
+    props: ['icon', 'iconPosition']
+  }
 </script>
 
 <style lang="scss">
@@ -17,15 +24,17 @@
     border: var(--button-border);
     border-radius: var(--button-border-radius);
 
-    &:hover {
-      border-color: var(--button-hover-border-color);
-    }
-    &:active {
-      background-color: var(--button-active-bg-color);
-    }
-    &:focus {
-      outline: none;
-    }
-  }
+    &:hover { border-color: var(--button-hover-border-color); }
+    &:active { background-color: var(--button-active-bg-color); }
+    &:focus { outline: none; }
 
+    display: inline-flex; justify-content: center; align-items: center; vertical-align: middle;
+
+    > .content { order: 2; margin-left: 0.1em;}
+    > .icon { order: 1; }
+    &.icon-right { 
+      > .content { order: 1; margin-left: 0; margin-right: 0.1em;}
+      > .icon { order: 2; } 
+    } 
+  } 
 </style>

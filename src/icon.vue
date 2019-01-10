@@ -1,6 +1,6 @@
 <template>
    <svg v-if="name" class="mw-icon">
-       <use :xlink:href="`#icon-${name}`"></use>
+       <use v-bind:xlink:href="`#icon-${name}`"></use>
    </svg> 
 </template>
 <script>
