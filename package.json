@@ -2,7 +2,7 @@
   "name": "min-wheel",
   "version": "0.0.1",
   "description": "一个小型的基于 Vue 的 UI 框架",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "parcel index.html --no-cache",
     "dev-test": "parcel watch test/* --no-cache & karma start",
