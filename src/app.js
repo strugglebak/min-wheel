@@ -40,60 +40,60 @@ const expect = Chai.expect;
 }
 {
     '可以设置 icon'
-    const Constructor = Vue.extend(Button)
+    const Constructor = Vue.extend(Button);
     const vm = new Constructor({
         propsData: {
             icon: 'settings'
         }
-    }).$mount()
-    const useElement = vm.$el.querySelector('use')
-    expect(useElement.getAttribute('xlink:href')).to.equal('#icon-settings')
-    vm.$destroy()
+    }).$mount();
+    const useElement = vm.$el.querySelector('use');
+    expect(useElement.getAttribute('xlink:href')).to.equal('#icon-settings');
+    vm.$destroy();
 }
 {
     '可以设置 loading'
-    const Constructor = Vue.extend(Button)
+    const Constructor = Vue.extend(Button);
     const vm = new Constructor({
         propsData: {
             icon: 'settings',
             loading: true
         }
-    }).$mount()
-    const useElements = vm.$el.querySelectorAll('use')
-    expect(useElements.length).to.equal(1)
-    expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading')
-    vm.$destroy()
+    }).$mount();
+    const useElements = vm.$el.querySelectorAll('use');
+    expect(useElements.length).to.equal(1);
+    expect(useElements[0].getAttribute('xlink:href')).to.equal('#icon-loading');
+    vm.$destroy();
 }
 {
     'icon 默认的 order 是 1'
-    const div = document.createElement('div')
-    document.body.appendChild(div)
-    const Constructor = Vue.extend(Button)
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const Constructor = Vue.extend(Button);
     const vm = new Constructor({
         propsData: {
             icon: 'settings',
         }
-    }).$mount(div)
-    const icon = vm.$el.querySelector('svg')
-    expect(getComputedStyle(icon).order).to.eq('1')
-    vm.$el.remove()
-    vm.$destroy()
+    }).$mount(div);
+    const icon = vm.$el.querySelector('svg');
+    expect(getComputedStyle(icon).order).to.eq('1');
+    vm.$el.remove();
+    vm.$destroy();
 }
 {
     '设置 iconPosition 可以改变 order'
-    const div = document.createElement('div')
-    document.body.appendChild(div)
-    const Constructor = Vue.extend(Button)
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    const Constructor = Vue.extend(Button);
     const vm = new Constructor({
         propsData: {
             icon: 'settings',
             iconPosition: 'right'
         }
-    }).$mount(div)
-    const icon = vm.$el.querySelector('svg')
-    expect(getComputedStyle(icon).order).to.eq('2')
-    vm.$el.remove()
-    vm.$destroy()
+    }).$mount(div);
+    const icon = vm.$el.querySelector('svg');
+    expect(getComputedStyle(icon).order).to.eq('2');
+    vm.$el.remove();
+    vm.$destroy();
 }
 {
     '点击 button 触发 click 事件'
