@@ -4,6 +4,7 @@
   "description": "一个小型的基于 Vue 的 UI 框架",
   "main": "index.js",
   "scripts": {
+    "start": "parcel index.html --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
