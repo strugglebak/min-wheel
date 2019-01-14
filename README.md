@@ -3,7 +3,10 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
 
 作者: strugglebak
 
-## 配置 
+## 介绍
+
+## 开始使用
+1. 配置 
 使用本框架前，先对 CSS 做如下配置
 ```
 * { margin:0; padding: 0; box-sizing: border-box; }
@@ -19,7 +22,7 @@ html {
 }
 ```
 
-## 使用 vue-cli
+2. 使用 vue-cli
 安装
 ```
 yarn add min-wheel
@@ -68,11 +71,17 @@ yarn add min-wheel
 yarn serve
 ```
 
+## 文档
 
-## 版本
+## 提问
 
+## 变更记录
 - v 0.0.3
 接入 travis ci,并加了 button 组件的测试用例文件
 
 - v 0.0.1
 基本完成 button 以及 icon 组件，以及最后的四个测试用例
+
+## 联系方式
+
+## 贡献代码
