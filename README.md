@@ -1,18 +1,21 @@
 # min-wheel
-
+[![npm version](https://badge.fury.io/js/min-wheel.svg)](https://badge.fury.io/js/min-wheel)
 [![Build Status](https://travis-ci.org/strugglebak/min-wheel.svg?branch=master)](https://travis-ci.org/strugglebak/min-wheel)
 
+## 介绍
 min-wheel 是一个小型的组件轮子，基于 vue 开发
 
 作者: strugglebak
 
-## 介绍
-
 ## 开始使用
 1. 配置 
-使用本框架前，先对 CSS 做如下配置
+使用本框架前，你需要先对 CSS 做如下配置
 ```
 * { margin:0; padding: 0; box-sizing: border-box; }
+*::before, *::after { box-sizing: border-box; }
+```
+你还需要配置组件颜色
+```
 html {
     --font-size: 14px;         
     --button-height: 32px;     
@@ -24,54 +27,28 @@ html {
     --button-hover-border-color: #666666;
 }
 ```
+以上 IE 15 支持
 
-2. 使用 vue-cli
-安装
+2. 安装 min-wheel
 ```
+npm i min-wheel --save
+# OR
 yarn add min-wheel
 ```
 
-假设你的应用为 `src/App.vue`
-
-在 `src/App.vue` 中引入 `min-wheel` 组件
+3. 引入 min-wheel
 ```
-<template>
-    ...
-    <!-- 这里使用组件 -->
-    <mw-button>欢迎使用 min-wheel 组件!</mw-button>
-</template>
-<script>
-    ...
-    import {Button} from 'min-wheel'
-    import 'min-wheel/dist/index.css'
+...
+import {Button} from 'min-wheel'
+import 'min-wheel/dist/index.css'
 
-    export default {        
-      name: 'app',          
-      components: {         
-        ...,         
-        'mw-button': Button,       
-      }      
-    }
-</script>
-<style>
-    ...
-    * { margin:0; padding: 0; box-sizing: border-box; }
-    html {
-        --font-size: 14px;         
-        --button-height: 32px;     
-        --button-padding: 0 1em;   
-        --button-bg-color: #FFFFFF;
-        --button-active-bg-color: #EEEEEE;
-        --button-border: 1px solid #C8C8C8;
-        --button-border-radius: 4px;
-        --button-hover-border-color: #666666;
-    }
-</style>
-```
-
-重启 serve
-```
-yarn serve
+export default {        
+  name: 'app',          
+  components: {         
+    ...,         
+    'mw-button': Button,       
+  }      
+}
 ```
 
 ## 文档
