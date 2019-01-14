@@ -1,4 +1,7 @@
 # min-wheel
+
+[![Build Status](https://travis-ci.org/strugglebak/min-wheel.svg?branch=master)](https://travis-ci.org/strugglebak/min-wheel)
+
 min-wheel 是一个小型的组件轮子，基于 vue 开发
 
 作者: strugglebak
