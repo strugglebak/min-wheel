@@ -10,46 +10,46 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
 ## 开始使用
 1. 配置 
 使用本框架前，你需要先对 CSS 做如下配置
-```
-* { margin:0; padding: 0; box-sizing: border-box; }
-*::before, *::after { box-sizing: border-box; }
-```
-你还需要配置组件颜色
-```
-html {
-    --font-size: 14px;         
-    --button-height: 32px;     
-    --button-padding: 0 1em;   
-    --button-bg-color: #FFFFFF;
-    --button-active-bg-color: #EEEEEE;
-    --button-border: 1px solid #C8C8C8;
-    --button-border-radius: 4px;
-    --button-hover-border-color: #666666;
-}
-```
+  ```
+  * { margin:0; padding: 0; box-sizing: border-box; }
+  *::before, *::after { box-sizing: border-box; }
+  ```
+  你还需要配置组件颜色
+  ```
+  html {
+      --font-size: 14px;         
+      --button-height: 32px;     
+      --button-padding: 0 1em;   
+      --button-bg-color: #FFFFFF;
+      --button-active-bg-color: #EEEEEE;
+      --button-border: 1px solid #C8C8C8;
+      --button-border-radius: 4px;
+      --button-hover-border-color: #666666;
+  }
+  ```
 以上 IE 15 支持
 
 2. 安装 min-wheel
-```
-npm i min-wheel --save
-# OR
-yarn add min-wheel
-```
+  ```
+  npm i min-wheel --save
+  # OR
+  yarn add min-wheel
+  ```
 
 3. 引入 min-wheel
-```
-...
-import {Button} from 'min-wheel'
-import 'min-wheel/dist/index.css'
+  ```
+  ...
+  import {Button} from 'min-wheel'
+  import 'min-wheel/dist/index.css'
 
-export default {        
-  name: 'app',          
-  components: {         
-    ...,         
-    'mw-button': Button,       
-  }      
-}
-```
+  export default {        
+    name: 'app',          
+    components: {         
+      ...,         
+      'mw-button': Button,       
+    }      
+  }
+  ```
 
 ## 文档
 
