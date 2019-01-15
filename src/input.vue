@@ -6,7 +6,12 @@
             v-bind:value="value"
             v-bind:placeholder="placeholder"
             v-bind:disabled="disabled"
-            v-bind:readonly="readonly">
+            v-bind:readonly="readonly"
+            v-on:change="$emit('change', $event)"
+            v-on:input="$emit('input', $event)"
+            v-on:focus="$emit('focus', $event)"
+            v-on:blur="$emit('blur', $event)"
+            >
         <template>
             <div>
                 <mw-icon v-if="error && !info" name="error" class="icon"></mw-icon>

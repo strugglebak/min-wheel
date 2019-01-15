@@ -19,6 +19,20 @@ new Vue({
         loadingState2: false,
         loadingState3: false,
     },
+    methods: {
+        inputChange (e) {
+            console.log(e);
+        }
+    }, 
+    created(){
+        setTimeout(() => {
+            // make a fake input change event
+            let event = new Event('change');
+            let inputElement = this.$el.querySelector('input')
+            inputElement.dispatchEvent(event)
+            console.log('hi')
+        }, 3000);
+    },
 });
 
 // unit test

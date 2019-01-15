@@ -3,7 +3,7 @@
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-      <title>min-wheel button</title>
+      <title>min-wheel test demo</title>
     </head>
     <style>
       * { margin:0; padding: 0; box-sizing: border-box; }
@@ -17,6 +17,10 @@
     <body>
 
       <div id="app">
+        <div class="demo">
+          <mw-input value="测试 input change 事件" v-on:change="inputChange"></mw-input>
+        </div>
+
         <div class="demo">
           <mw-input value="" placeholder="测试 placeholder"></mw-input>
           <mw-input type="password" placeholder="测试 password"></mw-input>
