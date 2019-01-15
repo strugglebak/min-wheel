@@ -1,17 +1,20 @@
 <template>
     <div class="input-wrapper"
-        v-bind:class="{error: error, info: info}">
+        v-bind:class="{error: error, info: info, [`align-${alignment}`]:true}">
+        <label v-if="name">{{name}}</label>
         <input v-bind:type="type"
             v-bind:value="value"
             v-bind:placeholder="placeholder"
             v-bind:disabled="disabled"
             v-bind:readonly="readonly">
         <template>
-            <mw-icon v-if="error && !info" name="error" class="icon"></mw-icon>
-            <span class="message">{{error}}</span>
-            <mw-icon v-if="info && !error" name="info" class="icon"></mw-icon>
-            <span class="message">{{info}}</span>
-        </template>
+            <div>
+                <mw-icon v-if="error && !info" name="error" class="icon"></mw-icon>
+                <span class="describe">{{error}}</span>
+                <mw-icon v-if="info && !error" name="info" class="icon"></mw-icon>
+                <span class="describe">{{info}}</span>
+            </div>
+       </template>
     </div>    
 </template>
 <script>
@@ -22,6 +25,13 @@ export default {
        'mw-icon': Icon
    },
    props: {
+       name: { type: String },
+       alignment: { 
+            type: String, default: 'horizontal', 
+            validator: function (value) {
+                return value === 'horizontal' || value === 'vertical';
+            }
+       },
        value: { type: String },
        error: { type: String },
        info: { type: String },
@@ -29,7 +39,7 @@ export default {
        type: { 
            type: String , default: 'text', 
            validator: function(value) {
-               return value === 'text' || value === 'password'
+               return value === 'text' || value === 'password';
            }
        },
        disabled: { type: Boolean, default: false },
@@ -38,7 +48,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    $font-size: 14px;
+    $font-size: 12px;
+    $label-font-size: 14px;
     $input-height: 32px;
     $input-width: 128px;
     $input-padding: 8px;
@@ -56,19 +67,28 @@ export default {
             &:focus { outline: none; box-shadow: $input-focus-box-shadow; }
             &[disabled], &[readonly] { border-color: #bbbbbb; color: #bbbbbb; cursor: not-allowed; box-shadow: none; } 
         }
-        
-        > .icon { margin-left: 3px; margin-right: 3px; }
+        > label { font-size: $label-font-size; margin: 0 8px; }
+        > div { margin: 0 3px; }
 
         &.error {
             > input { border-color: #F1453D; }
-            > .icon { fill: #F1453D; }
-            > .message { color: #F1453D; }
+            > div .icon { fill: #F1453D; }
+            > div .describe { color: #F1453D; }
         }
 
         &.info {
             > input { border-color: #729d39; }
-            > .icon { fill: #729d39; }
-            > .message { color: #729d39; }
+            > div .icon { fill: #729d39; }
+            > div .describe { color: #729d39; }
+        }
+        &.align-horizontal {
+            flex-direction: row;
+        }
+        &.align-vertical {
+            flex-direction: column;
+            align-items: flex-start;
+            > label { margin: 8px 0; }
+            > div { margin: 4px 0; }
         }
     } 
 </style>

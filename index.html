@@ -18,17 +18,32 @@
 
       <div id="app">
         <div class="demo">
-          <mw-input value="" placeholder="用户名"></mw-input>
-          <mw-input value="" placeholder="密码"></mw-input>
-          <mw-input type="password" placeholder="password"></mw-input>
-          <mw-input value="basic disabled" disabled></mw-input>
-          <mw-input value="basic readonly" readonly></mw-input>
+          <mw-input value="" placeholder="测试 placeholder"></mw-input>
+          <mw-input type="password" placeholder="测试 password"></mw-input>
+          <mw-input value="测试 basic disabled" disabled></mw-input>
+          <mw-input value="测试 basic readonly" readonly></mw-input>
+        </div>
+
+        <div class="demo">
+          <mw-input name="测试 left"></mw-input>
+          <mw-input name="测试 up" alignment="vertical"></mw-input>
+        </div>
+
+        <div class="demo">
+          <mw-input info="测试 info right"></mw-input>
+          <mw-input info="测试 info down" alignment="vertical"></mw-input>
+        </div>
+
+        <div class="demo">
+          <mw-input name="测试 left" info="info right"></mw-input>
+          <mw-input name="测试 up" info="测试 info down" alignment="vertical"></mw-input>
+        </div>
+
+        <div class="demo">
+          <mw-input value="测试 error" error="这不是个正常输入"></mw-input>
         </div>
         <div class="demo">
-          <mw-input value="error" error="这不是个正常输入"></mw-input>
-        </div>
-        <div class="demo">
-          <mw-input value="info" info="这是个正常输入"></mw-input>
+          <mw-input value="测试 info" info="这是个正常输入"></mw-input>
         </div>
         <div class="demo">
           <mw-icon></mw-icon>
