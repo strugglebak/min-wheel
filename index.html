@@ -7,15 +7,9 @@
     </head>
     <style>
       * { margin:0; padding: 0; box-sizing: border-box; }
-      #app { 
-        padding: 20px; 
-      }
-      html {
-        --font-size: 14px;
-      }
-      body {
-        font-size: var(--font-size);
-      }
+      #app { padding: 20px; }
+      html { --font-size: 14px; }
+      body { font-size: var(--font-size); }
     </style>
     <style>
       .demo { margin: 20px; }
@@ -24,7 +18,9 @@
 
       <div id="app">
         <div class="demo">
-          <mw-input value="basic"></mw-input>
+          <mw-input value="" placeholder="用户名"></mw-input>
+          <mw-input value="" placeholder="密码"></mw-input>
+          <mw-input type="password" placeholder="password"></mw-input>
           <mw-input value="basic disabled" disabled></mw-input>
           <mw-input value="basic readonly" readonly></mw-input>
         </div>

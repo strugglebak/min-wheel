@@ -1,8 +1,9 @@
 <template>
     <div class="input-wrapper"
         v-bind:class="{error: error, info: info}">
-        <input type="text"
+        <input v-bind:type="type"
             v-bind:value="value"
+            v-bind:placeholder="placeholder"
             v-bind:disabled="disabled"
             v-bind:readonly="readonly">
         <template>
@@ -24,6 +25,13 @@ export default {
        value: { type: String },
        error: { type: String },
        info: { type: String },
+       placeholder: { type: String },
+       type: { 
+           type: String , default: 'text', 
+           validator: function(value) {
+               return value === 'text' || value === 'password'
+           }
+       },
        disabled: { type: Boolean, default: false },
        readonly: { type: Boolean, default: false }
    } 
