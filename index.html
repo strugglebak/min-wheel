@@ -25,44 +25,56 @@
       }
     </style>
     <style>
-      .icon {width: 1em; height: 1em;}
+      .demo { margin: 20px; }
     </style>
     <body>
 
       <div id="app">
-        <mw-icon></mw-icon>
-        <mw-icon name="settings"></mw-icon>
+        <div class="demo">
+          <mw-input value="basic"></mw-input>
+          <mw-input value="basic disabled" disabled></mw-input>
+          <mw-input value="basic readonly" readonly></mw-input>
+        </div>
+        <div class="demo">
+          <mw-input value="error" error="这不是个正常输入"></mw-input>
+        </div>
+        <div class="demo">
+          <mw-input value="info" info="这是个正常输入"></mw-input>
+        </div>
+        <div class="demo">
+          <mw-icon></mw-icon>
+          <mw-icon name="settings"></mw-icon>
 
-        <mw-button 
-          v-bind:loading="loadingState1" 
-          v-on:click="loadingState1 = !loadingState1">
-          按钮
-        </mw-button>
+          <mw-button 
+            v-bind:loading="loadingState1" 
+            v-on:click="loadingState1 = !loadingState1">
+            按钮
+          </mw-button>
 
-        <mw-button 
-          v-bind:loading="loadingState2" 
-          v-on:click="loadingState2 = !loadingState2"
-          icon="settings" 
-          icon-position="left">
-          按钮
-        </mw-button>
+          <mw-button 
+            v-bind:loading="loadingState2" 
+            v-on:click="loadingState2 = !loadingState2"
+            icon="settings" 
+            icon-position="left">
+            按钮
+          </mw-button>
 
-        <mw-button 
-          v-bind:loading="loadingState3" 
-          v-on:click="loadingState3 = !loadingState3"
-          icon="settings" 
-          icon-position="right">
-          按钮
-        </mw-button>
+          <mw-button 
+            v-bind:loading="loadingState3" 
+            v-on:click="loadingState3 = !loadingState3"
+            icon="settings" 
+            icon-position="right">
+            按钮
+          </mw-button>
 
-        <mw-button-group>
-          <mw-button icon="back" icon-position="left">后退</mw-button>
-          <mw-button>更多</mw-button>
-          <mw-button icon="next" icon-position="right">前进</mw-button>
-        </mw-button-group>
+          <mw-button-group>
+            <mw-button icon="back" icon-position="left">后退</mw-button>
+            <mw-button>更多</mw-button>
+            <mw-button icon="next" icon-position="right">前进</mw-button>
+          </mw-button-group>
+        </div>
       </div>
 
       <script src="./src/app.js" charset="utf-8"></script>
-      <!-- <script src="//at.alicdn.com/t/font_1008003_hoz3k32zkot.js" charset="utf-8"></script> -->
     </body>
   </html>

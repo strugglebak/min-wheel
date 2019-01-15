@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Button from './button'
 import Icon from './icon'
 import ButtonGroup from './button-group'
+import Input from './input'
 
 import Chai from 'chai'
 import Spies from 'chai-spies'
@@ -9,6 +10,7 @@ import Spies from 'chai-spies'
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
 Vue.component('mw-button-group', ButtonGroup);
+Vue.component('mw-input', Input);
 
 new Vue({
     el: '#app',
