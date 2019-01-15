@@ -13,6 +13,7 @@
 <script>
   import Icon from './icon'
   export default {
+    name: "MwButton",
     components: {
       'mw-icon': Icon
     },
@@ -36,7 +37,7 @@
   }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @keyframes roll { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
   $font-size: 14px;
