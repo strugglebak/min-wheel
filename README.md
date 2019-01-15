@@ -14,20 +14,6 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
   * { margin:0; padding: 0; box-sizing: border-box; }
   *::before, *::after { box-sizing: border-box; }
   ```
-  你还需要配置组件颜色
-  ```
-  html {
-      --font-size: 14px;         
-      --button-height: 32px;     
-      --button-padding: 0 1em;   
-      --button-bg-color: #FFFFFF;
-      --button-active-bg-color: #EEEEEE;
-      --button-border: 1px solid #C8C8C8;
-      --button-border-radius: 4px;
-      --button-hover-border-color: #666666;
-  }
-  ```
-以上 IE 15 支持
 
 2. 安装 min-wheel
   ```
@@ -57,9 +43,11 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
 
 ## 变更记录
 - v 0.0.3
+
 接入 travis ci,并加了 button 组件的测试用例文件
 
 - v 0.0.1
+
 基本完成 button 以及 icon 组件，以及最后的四个测试用例
 
 ## 联系方式
