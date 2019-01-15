@@ -7,17 +7,17 @@
             v-bind:placeholder="placeholder"
             v-bind:disabled="disabled"
             v-bind:readonly="readonly"
-            v-on:change="$emit('change', $event)"
-            v-on:input="$emit('input', $event)"
-            v-on:focus="$emit('focus', $event)"
-            v-on:blur="$emit('blur', $event)"
+            v-on:change="$emit('change', $event.target.value)"
+            v-on:input="$emit('input', $event.target.value)"
+            v-on:focus="$emit('focus', $event.target.value)"
+            v-on:blur="$emit('blur', $event.target.value)"
             >
         <template>
             <div>
                 <mw-icon v-if="error && !info" name="error" class="icon"></mw-icon>
-                <span class="describe">{{error}}</span>
+                <span v-if="error" class="describe">{{error}}</span>
                 <mw-icon v-if="info && !error" name="info" class="icon"></mw-icon>
-                <span class="describe">{{info}}</span>
+                <span v-if="info" class="describe">{{info}}</span>
             </div>
        </template>
     </div>    
