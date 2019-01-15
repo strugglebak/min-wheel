@@ -65,7 +65,7 @@ export default {
 
             &:hover { border-color: $input-hover-border-color; box-shadow: $input-hover-box-shadow; }
             &:focus { outline: none; box-shadow: $input-focus-box-shadow; }
-            &[disabled], &[readonly] { border-color: #bbbbbb; color: #bbbbbb; cursor: not-allowed; box-shadow: none; } 
+            &[disabled], &[readonly] { background-color: #dddddd; border-color: #bbbbbb; color: #bbbbbb; cursor: not-allowed; box-shadow: none; } 
         }
         > label { font-size: $label-font-size; margin: 0 8px; }
         > div { margin: 0 3px; }
