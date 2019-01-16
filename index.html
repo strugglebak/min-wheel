@@ -20,6 +20,11 @@
         <div class="demo">
           <mw-input value="测试 input change 事件" v-on:change="inputChange"></mw-input>
         </div>
+        <div class="demo">
+          <mw-input placeholder="测试双向绑定" v-model:value="message"></mw-input>
+          <span>{{message}}</span>
+          <button v-on:click="changeMessage">changeMessage</button>
+        </div>
 
         <div class="demo">
           <mw-input value="" placeholder="测试 placeholder"></mw-input>

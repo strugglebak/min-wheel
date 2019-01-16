@@ -18,10 +18,14 @@ new Vue({
         loadingState1: true,
         loadingState2: false,
         loadingState3: false,
+        message: 'hello world',
     },
     methods: {
         inputChange (e) {
             console.log(e);
+        },
+        changeMessage () {
+            this.message = this.message + '1';
         }
     }, 
     created(){
