@@ -1,7 +1,7 @@
 <template>
     <div class="col"
-        v-bind:class="[scale && `scale-${scale}`, offset && `offset-${offset}`]"
-        v-bind:style="{paddingLeft: ditch/2 + 'px', paddingRight: ditch/2 + 'px'}">
+        v-bind:class="colClass"
+        v-bind:style="colStyle">
         <div class="content">
             <slot></slot>
         </div>
@@ -11,17 +11,27 @@
 export default {
     name: 'MwCol',
     props: {
-       scale: {
-           type: [Number, String] 
-       },
-       offset: {
-           type: [Number, String] 
-       }
+       scale: { type: [Number, String] },
+       offset: { type: [Number, String] }
+    },
+    computed: {
+        colClass() {
+            let {scale, offset} = this;
+            return [
+                scale && `scale-${scale}`, 
+                offset && `offset-${offset}`
+            ]
+        },
+        colStyle() {
+            let {ditch} = this;
+            return {
+                paddingLeft: ditch/2 + 'px', 
+                paddingRight: ditch/2 + 'px'
+            }
+        }
     },
     data() {
-        return {
-            ditch: 0
-        }
+        return { ditch: 0 }
     },
 }
 </script>
@@ -29,6 +39,8 @@ export default {
     .col {
         width: 50%;
         height: 50px;
+        > .content { height: 100%; }
+
         $class-prefix: scale-;
         @for $number from 1 through 100 { 
             &.#{$class-prefix}#{$number} {
@@ -40,9 +52,6 @@ export default {
             &.#{$class-prefix}#{$number} {
                 margin-left: ($number / 24 * 100%);
             }
-        }
-        > .content {
-            height: 100%;
         }
     }
 </style>

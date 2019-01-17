@@ -9,10 +9,13 @@
       * { margin:0; padding: 0; box-sizing: border-box; }
       #app { margin: 20px; }
       html { --font-size: 14px; }
-      body { font-size: var(--font-size); background: white;}
+      body { font-size: var(--font-size);}
     </style>
     <style>
       .demo { margin: 20px;}
+      .row {
+        margin: 16px 0;
+      }
       .col .content {
         background-color: #7CB8FF;
       }
@@ -56,7 +59,8 @@
           </mw-row>
           <mw-row>
             <mw-col scale="2">占 2 份</mw-col>
-            <mw-col scale="11" offset="3"> offset 3 占 11 份</mw-col>
+            <mw-col scale="11" offset="2"> offset 2, 占 11 份</mw-col>
+            <mw-col scale="2">占 2 份</mw-col>
           </mw-row>
         </div>
 
