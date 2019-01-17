@@ -1,5 +1,6 @@
 <template>
     <div class="row" 
+        v-bind:class="rowClass"
         v-bind:style="rowStyle">
         <slot></slot>
     </div>
@@ -8,9 +9,19 @@
 export default {
    name: 'MwRow', 
    props: {
-       ditch: { type: [Number, String] }
+       ditch: { type: [Number, String] },
+       alignment: {
+           type: String, 
+           validator: function(value) {
+               return ['left', 'center', 'right'].includes(value);
+           }
+       },
    },
    computed: {
+       rowClass() {
+           let {alignment} = this;
+           return [alignment && `align-${alignment}`];
+       },
        rowStyle() {
            let {ditch} = this;
            return {
@@ -30,5 +41,14 @@ export default {
 <style lang="scss" scoped>
     .row {
         display: flex;
+        &.align-left {
+            justify-content: flex-start;
+        }
+        &.align-center {
+            justify-content: center;
+        }
+        &.align-right {
+            justify-content: flex-end;
+        }
     }
 </style>

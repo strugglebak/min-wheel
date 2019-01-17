@@ -12,55 +12,118 @@
       body { font-size: var(--font-size);}
     </style>
     <style>
-      .demo { margin: 20px;}
-      .row {
-        margin: 16px 0;
-      }
-      .col .content {
-        background-color: #7CB8FF;
-      }
-      .col:nth-child(odd) .content {
-        background-color: #3D8FEE;
-      }
+      .col { height: 50px; }
+      .row { margin: 16px 0; }
+      .demo { margin: 20px 0; border: 1px solid green; background-color: #E8E8E8; }
+      .demo-o { background-color: #3D8FEE; height: 100%; }
+      .demo-e { background-color: #7CB8FF; height: 100%; }
+      .align-demo { width: 30px; height: 100%; background-color: red; }
+
     </style>
     <body>
       <div id="app">
 
-        <div class="demo" style="border: 1px solid red;">
+        <div class="demo">
+
           <mw-row ditch="20">
-            <mw-col>1 ditch = 20px</mw-col>
-            <mw-col>2</mw-col>
+            <mw-col scale="12">
+              <!-- <div class="demo-o">demo1</div> -->
+              <mw-row class="demo-o" alignment="left" style="margin: 0px;">
+                <mw-col>
+                  <div class="align-demo"></div>
+                </mw-col>
+              </mw-row>
+            </mw-col>
+
+            <mw-col scale="12">
+              <div class="demo-e">demo2</div>
+            </mw-col>
+          </mw-row>
+
+          <mw-row ditch="20">
+            <mw-col scale="12">
+              <!-- <div class="demo-o">demo1</div> -->
+              <mw-row class="demo-o" alignment="center" style="margin: 0px;">
+                <mw-col>
+                  <div class="align-demo"></div>
+                </mw-col>
+              </mw-row>
+            </mw-col>
+
+            <mw-col scale="12">
+              <div class="demo-e">demo2</div>
+            </mw-col>
+          </mw-row>
+
+          <mw-row ditch="20">
+            <mw-col scale="12">
+              <!-- <div class="demo-o">demo1</div> -->
+              <mw-row class="demo-o" alignment="right" style="margin: 0px;">
+                <mw-col>
+                  <div class="align-demo"></div>
+                </mw-col>
+              </mw-row>
+            </mw-col>
+
+            <mw-col scale="12">
+              <div class="demo-e">demo2</div>
+            </mw-col>
+          </mw-row>
+
+          <mw-row ditch="20">
+            <mw-col scale="12">
+              <div class="demo-o">demo1 ditch=20px</div>
+            </mw-col>
+            <mw-col scale="12">
+              <div class="demo-e">demo2</div>
+            </mw-col>
           </mw-row>
 
           <mw-row ditch="10">
-            <mw-col>1 ditch = 10px</mw-col>
-            <mw-col>2</mw-col>
-            <mw-col>3</mw-col>
-          </mw-row>
-          <mw-row ditch="30">
-            <mw-col>1 ditch = 30px</mw-col>
-            <mw-col>2</mw-col>
-            <mw-col>3</mw-col>
-            <mw-col>4</mw-col>
+            <mw-col scale="8">
+              <div class="demo-o">demo1</div>
+            </mw-col>
+            <mw-col scale="8">
+              <div class="demo-e">demo2</div>
+            </mw-col>
+            <mw-col scale="8">
+              <div class="demo-o">demo3</div>
+            </mw-col>
           </mw-row>
 
-          <mw-row ditch="10">
-            <mw-col scale="4">占 4 份 ditch = 10px</mw-col>
-            <mw-col scale="20">占 20 份</mw-col>
-          </mw-row>
           <mw-row>
-            <mw-col scale="4">占 4 份</mw-col>
-            <mw-col scale="20">占 20 份</mw-col>
+            <mw-col scale="4">
+              <div class="demo-o">demo1 占 4 份</div>
+            </mw-col>
+            <mw-col scale="20">
+              <div class="demo-e">demo2 占 20 份</div>
+            </mw-col>
           </mw-row>
+
           <mw-row>
-            <mw-col scale="2">占 2 份</mw-col>
-            <mw-col scale="1">占 1 份</mw-col>
-            <mw-col scale="1">占 1 份</mw-col>
+            <mw-col scale="2">
+              <div class="demo-o">demo1 占 2 份</div>
+            </mw-col>
+            <mw-col scale="1">
+              <div class="demo-e">demo2 占 1 份 </div>
+            </mw-col>
+            <mw-col scale="1">
+              <div class="demo-o">demo3 占 1 份</div>
+            </mw-col>
           </mw-row>
+
           <mw-row>
-            <mw-col scale="2">占 2 份</mw-col>
-            <mw-col scale="11" offset="2"> offset 2, 占 11 份</mw-col>
-            <mw-col scale="2">占 2 份</mw-col>
+            <mw-col scale="2">
+              <div class="demo-o">demo1 占 2 份</div>
+            </mw-col>
+            <mw-col scale="11" offset="2"> 
+              <div class="demo-e">
+                demo2 offset=2, 占 11 份
+              </div>
+              </mw-col>
+            <mw-col scale="2">
+              <div class="demo-o">demo 3 占 2 份</div>
+            </mw-col>
           </mw-row>
         </div>
 

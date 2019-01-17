@@ -2,9 +2,7 @@
     <div class="col"
         v-bind:class="colClass"
         v-bind:style="colStyle">
-        <div class="content">
-            <slot></slot>
-        </div>
+        <slot></slot>
     </div>
 </template>
 <script>
@@ -37,18 +35,14 @@ export default {
 </script>
 <style lang="scss" scoped>
     .col {
-        width: 50%;
-        height: 50px;
-        > .content { height: 100%; }
-
         $class-prefix: scale-;
-        @for $number from 1 through 100 { 
+        @for $number from 1 through 24 { 
             &.#{$class-prefix}#{$number} {
                 width: ($number / 24 * 100%);
             }
         }
         $class-prefix: offset-;
-        @for $number from 1 through 100 { 
+        @for $number from 1 through 24 { 
             &.#{$class-prefix}#{$number} {
                 margin-left: ($number / 24 * 100%);
             }
