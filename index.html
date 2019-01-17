@@ -7,34 +7,38 @@
     </head>
     <style>
       * { margin:0; padding: 0; box-sizing: border-box; }
+      #app { margin: 20px; }
       html { --font-size: 14px; }
-      body { font-size: var(--font-size); }
+      body { font-size: var(--font-size); background: white;}
     </style>
     <style>
+      .demo { margin: 20px;  border: 1px solid blue;}
+      .col .content {
+        border: 1px solid red;
+      }
     </style>
     <body>
-
       <div id="app">
 
         <div class="demo">
-          <mw-row>
+          <mw-row ditch="20">
             <mw-col>1</mw-col>
             <mw-col>2</mw-col>
           </mw-row>
 
-          <mw-row>
+          <mw-row ditch="10">
             <mw-col>1</mw-col>
             <mw-col>2</mw-col>
             <mw-col>3</mw-col>
           </mw-row>
-          <mw-row>
+          <mw-row ditch="30">
             <mw-col>1</mw-col>
             <mw-col>2</mw-col>
             <mw-col>3</mw-col>
             <mw-col>4</mw-col>
           </mw-row>
 
-          <mw-row>
+          <mw-row ditch="10">
             <mw-col scale="4">占 4 份</mw-col>
             <mw-col scale="20">占 20 份</mw-col>
           </mw-row>
