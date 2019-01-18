@@ -15,11 +15,6 @@ describe('Row', () => {
   })
 
   describe('props', () => {
-    // const Constructor = Vue.extend(Row);
-    // let vm;
-    // afterEach(() => {
-    //     vm.$destroy()
-    // });
     it('接收 ditch', (done) => {
         const div = document.createElement('div');
         div.id = 'app';
@@ -36,7 +31,6 @@ describe('Row', () => {
         const vm = new Vue({
             el: '#app'
         });
-        console.log(vm.$el.querySelector('.row'));
         setTimeout(()=>{
             let row = vm.$el.querySelector('.row');
             expect(getComputedStyle(row).marginLeft).to.eq('-10px');
