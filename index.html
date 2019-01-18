@@ -24,17 +24,44 @@
       <div id="app">
 
         <div class="demo">
+          <mw-row ditch="10">
+            <mw-col 
+                scale="2"
+                v-bind:pad="{scale: 4}"
+                v-bind:narrowpc="{scale: 6}"
+                v-bind:pc="{scale: 8}"
+                v-bind:widepc="{scale: 10}"
+            >
+              <div class="demo-o"></div>
+            </mw-col>
+            <mw-col 
+                scale="20"
+                v-bind:pad="{scale: 16}"
+                v-bind:narrowpc="{scale: 12}"
+                v-bind:pc="{scale: 8}"
+                v-bind:widepc="{scale: 4}"
+            >
+              <div class="demo-e"></div>
+            </mw-col>
+            <mw-col
+                scale="2"
+                v-bind:pad="{scale: 4}"
+                v-bind:narrowpc="{scale: 6}"
+                v-bind:pc="{scale: 8}"
+                v-bind:widepc="{scale: 10}"
+            >
+              <div class="demo-o"></div>
+            </mw-col>
+          </mw-row>
 
           <mw-row ditch="20">
             <mw-col scale="12">
-              <!-- <div class="demo-o">demo1</div> -->
               <mw-row class="demo-o" alignment="left" style="margin: 0px;">
                 <mw-col>
                   <div class="align-demo"></div>
                 </mw-col>
               </mw-row>
             </mw-col>
-
             <mw-col scale="12">
               <div class="demo-e">demo2</div>
             </mw-col>
@@ -42,14 +69,12 @@
 
           <mw-row ditch="20">
             <mw-col scale="12">
-              <!-- <div class="demo-o">demo1</div> -->
               <mw-row class="demo-o" alignment="center" style="margin: 0px;">
                 <mw-col>
                   <div class="align-demo"></div>
                 </mw-col>
               </mw-row>
             </mw-col>
-
             <mw-col scale="12">
               <div class="demo-e">demo2</div>
             </mw-col>
@@ -57,7 +82,6 @@
 
           <mw-row ditch="20">
             <mw-col scale="12">
-              <!-- <div class="demo-o">demo1</div> -->
               <mw-row class="demo-o" alignment="right" style="margin: 0px;">
                 <mw-col>
                   <div class="align-demo"></div>
