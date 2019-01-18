@@ -28,35 +28,33 @@ export default {
     data() {
         return { ditch: 0 }
     },
+    methods: {
+        createColClass(obj, dev = '') {
+            if (!obj) return [];
+            if (!dev) {
+                return [
+                    obj.scale && `scale-${obj.scale}`,
+                    obj.offset && `offset-${obj.offset}`
+                ];
+            }
+            return [
+                obj.scale && `${dev}-scale-${obj.scale}`,
+                obj.offset && `${dev}-offset-${obj.offset}`
+            ];
+        }
+    },
     computed: {
         colClass() {
             let {scale, offset, pad, narrowpc, pc, widepc} = this;
-
-            pad = pad ? [
-                    (pad.scale && `pad-scale-${pad.scale}`), 
-                    (pad.offset && `pad-offset-${pad.offset}`), 
-                ] : [] ;
-            narrowpc = narrowpc ? [
-                    (narrowpc.scale && `narrowpc-scale-${narrowpc.scale}`), 
-                    (narrowpc.offset && `narrowpc-offset-${narrowpc.offset}`), 
-                ] : [] ;
-            pc = pc ? [
-                    (pc.scale && `pc-scale-${pc.scale}`), 
-                    (pc.offset && `pc-offset-${pc.offset}`), 
-                ] : [] ;
-            widepc = widepc ? [
-                    (widepc.scale && `widepc-scale-${widepc.scale}`), 
-                    (widepc.offset && `widepc-offset-${widepc.offset}`), 
-                ] : [] ;
-
+            
+            let createColClass = this.createColClass;
             return [
-                scale && `scale-${scale}`, 
-                offset && `offset-${offset}`,
-                ...pad,
-                ...narrowpc,
-                ...pc,
-                ...widepc
-            ]
+                ...createColClass({scale, offset}),
+                ...createColClass(pad, 'pad'),
+                ...createColClass(narrowpc, 'narrowpc'),
+                ...createColClass(pc, 'pc'),
+                ...createColClass(widepc, 'widepc'),
+            ];
         },
         colStyle() {
             let {ditch} = this;
