@@ -31,16 +31,16 @@ export default {
     methods: {
         createColClass(obj, dev = '') {
             if (!obj) return [];
-            if (!dev) {
-                return [
+
+            let array = [
                     obj.scale && `scale-${obj.scale}`,
                     obj.offset && `offset-${obj.offset}`
                 ];
+            if(dev) {
+                array[0] = obj.scale && `${dev}-scale-${obj.scale}`;
+                array[1] = obj.offset && `${dev}-offset-${obj.offset}`;
             }
-            return [
-                obj.scale && `${dev}-scale-${obj.scale}`,
-                obj.offset && `${dev}-offset-${obj.offset}`
-            ];
+            return array;
         }
     },
     computed: {
