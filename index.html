@@ -15,13 +15,91 @@
       .col { height: 50px; }
       .row { margin: 16px 0; }
       .demo { margin: 20px 0; border: 1px solid green; background-color: #E8E8E8; }
-      .demo-o { background-color: #3D8FEE; height: 100%; }
-      .demo-e { background-color: #7CB8FF; height: 100%; }
+      .demo-o, .demo-e, .demo-x { display: flex; justify-content: center; align-items: center; min-height: 100% }
+      .demo-o { background-color: #3ba0e9; }
+      .demo-e { background-color: #7CB8FF; }
+      .demo-x { background-color: #108ee9 }
       .align-demo { width: 30px; height: 100%; background-color: red; }
-
+      .header, .footer { min-height: 50px; }
+      .sider, .content { min-height: 80px; }
     </style>
     <body>
       <div id="app">
+
+        <div class="demo">
+          <mw-layout>
+            <mw-header>
+              <div class="demo-e">header</div>
+            </mw-header>
+            <mw-content>
+              <div class="demo-x">content</div>
+            </mw-content>
+            <mw-footer>
+              <div class="demo-e">footer</div>
+            </mw-footer>
+          </mw-layout>
+        </div>
+
+        <div class="demo">
+          <mw-layout>
+            <mw-header>
+              <div class="demo-e">header</div>
+            </mw-header>
+            <mw-layout>
+              <mw-sider>
+                <div class="demo-o">sider</div>
+              </mw-sider>
+              <mw-content>
+                <div class="demo-x">content</div>
+              </mw-content>
+            </mw-layout>
+            <mw-footer>
+              <div class="demo-e">footer</div>
+            </mw-footer>
+          </mw-layout>
+
+          </mw-layout>
+        </div>
+
+        <div class="demo">
+          <mw-layout>
+            <mw-header>
+              <div class="demo-e">header</div>
+            </mw-header>
+            <mw-layout>
+              <mw-content>
+                <div class="demo-x">content</div>
+              </mw-content>
+              <mw-sider>
+                <div class="demo-o">sider</div>
+              </mw-sider>
+            </mw-layout>
+            <mw-footer>
+              <div class="demo-e">footer</div>
+            </mw-footer>
+          </mw-layout>
+
+          </mw-layout>
+        </div>
+
+        <div class="demo">
+          <mw-layout>
+            <mw-sider>
+              <div class="demo-o">sider</div>
+            </mw-sider>
+            <mw-layout>
+              <mw-header>
+                <div class="demo-e">header</div>
+              </mw-header>
+              <mw-content>
+                <div class="demo-x">content</div>
+              </mw-content>
+              <mw-footer>
+                <div class="demo-e">footer</div>
+              </mw-footer>
+            </mw-layout>
+          </mw-layout>
+        </div>
 
         <div class="demo">
           <mw-row ditch="10">
@@ -149,6 +227,7 @@
               <div class="demo-o">demo 3 占 2 份</div>
             </mw-col>
           </mw-row>
+
         </div>
 
         <div class="demo">
@@ -220,6 +299,7 @@
             <mw-button icon="next" icon-position="right">前进</mw-button>
           </mw-button-group>
         </div>
+
       </div>
 
       <script src="./src/app.js" charset="utf-8"></script>
