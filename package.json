@@ -1,6 +1,6 @@
 {
   "name": "min-wheel",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "一个小型的基于 Vue 的 UI 框架",
   "main": "dist/index.js",
   "scripts": {
