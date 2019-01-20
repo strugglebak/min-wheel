@@ -10,6 +10,7 @@ import Header from './header'
 import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
+import Toast from './toast'
 
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
@@ -22,6 +23,7 @@ Vue.component('mw-header', Header);
 Vue.component('mw-sider', Sider);
 Vue.component('mw-content', Content);
 Vue.component('mw-footer', Footer);
+Vue.component('mw-toast', Toast);
 
 new Vue({
     el: '#app',
