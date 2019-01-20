@@ -4,7 +4,7 @@
     v-on:click="$emit('click')">
     <mw-icon class="icon"  v-if="!loading" v-bind:name="icon"></mw-icon>
     <mw-icon class="icon loading" v-if="loading" name="loading"></mw-icon>
-    <div class="content">
+    <div class="button-content">
       <slot></slot>
     </div>
   </button>
@@ -57,10 +57,10 @@
 
     display: inline-flex; justify-content: center; align-items: center; vertical-align: middle;
 
-    > .content { order: 2; margin-left: 0.1em;}
+    > .button-content { order: 2; margin-left: 0.1em;}
     > .icon { order: 1; }
     &.icon-right { 
-      > .content { order: 1; margin-left: 0; margin-right: 0.1em;}
+      > .button-content { order: 1; margin-left: 0; margin-right: 0.1em;}
       > .icon { order: 2; } 
     } 
 
