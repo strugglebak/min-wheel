@@ -1,6 +1,11 @@
 <template>
     <div class="toast">
-        <slot></slot>
+        <div class="text">
+            <slot></slot>
+        </div>
+        <div class="line"></div>
+        <span class="close-button"
+            v-on:click="close">关闭</span>
     </div>   
 </template>
 <script>
@@ -17,10 +22,13 @@ export default {
         }
     },
     methods: {
+        close() {
+            this.$el.remove();
+            this.$destroy();
+        },
         autoCloseToast(delay=3000){
             setTimeout(()=>{
-                this.$el.remove();
-                this.$destroy();
+                close();
             }, delay);
         },
     },
@@ -32,7 +40,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    $toast-width: 288px;
     $toast-padding: 13px 0;
     $toast-font-size: 14px;
     $toast-color: white;
@@ -40,16 +47,30 @@ export default {
     $toast-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.50);
     $toast-border-radius: 4px;
     .toast {
-        width: $toast-width;
         padding: $toast-padding;
         font-size: $toast-font-size;
         color: $toast-color;
         background-color: $toast-bg-color;
         box-shadow: $toast-box-shadow;
         border-radius: $toast-border-radius;
-        text-align: center;
         position: fixed;
         top: 0; left: 50%;
-        margin-left: (-$toast-width/2);
+        transform: translateX(-50%);
+        display: flex;
+
+        .text {
+            border: 1px solid green;
+            padding: 0 84px;
+        }
+
+        .line {
+            border: 1px solid #ddd;
+        }
+
+        .close-button {
+            cursor: pointer;
+            border: 1px solid red;
+            padding: 0 13px;
+        }
     }
 </style>
