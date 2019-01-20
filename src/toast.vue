@@ -9,23 +9,25 @@ export default {
     props: {
         isAutoClose: {
             type: Boolean,
-            default: true 
+            default: false 
+        },
+        autoCloseDelay: {
+            type: Number,
+            default: 3000
         }
     },
     methods: {
-        autoCloseToast(){
-            let isAutoClose = this.isAutoClose;
-            if (isAutoClose) {
-                setTimeout(()=>{
-                    console.log(this.$el)
-                    this.$el.remove();
-                    this.$destroy();
-                }, 3000);
-            }
+        autoCloseToast(delay=3000){
+            setTimeout(()=>{
+                this.$el.remove();
+                this.$destroy();
+            }, delay);
         },
     },
     mounted() {
-        this.autoCloseToast();
+        if (this.isAutoClose) {
+            this.autoCloseToast(this.autoCloseDelay);
+        }
     },
 }
 </script>

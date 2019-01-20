@@ -47,7 +47,12 @@ new Vue({
         },
         showToast() {
             // you can use this.$toast here
-            this.$toast('这里出现 toast');
+            // and this is the api of toast
+            this.$toast({
+                text: '这里出现 toast',
+                isAutoClose: true,
+                autoCloseDelay: 5000,
+            });
         },
     }, 
     created(){
