@@ -10,7 +10,9 @@ import Header from './header'
 import Sider from './sider'
 import Content from './content'
 import Footer from './footer'
+
 import Toast from './toast'
+import ToastPlugin from '../plugins/toast-plugin'
 
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
@@ -23,7 +25,10 @@ Vue.component('mw-header', Header);
 Vue.component('mw-sider', Sider);
 Vue.component('mw-content', Content);
 Vue.component('mw-footer', Footer);
+
+// register toast plugin
 Vue.component('mw-toast', Toast);
+Vue.use(ToastPlugin);
 
 new Vue({
     el: '#app',
@@ -39,7 +44,11 @@ new Vue({
         },
         changeMessage () {
             this.message = this.message + '1';
-        }
+        },
+        showToast() {
+            // you can use this.$toast here
+            this.$toast('这里出现 toast');
+        },
     }, 
     created(){
         setTimeout(() => {
