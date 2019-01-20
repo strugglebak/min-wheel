@@ -50,7 +50,7 @@ new Vue({
             // and this is the api of toast
             this.$toast({
                 text: '这里出现 toast',
-                isAutoClose: true,
+                isAutoClose: false,
                 autoCloseDelay: 5000,
             });
         },

@@ -3,7 +3,7 @@
         <div class="text">
             <slot></slot>
         </div>
-        <div class="line"></div>
+        <div class="line" ref="line"></div>
         <span class="close-button"
             v-if="closeButton"
             v-on:click="onClickButtonToClose">{{closeButton.text}}</span>
@@ -52,10 +52,25 @@ export default {
                 this.closeButton.callback(this);
             }
         },
+        getCurrentToastHeight() {
+            setTimeout(()=> {
+                return this.$el.getBoundingClientRect().height;
+            }, 0);
+        },
+        updateElementStyles() {
+            this.$nextTick(()=>{
+                console.log(this.$refs);
+            })
+        },
     },
     mounted() {
+        console.log('mounted');
         this.judgeWayToClose();
         this.onClickButtonToClose();
+        this.updateElementStyles();
+    },
+    updated() {
+        console.log('updated');
     },
 }
 </script>
@@ -77,6 +92,7 @@ export default {
         top: 0; left: 50%;
         transform: translateX(-50%);
         display: flex;
+        min-height: 48px;
 
         .text {
             border: 1px solid green;
