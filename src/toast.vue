@@ -6,6 +6,27 @@
 <script>
 export default {
     name: 'MwToast',
+    props: {
+        isAutoClose: {
+            type: Boolean,
+            default: true 
+        }
+    },
+    methods: {
+        autoCloseToast(){
+            let isAutoClose = this.isAutoClose;
+            if (isAutoClose) {
+                setTimeout(()=>{
+                    console.log(this.$el)
+                    this.$el.remove();
+                    this.$destroy();
+                }, 3000);
+            }
+        },
+    },
+    mounted() {
+        this.autoCloseToast();
+    },
 }
 </script>
 <style lang="scss" scoped>
