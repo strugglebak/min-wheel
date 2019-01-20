@@ -5,7 +5,8 @@
         </div>
         <div class="line"></div>
         <span class="close-button"
-            v-on:click="close">关闭</span>
+            v-if="closeButton"
+            v-on:click="onClickButtonToClose">{{closeButton.text}}</span>
     </div>   
 </template>
 <script>
@@ -19,23 +20,42 @@ export default {
         autoCloseDelay: {
             type: Number,
             default: 3000
-        }
+        },
+        closeButton: {
+            type: Object,
+            default() {
+                return {
+                    text: '关闭',
+                    callback: undefined
+                }
+            }
+        },
     },
     methods: {
         close() {
             this.$el.remove();
             this.$destroy();
         },
-        autoCloseToast(delay=3000){
+        autoClose(delay=3000){
             setTimeout(()=>{
-                close();
+                this.close();
             }, delay);
+        },
+        judgeWayToClose() {
+            if (this.isAutoClose) {
+                this.autoClose(this.autoCloseDelay);
+            }
+        },
+        onClickButtonToClose() {
+            this.close();
+            if (this.closeButton && typeof this.closeButton.callback === 'function') {
+                this.closeButton.callback(this);
+            }
         },
     },
     mounted() {
-        if (this.isAutoClose) {
-            this.autoCloseToast(this.autoCloseDelay);
-        }
+        this.judgeWayToClose();
+        this.onClickButtonToClose();
     },
 }
 </script>
