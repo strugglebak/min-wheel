@@ -100,15 +100,9 @@ export default {
         position: fixed; left: 50%; transform: translateX(-50%);
         display: flex; align-items: center;
 
-        &.align-top { top: 0; animation: $toast-top-position-animation $toast-animation-delay; 
-            border-top-left-radius: 0;
-            border-top-right-radius: 0;
-        }
+        &.align-top { top: 0; animation: $toast-top-position-animation $toast-animation-delay; border-top-left-radius: 0; border-top-right-radius: 0; }
         &.align-middle { top: 50%; transform: translate(-50%, -50%); animation: $toast-middle-position-animation $toast-animation-delay; }
-        &.align-bottom { bottom: 0; animation: $toast-bottom-position-animation $toast-animation-delay; 
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-        }
+        &.align-bottom { bottom: 0; animation: $toast-bottom-position-animation $toast-animation-delay; border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
 
         .text { padding: 13px 0; }
         .line { border: 1px solid #666; margin: 0 16px; }
