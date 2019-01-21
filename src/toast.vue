@@ -1,6 +1,6 @@
 <template>
     <div class="toast" ref="toast" 
-        v-bind:class="{[`align-${position}`]: true}">
+        v-bind:class="toastPositionClass">
         <div class="text" 
             ref="text">
             <div v-if="isHtml" v-html="this.$slots.default[0]"></div>
@@ -32,6 +32,11 @@ export default {
             validator: function(value) {
                 return ['top', 'middle', 'bottom'].includes(value);
             }
+        }
+    },
+    computed: {
+        toastPositionClass() {
+            return {[`align-${this.position}`]: true}
         }
     },
     methods: {
