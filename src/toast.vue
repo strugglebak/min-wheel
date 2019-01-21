@@ -52,20 +52,18 @@ export default {
                 this.closeButton.callback(this);
             }
         },
-        getCurrentToastHeight() {
-            setTimeout(()=> {
-                return this.$el.getBoundingClientRect().height;
-            }, 0);
-        },
         updateElementStyles() {
             this.$nextTick(()=>{
-                console.log(this.$refs);
+                let updateHeight = this.$el.getBoundingClientRect().height
+                console.log(updateHeight);
+                this.$refs.line.style.height = updateHeight + 'px';
+                console.log(this.$refs.line.style.height);
             })
         },
     },
     mounted() {
-        this.judgeWayToClose();
         this.updateElementStyles();
+        this.judgeWayToClose();
     },
 }
 </script>
@@ -96,6 +94,7 @@ export default {
 
         .line {
             border: 1px solid #ddd;
+            height: 100%;
         }
 
         .close-button {
