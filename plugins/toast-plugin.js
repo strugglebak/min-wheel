@@ -8,6 +8,7 @@ export default {
         Vue.prototype.$toast = function (propsData) {
             if(currentToast) {
                 currentToast.close();
+                currentToast = null;
             }
             currentToast = generateToastComponent(Vue, propsData);
         }
