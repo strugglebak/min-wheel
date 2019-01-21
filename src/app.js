@@ -48,13 +48,18 @@ new Vue({
         showToast() {
             // you can use this.$toast here
             // and this is the api of toast
-            let text = `更新成功更新成功更新成功更新成功
-                更新成功更新成功更新成功更新成功更新成功更新成功更
-                新成功更新成功更新成功更新成功更新成功更新成功更新成功更
-                更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功`;
+            // let text = `更新成功更新成功更新成功更新成功
+            //     更新成功更新成功更新成功更新成功更新成功更新成功更
+            //     新成功更新成功更新成功更新成功更新成功更新成功更新成功更
+            //     更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功`;
             // let text = '更新成功';
+            let text = `
+                <h1>这里是标题</h1>
+                <p>这里是段落</p>
+            `;
             this.$toast({
                 text,
+                isHtml: true,
                 isAutoClose: false,
                 autoCloseDelay: 5000,
             });

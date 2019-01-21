@@ -1,7 +1,9 @@
 <template>
     <div class="toast" ref="toast">
-        <div class="text" ref="text">
-            <slot></slot>
+        <div class="text" 
+            ref="text">
+            <div v-if="isHtml" v-html="this.$slots.default[0]"></div>
+            <slot v-else></slot>
         </div>
         <div class="line" ref="line"></div>
         <span class="close-button"
@@ -16,6 +18,10 @@ export default {
         isAutoClose: {
             type: Boolean,
             default: false 
+        },
+        isHtml: {
+            type: Boolean,
+            default: false
         },
         autoCloseDelay: {
             type: Number,
