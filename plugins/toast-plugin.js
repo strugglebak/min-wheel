@@ -10,7 +10,6 @@ export default {
                 currentToast.close();
             }
             currentToast = generateToastComponent(Vue, propsData, ()=> {
-                console.log('use callback function');
                 currentToast = null;
             });
         }

@@ -92,29 +92,21 @@ export default {
     $toast-border-radius: 4px;
     $toast-min-height: 40px;
     $toast-padding: 0 16px;
+    $toast-top-position-animation: slide-down;
+    $toast-bottom-position-animation: slide-up;
+    $toast-middle-position-animation: fade-in;
+    $toast-animation-delay: 0.5s;
     @keyframes slide-down {
-        0% {
-            transform: translate(-50%, -100%);
-        }
-        100% {
-            transform: translate(-50%, 0);
-        }
+        0% { transform: translate(-50%, -100%); }
+        100% { transform: translate(-50%, 0); }
     }
     @keyframes fade-in {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
+        0% { opacity: 0; }
+        100% { opacity: 1; }
     }
     @keyframes slide-up {
-        0% {
-            transform: translate(-50%, 100%);
-        }
-        100% {
-            transform: translate(-50%, 0);
-        }
+        0% { transform: translate(-50%, 100%); }
+        100% { transform: translate(-50%, 0); }
     }
     .toast {
         padding: $toast-padding;
@@ -132,16 +124,16 @@ export default {
 
         &.align-top {
             top: 0; 
-            animation: slide-down 0.5s;
+            animation: $toast-top-position-animation $toast-animation-delay;
         }
         &.align-middle {
             top: 50%;
             transform: translate(-50%, -50%);
-            animation: fade-in 0.5s;
+            animation: $toast-middle-position-animation $toast-animation-delay;
         }
         &.align-bottom {
             bottom: 0;
-            animation: slide-up 0.5s;
+            animation: $toast-bottom-position-animation $toast-animation-delay;
         }
 
         .text {
