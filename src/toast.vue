@@ -1,6 +1,6 @@
 <template>
-    <div class="toast">
-        <div class="text">
+    <div class="toast" ref="toast">
+        <div class="text" ref="text">
             <slot></slot>
         </div>
         <div class="line" ref="line"></div>
@@ -64,13 +64,8 @@ export default {
         },
     },
     mounted() {
-        console.log('mounted');
         this.judgeWayToClose();
-        this.onClickButtonToClose();
         this.updateElementStyles();
-    },
-    updated() {
-        console.log('updated');
     },
 }
 </script>
@@ -82,7 +77,6 @@ export default {
     $toast-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.50);
     $toast-border-radius: 4px;
     .toast {
-        padding: $toast-padding;
         font-size: $toast-font-size;
         color: $toast-color;
         background-color: $toast-bg-color;
@@ -92,7 +86,8 @@ export default {
         top: 0; left: 50%;
         transform: translateX(-50%);
         display: flex;
-        min-height: 48px;
+        align-items: center;
+        min-height: 40px;
 
         .text {
             border: 1px solid green;
