@@ -74,7 +74,7 @@ export default {
             this.$nextTick(()=>{
                 let updateHeight = this.$el.getBoundingClientRect().height
                 this.$refs.line.style.height = updateHeight + 'px';
-            })
+            });
         },
     },
     mounted() {
@@ -92,6 +92,30 @@ export default {
     $toast-border-radius: 4px;
     $toast-min-height: 40px;
     $toast-padding: 0 16px;
+    @keyframes slide-down {
+        0% {
+            transform: translate(-50%, -100%);
+        }
+        100% {
+            transform: translate(-50%, 0);
+        }
+    }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    @keyframes slide-up {
+        0% {
+            transform: translate(-50%, 100%);
+        }
+        100% {
+            transform: translate(-50%, 0);
+        }
+    }
     .toast {
         padding: $toast-padding;
         min-height: $toast-min-height;
@@ -108,13 +132,16 @@ export default {
 
         &.align-top {
             top: 0; 
+            animation: slide-down 0.5s;
         }
         &.align-middle {
             top: 50%;
             transform: translate(-50%, -50%);
+            animation: fade-in 0.5s;
         }
         &.align-bottom {
             bottom: 0;
+            animation: slide-up 0.5s;
         }
 
         .text {
