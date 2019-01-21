@@ -44,7 +44,7 @@ export default {
        type: { 
            type: String , default: 'text', 
            validator: function(value) {
-               return value === 'text' || value === 'password';
+               return ['text', 'password'].includes(value);
            }
        },
        disabled: { type: Boolean, default: false },
@@ -86,12 +86,8 @@ export default {
             > div .icon { fill: #729d39; }
             > div .describe { color: #729d39; }
         }
-        &.align-horizontal {
-            flex-direction: row;
-        }
-        &.align-vertical {
-            flex-direction: column;
-            align-items: flex-start;
+        &.align-horizontal { flex-direction: row; }
+        &.align-vertical { flex-direction: column; align-items: flex-start;
             > label { margin: 8px 0; }
             > div { margin: 4px 0; }
         }

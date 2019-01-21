@@ -19,30 +19,16 @@
 export default {
     name: 'MwToast',
     props: {
-        isAutoClose: {
-            type: Boolean,
-            default: false 
-        },
-        isHtml: {
-            type: Boolean,
-            default: false
-        },
-        autoCloseDelay: {
-            type: Number,
-            default: 3000
-        },
-        closeButton: {
+        isAutoClose: { type: Boolean, default: false },
+        isHtml: { type: Boolean, default: false },
+        autoCloseDelay: { type: Number, default: 3000 },
+        closeButton: { 
             type: Object,
             default() {
-                return {
-                    text: '关闭',
-                    callback: undefined
-                }
+                return { text: '关闭', callback: undefined }
             }
         },
-        position: {
-            type: String,
-            default: 'top',
+        position: { type: String, default: 'top',
             validator: function(value) {
                 return ['top', 'middle', 'bottom'].includes(value);
             }
@@ -109,45 +95,16 @@ export default {
         100% { transform: translate(-50%, 0); }
     }
     .toast {
-        padding: $toast-padding;
-        min-height: $toast-min-height;
-        font-size: $toast-font-size;
-        color: $toast-color;
-        background-color: $toast-bg-color;
-        box-shadow: $toast-box-shadow;
-        border-radius: $toast-border-radius;
-        position: fixed;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        align-items: center;
+        padding: $toast-padding; min-height: $toast-min-height; font-size: $toast-font-size; color: $toast-color; background-color: $toast-bg-color; box-shadow: $toast-box-shadow; border-radius: $toast-border-radius;
+        position: fixed; left: 50%; transform: translateX(-50%);
+        display: flex; align-items: center;
 
-        &.align-top {
-            top: 0; 
-            animation: $toast-top-position-animation $toast-animation-delay;
-        }
-        &.align-middle {
-            top: 50%;
-            transform: translate(-50%, -50%);
-            animation: $toast-middle-position-animation $toast-animation-delay;
-        }
-        &.align-bottom {
-            bottom: 0;
-            animation: $toast-bottom-position-animation $toast-animation-delay;
-        }
+        &.align-top { top: 0; animation: $toast-top-position-animation $toast-animation-delay; }
+        &.align-middle { top: 50%; transform: translate(-50%, -50%); animation: $toast-middle-position-animation $toast-animation-delay; }
+        &.align-bottom { bottom: 0; animation: $toast-bottom-position-animation $toast-animation-delay; }
 
-        .text {
-            padding: 13px 0;
-        }
-
-        .line {
-            border: 1px solid #666;
-            margin: 0 16px;
-        }
-
-        .close-button {
-            cursor: pointer;
-            flex-shrink: 0;
-        }
+        .text { padding: 13px 0; }
+        .line { border: 1px solid #666; margin: 0 16px; }
+        .close-button { cursor: pointer; flex-shrink: 0; }
     }
 </style>

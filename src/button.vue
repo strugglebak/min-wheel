@@ -24,13 +24,7 @@
         type: String,
         default: 'left',
         validator: function (value) {
-          if (value !== 'left' && value !== 'right') {
-            console.warn('your icon-position is "' + value + 
-              '"' + ', but the icon position we need is just "left" or "right"');
-              return false;
-          } else {
-            return true;
-          }
+          return ['left', 'right'].includes(value);
         }
       },
     }
@@ -38,8 +32,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @keyframes roll { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
   $font-size: 14px;
   $button-height: 32px;
   $button-padding: 0 1em;
@@ -48,6 +40,10 @@
   $button-border: 1px solid #C8C8C8;
   $button-border-radius: 4px;
   $button-hover-border-color: #666666;
+  @keyframes roll { 
+    0% { transform: rotate(0deg); } 
+    100% { transform: rotate(360deg); } 
+  }
   .mw-button {
     font-size: $font-size; height: $button-height; padding: $button-padding; background-color: $button-bg-color; border: $button-border; border-radius: $button-border-radius;
 

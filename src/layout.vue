@@ -9,10 +9,7 @@ export default {
    name: 'MwLayout',
    data() {
        return {
-           insideLayout: {
-               hasSider: false,
-               hasContent: false,
-           }
+           insideLayout: { hasSider: false, hasContent: false, }
        }
    },
    mounted() {
@@ -29,9 +26,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .layout {
-        display: flex;
-        flex-direction: column;
-        flex-grow: 1;
+        display: flex; flex-direction: column; flex-grow: 1;
         &.hasSider { flex-direction: row;
             > .sider { flex-grow: 0.25; }
             &.hasContent 
