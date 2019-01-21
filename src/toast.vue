@@ -36,8 +36,8 @@ export default {
     },
     methods: {
         close() {
-            this.$emit('toastClose');
             this.$el.remove();
+            this.$emit('toastClose');
             this.$destroy();
         },
         autoClose(delay=3000){
