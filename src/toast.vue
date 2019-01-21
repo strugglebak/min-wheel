@@ -58,6 +58,7 @@ export default {
         },
         updateElementStyles() {
             this.$nextTick(()=>{
+                if (!this.$refs.line) return;
                 let updateHeight = this.$el.getBoundingClientRect().height
                 this.$refs.line.style.height = updateHeight + 'px';
             });
