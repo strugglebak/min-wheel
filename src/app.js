@@ -45,23 +45,31 @@ new Vue({
         changeMessage () {
             this.message = this.message + '1';
         },
-        showToast() {
-            // you can use this.$toast here
-            // and this is the api of toast
-            // let text = `更新成功更新成功更新成功更新成功
-            //     更新成功更新成功更新成功更新成功更新成功更新成功更
-            //     新成功更新成功更新成功更新成功更新成功更新成功更新成功更
-            //     更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功更新成功`;
-            // let text = '更新成功';
+        showToastAtTop() {
             let text = `
-                <h1>这里是标题</h1>
-                <p>这里是段落</p>
+                更新成功
             `;
             this.$toast({
                 text,
-                isHtml: true,
-                isAutoClose: false,
-                autoCloseDelay: 5000,
+                position: 'top',
+            });
+        },
+        showToastAtMiddle() {
+            let text = `
+                更新成功
+            `;
+            this.$toast({
+                text,
+                position: 'middle',
+            });
+        },
+        showToastAtBottom() {
+            let text = `
+                更新成功
+            `;
+            this.$toast({
+                text,
+                position: 'bottom',
             });
         },
     }, 

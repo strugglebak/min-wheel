@@ -1,5 +1,6 @@
 <template>
-    <div class="toast" ref="toast">
+    <div class="toast" ref="toast" 
+        v-bind:class="{[`align-${position}`]: true}">
         <div class="text" 
             ref="text">
             <div v-if="isHtml" v-html="this.$slots.default[0]"></div>
@@ -36,6 +37,13 @@ export default {
                 }
             }
         },
+        position: {
+            type: String,
+            default: 'top',
+            validator: function(value) {
+                return ['top', 'middle', 'bottom'].includes(value);
+            }
+        }
     },
     methods: {
         close() {
@@ -90,10 +98,21 @@ export default {
         box-shadow: $toast-box-shadow;
         border-radius: $toast-border-radius;
         position: fixed;
-        top: 0; left: 50%;
+        left: 50%;
         transform: translateX(-50%);
         display: flex;
         align-items: center;
+
+        &.align-top {
+            top: 0; 
+        }
+        &.align-middle {
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        &.align-bottom {
+            bottom: 0;
+        }
 
         .text {
             padding: 13px 0;
