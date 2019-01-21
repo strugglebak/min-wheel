@@ -55,9 +55,7 @@ export default {
         updateElementStyles() {
             this.$nextTick(()=>{
                 let updateHeight = this.$el.getBoundingClientRect().height
-                console.log(updateHeight);
                 this.$refs.line.style.height = updateHeight + 'px';
-                console.log(this.$refs.line.style.height);
             })
         },
     },
@@ -74,7 +72,11 @@ export default {
     $toast-bg-color: rgba(0,0,0,0.75);
     $toast-box-shadow: 0px 0px 3px 0px rgba(0,0,0,0.50);
     $toast-border-radius: 4px;
+    $toast-min-height: 40px;
+    $toast-padding: 0 16px;
     .toast {
+        padding: $toast-padding;
+        min-height: $toast-min-height;
         font-size: $toast-font-size;
         color: $toast-color;
         background-color: $toast-bg-color;
@@ -85,22 +87,19 @@ export default {
         transform: translateX(-50%);
         display: flex;
         align-items: center;
-        min-height: 40px;
 
         .text {
-            border: 1px solid green;
-            padding: 0 84px;
+            padding: 13px 0;
         }
 
         .line {
-            border: 1px solid #ddd;
-            height: 100%;
+            border: 1px solid #666;
+            margin: 0 16px;
         }
 
         .close-button {
             cursor: pointer;
-            border: 1px solid red;
-            padding: 0 13px;
+            flex-shrink: 0;
         }
     }
 </style>
