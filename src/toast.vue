@@ -39,6 +39,7 @@ export default {
     },
     methods: {
         close() {
+            this.$emit('toastClose');
             this.$el.remove();
             this.$destroy();
         },

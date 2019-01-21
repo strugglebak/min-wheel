@@ -8,14 +8,16 @@ export default {
         Vue.prototype.$toast = function (propsData) {
             if(currentToast) {
                 currentToast.close();
-                currentToast = null;
             }
-            currentToast = generateToastComponent(Vue, propsData);
+            currentToast = generateToastComponent(Vue, propsData, ()=> {
+                console.log('use callback function');
+                currentToast = null;
+            });
         }
     }
 }
 
-function generateToastComponent(Vue, propsData) {
+function generateToastComponent(Vue, propsData, callback) {
     let Constructor = Vue.extend(Toast);
     let toast = new Constructor({
         propsData,
@@ -23,6 +25,7 @@ function generateToastComponent(Vue, propsData) {
     // the node in the toast component is text
     toast.$slots.default = [propsData.text];
     toast.$mount();
+    toast.$on('toastClose', callback);
     document.body.appendChild(toast.$el);
 
     return toast;
