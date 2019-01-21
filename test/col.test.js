@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Row from '../src/row'
 import Col from '../src/col'
 
-// use macha and sinon-chai
 const expect = chai.expect;
 
 Vue.config.productionTip = false

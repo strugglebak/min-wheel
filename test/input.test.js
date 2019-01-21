@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Input from '../src/input'
 
-// use macha and sinon-chai
 const expect = chai.expect;
 
 Vue.config.productionTip = false
