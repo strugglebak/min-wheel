@@ -6,7 +6,10 @@
             <div v-if="isHtml" v-html="this.$slots.default[0]"></div>
             <slot v-else></slot>
         </div>
-        <div class="line" ref="line"></div>
+        <div class="line" 
+            ref="line"
+            v-if="closeButton"
+            ></div>
         <span class="close-button"
             v-if="closeButton"
             v-on:click="onClickButtonToClose">{{closeButton.text}}</span>

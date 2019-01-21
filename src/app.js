@@ -51,6 +51,7 @@ new Vue({
             `;
             this.$toast({
                 text,
+                closeButton: null,
                 position: 'top',
             });
         },
