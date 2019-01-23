@@ -5,7 +5,7 @@
 </template>
 <script>
 export default {
-    name: 'MwTabsContent'
+    name: 'MwTabsContent',
 }
 </script>
 <style lang="scss" scoped>

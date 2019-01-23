@@ -24,6 +24,27 @@
     </style>
     <body>
       <div id="app">
+        <div class="demo">
+          <mw-tabs
+            v-bind:selected.sync="selectedTabsItem"
+            v-on:update:selected="yyy"
+            >
+            <mw-tabs-nav>
+              <mw-tabs-item name="tab1">tab1</mw-tabs-item>
+              <mw-tabs-item name="tab2">tab2</mw-tabs-item>
+              <mw-tabs-item name="tab3">tab3</mw-tabs-item>
+            </mw-tabs-nav>
+            <mw-tabs-content>
+              <mw-tabs-pane name="tab1">这是 tab1 相关的 demo</mw-tabs-pane>
+              <mw-tabs-pane name="tab2">这是 tab2 相关的 demo</mw-tabs-pane>
+              <mw-tabs-pane name="tab3">这是 tab3 相关的 demo</mw-tabs-pane>
+            </mw-tabs-content>
+          </mw-tabs>
+
+        </div>
+
+
+
         <button v-on:click="showToastAtTop">点击出现在顶部</button>
         <button v-on:click="showToastAtMiddle">点击出现在中间</button>
         <button v-on:click="showToastAtBottom">点击出现在底部</button>

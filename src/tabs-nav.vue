@@ -5,7 +5,8 @@
 </template>
 <script>
 export default {
-    name: 'MwTabsNav'
+    name: 'MwTabsNav',
+    inject: ['eventHub'],
 }
 </script>
 <style lang="scss" scoped>
