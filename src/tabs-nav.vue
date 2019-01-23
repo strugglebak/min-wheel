@@ -31,6 +31,7 @@ export default {
             position: absolute;
             top: 100%;
             border-bottom: 2px solid #1890ff;
+            transition: all 0.3s;
         }
     }
 </style>
