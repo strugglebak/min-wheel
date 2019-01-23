@@ -8,10 +8,21 @@
 export default {
     name: 'MwTabsNav',
     inject: ['eventHub'],
+    computed: {
+        getOffset() {
+            let firstChild = this.$children[0].$el;
+            let offset = 0;
+            if (firstChild) {
+                offset = firstChild.getBoundingClientRect().left;
+            }
+            return offset;
+        },
+    },
     mounted() {
         this.eventHub.$on('update:selected', (selected, vm)=> {
             let {width, left} = vm.$el.getBoundingClientRect();
-            console.log(vm.$el.getBoundingClientRect());
+            let offset = this.getOffset;
+            left = left - offset;
             this.$refs.line.style.width = `${width}px`;
             this.$refs.line.style.left = `${left}px`;
         });

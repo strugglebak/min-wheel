@@ -24,14 +24,14 @@
     </style>
     <body>
       <div id="app">
-        <div class="demo">
+        <div class="demo" style="padding: 0 24px;">
           <mw-tabs
             v-bind:selected.sync="selectedTabsItem"
             v-on:update:selected="yyy"
             >
             <mw-tabs-nav>
-              <mw-tabs-item name="tab1">tab 1 tab1 tab1</mw-tabs-item>
               <mw-tabs-item name="tab2">tab 2 tab2</mw-tabs-item>
+              <mw-tabs-item name="tab1">tab 1 tab1 tab1</mw-tabs-item>
               <mw-tabs-item name="tab3">tab 3</mw-tabs-item>
             </mw-tabs-nav>
             <mw-tabs-content>
