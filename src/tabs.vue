@@ -29,5 +29,8 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
+    .tabs {
+        border: 1px solid #ebedf0;
+        padding: 0 24px;
+    }
 </style>

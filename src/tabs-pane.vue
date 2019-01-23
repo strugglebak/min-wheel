@@ -1,6 +1,7 @@
 <template>
     <div class="tabs-pane"
-        v-bind:class="tabsPaneClasses">
+        v-bind:class="tabsPaneClasses"
+        v-if="active">
         <slot></slot>
     </div>
 </template>
@@ -37,8 +38,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     .tabs-pane {
+        padding: 20px 0;
         &.active {
-            background: green;
         }
     }
 </style>
