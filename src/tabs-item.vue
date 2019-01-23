@@ -28,11 +28,11 @@ export default {
     },
     methods: {
         onclick() {
-            this.eventHub.$emit('update:selected', this.name);
+            this.eventHub.$emit('update:selected', this.name, this);
         }
     },
     created() {
-        this.eventHub.$on('update:selected', (selected)=> {
+        this.eventHub.$on('update:selected', (selected, vm)=> {
             this.active = (this.name === selected);
         });
     }
@@ -46,7 +46,7 @@ export default {
         display: flex;
         align-items: center;
         &.active {
-            border-bottom: 2px solid #1890ff;
+            /*border-bottom: 2px solid #1890ff;*/
         }
     }
 </style>

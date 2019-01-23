@@ -30,7 +30,7 @@ export default {
     methods: {
     },
     created() {
-        this.eventHub.$on('update:selected', (selected)=> {
+        this.eventHub.$on('update:selected', (selected, vm)=> {
             this.active = (this.name === selected);
         });
     }
@@ -40,6 +40,7 @@ export default {
     .tabs-pane {
         padding: 20px 0;
         &.active {
+
         }
     }
 </style>
