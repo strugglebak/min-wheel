@@ -39,8 +39,8 @@ export default {
 <style lang="scss" scoped>
     .tabs-pane {
         padding: 20px 0;
-        flex-grow: 1;
         flex-shrink: 0;
+        width: 100%;
         opacity: 0;
         &.active {
             opacity: 1;
