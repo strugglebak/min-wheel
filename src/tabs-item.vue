@@ -12,7 +12,12 @@ export default {
     props: {
         name: {
             type: String,
+            required: true
         },
+        order: {
+            type: [Number, String],
+            required: true,
+        }
     },
     data() {
         return {
