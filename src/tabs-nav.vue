@@ -2,6 +2,9 @@
     <div class="tabs-nav">
         <div class="line" ref="line"></div>
         <slot></slot>
+        <div class="actions-wrapper">
+            <slot name="actions"></slot>
+        </div>
     </div>
 </template>
 <script>
@@ -41,5 +44,6 @@ export default {
         position: relative;
 
         > .line { position: absolute; top: 100%; border-bottom: 2px solid $tabs-nav-line-color; transition: all $tabs-nav-animation-delay; }
+        > .actions-wrapper { margin-left: auto; }
     }
 </style>
