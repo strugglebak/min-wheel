@@ -1,6 +1,6 @@
 <template>
     <div class="tabs-content" ref="tabsContent">
-        <div class="wrapper" ref="wrapper">
+        <div class="tabs-pane-wrapper" ref="tabsPaneWrapper">
             <slot></slot>
         </div>
     </div>
@@ -13,18 +13,16 @@ export default {
         this.eventHub.$on('update:selected', (selected, vm)=> {
             this.$nextTick(()=> {
                 let percent = (vm.order - 1) * 100;
-                this.$refs.wrapper.style.transform = `translateX(-${percent}%)`;
+                this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;
             });
         });
     },
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-pane-wrapper-animation-delay: 0.45s;
     .tabs-content {
         overflow: hidden;
-        > .wrapper {
-            display: flex;
-            transition: all 0.45s;
-        }
+        > .tabs-pane-wrapper { display: flex; transition: all $tabs-pane-wrapper-animation-delay; }
     }
 </style>

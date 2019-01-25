@@ -44,14 +44,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-item-height: 100%;
+    $tabs-item-padding: 0 1em;
     .tabs-item {
-        cursor: pointer;
-        padding: 0 1em;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        &.active {
-            /*border-bottom: 2px solid #1890ff;*/
-        }
+        display: flex; align-items: center; cursor: pointer;
+        padding: $tabs-item-padding; height: $tabs-item-height;
     }
 </style>

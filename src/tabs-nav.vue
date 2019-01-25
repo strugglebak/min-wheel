@@ -30,19 +30,15 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-nav-height: 40px;
+    $tabs-nav-border-color: #e8e8e8;
+    $tabs-nav-line-color: #1890ff;
+    $tabs-nav-animation-delay: 0.3s;
     .tabs-nav {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        height: 40px;
-        border-bottom: 1px solid #e8e8e8;
+        display: flex; justify-content: flex-start; align-items: center;
+        height: $tabs-nav-height; border-bottom: 1px solid $tabs-nav-border-color;
         position: relative;
 
-        > .line {
-            position: absolute;
-            top: 100%;
-            border-bottom: 2px solid #1890ff;
-            transition: all 0.3s;
-        }
+        > .line { position: absolute; top: 100%; border-bottom: 2px solid $tabs-nav-line-color; transition: all $tabs-nav-animation-delay; }
     }
 </style>

@@ -38,8 +38,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    .tabs {
-        border: 1px solid #ebedf0;
-        padding: 0 24px;
-    }
+    $tabs-border-color: #ebedf0;
+    $tabs-padding: 0 24px;
+    .tabs { border: 1px solid $tabs-border-color; padding: $tabs-padding; }
 </style>

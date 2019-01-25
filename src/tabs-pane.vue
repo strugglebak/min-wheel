@@ -37,14 +37,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-pane-padding: 20px 0;
+    $tabs-pane-width: 100%;
+    $tabs-pane-flex-shrink: 0;
     .tabs-pane {
-        padding: 20px 0;
-        flex-shrink: 0;
-        width: 100%;
-        opacity: 0;
-        &.active {
-            opacity: 1;
-        }
-        transition: opacity 0.45s;
+        padding: $tabs-pane-padding;
+        width: $tabs-pane-width;
+        flex-shrink: $tabs-pane-flex-shrink;
     }
 </style>
