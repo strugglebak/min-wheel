@@ -1,6 +1,7 @@
 <template>
     <div class="tabs-item" 
         v-bind:class="tabsItemClasses"
+        v-bind:disabled="disabled"
         v-on:click="onclick">
         <slot></slot>
     </div>
@@ -17,6 +18,10 @@ export default {
         order: {
             type: [Number, String],
             required: true,
+        },
+        disabled: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -49,5 +54,6 @@ export default {
     .tabs-item {
         display: flex; align-items: center; cursor: pointer;
         padding: $tabs-item-padding; height: $tabs-item-height;
+        &[disabled] { color: #bbbbbb; cursor: not-allowed; }
     }
 </style>

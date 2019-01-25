@@ -11,6 +11,7 @@ export default {
     inject: ['eventHub'],
     mounted() {
         this.eventHub.$on('update:selected', (selected, vm)=> {
+            if (vm.disabled) { return }
             this.$nextTick(()=> {
                 let percent = (vm.order - 1) * 100;
                 this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;

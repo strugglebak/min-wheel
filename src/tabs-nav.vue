@@ -20,6 +20,7 @@ export default {
     },
     mounted() {
         this.eventHub.$on('update:selected', (selected, vm)=> {
+            if (vm.disabled) { return }
             let {width, left} = vm.$el.getBoundingClientRect();
             let offset = this.getOffset;
             left = left - offset;
