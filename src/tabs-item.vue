@@ -61,14 +61,19 @@ export default {
     .tabs-item {
         border: 1px solid red;
         cursor: pointer;
+        display: flex;
         &.align-horizontal {
-            padding: 12px 16px;
+            padding: 0.8em 1em;
             &:not(:first-child) {
                 margin-left: 2em;
             }
         }
         &.align-vertical {
-            padding: 8px 24px;
+            padding: 0.5em 1.5em;
+            &:not(:first-child) {
+                margin-top: 1em;
+            }
+            justify-content: flex-end;
         }
     }
 </style>

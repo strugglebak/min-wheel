@@ -49,7 +49,6 @@ export default {
         }
         &.align-vertical {
             flex-direction: column;
-            align-items: center;
         }
     }
 </style>
