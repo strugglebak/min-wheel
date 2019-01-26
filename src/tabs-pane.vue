@@ -52,7 +52,6 @@ export default {
 </script>
 <style lang="scss" scoped>
     .tabs-pane {
-        border: 1px solid green;
         flex-shrink: 0;
         width: 100%;
         &.align-horizontal {

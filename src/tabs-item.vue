@@ -48,31 +48,33 @@ export default {
             this.active = (this.name === selected);
         });
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-             if (position === 'top' || position === 'bottom') {
-                 this.align = 'horizontal';
-             } else if (position === 'left' || position === 'right') {
+            if (this.active) {
+                this.$nextTick(()=> {
+                    this.eventHub.$emit('update:selected', this.name, this);
+                    console.log('tabs item 触发 update selected 事件')
+                });
+            }
+            if (position === 'top' || position === 'bottom') {
+                this.align = 'horizontal';
+            } else if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
-             } 
+            } 
         });
     }
 }
 </script>
 <style lang="scss" scoped>
     .tabs-item {
-        border: 1px solid red;
         cursor: pointer;
         display: flex;
+        border: 1px solid red;
         &.align-horizontal {
             padding: 0.8em 1em;
-            &:not(:first-child) {
-                margin-left: 2em;
-            }
+            margin-right: 2em;
         }
         &.align-vertical {
             padding: 0.5em 1.5em;
-            &:not(:first-child) {
-                margin-top: 1em;
-            }
+            margin-bottom: 1em;
             justify-content: flex-end;
         }
     }
