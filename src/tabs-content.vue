@@ -1,7 +1,7 @@
 <template>
-    <div class="tabs-content" ref="tabsContent">
-        <div class="tabs-pane-wrapper" ref="tabsPaneWrapper"
-            v-bind:class="tabsPaneWrapperClasses">
+    <div class="tabs-content" ref="tabsContent"
+        v-bind:class="tabsContentClasses">
+        <div class="tabs-pane-wrapper" ref="tabsPaneWrapper">
             <slot></slot>
         </div>
     </div>
@@ -11,15 +11,15 @@ export default {
     name: 'MwTabsContent',
     inject: ['eventHub'],
     computed: {
-        tabsPaneWrapperClasses() {
+        tabsContentClasses() {
             return {
-                [`align-${this.align}`]: true,
+                [this.align && `align-${this.align}`]: true,
             }
         }
     },
     data() {
         return {
-            align: 'horizontal',
+            align: '',
         }
     },
     mounted() {
@@ -35,11 +35,11 @@ export default {
         });
 
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            if (position === 'left' || position === 'right') {
+             if (position === 'top' || position === 'bottom') {
+                 this.align = 'horizontal';
+             } else if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
-            } else {
-                this.align = 'horizontal';
-            }      
+             } 
         });
     },
 }
@@ -47,14 +47,20 @@ export default {
 <style lang="scss" scoped>
     $tabs-pane-wrapper-animation-delay: 0.45s;
     .tabs-content {
-        width: 100%;
+        border: 1px solid blue;
         overflow: hidden;
-        > .tabs-pane-wrapper { 
-            display: flex; transition: all $tabs-pane-wrapper-animation-delay;
-            &.align-horizontal {
-                flex-direction: row;  
+        > .tabs-pane-wrapper {
+            display: flex;
+            border: 1px solid red;
+        }
+
+        &.align-horizontal {
+            > .tabs-pane-wrapper {
+                flex-direction: row;
             }
-            &.align-vertical {
+        }
+        &.align-vertical {
+            > .tabs-pane-wrapper {
                 flex-direction: column;
             }
         }

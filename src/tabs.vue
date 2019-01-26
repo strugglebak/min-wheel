@@ -25,14 +25,14 @@ export default {
     computed: {
         tabsClasses() {
             return {
-                [`align-${this.align}`]: true,
+                [this.align && `align-${this.align}`]: true,
             }
         },
     },
     data() {
         return {
             eventHub: EventHub,
-            align: 'vertical'
+            align: ''
         }
     },
     provide() {
@@ -42,16 +42,14 @@ export default {
     },
     mounted() {
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            if (position === 'left') {
-                this.$refs.tabs.style.flexDirection = 'row';
+            if (position === 'top') {
+                this.align = 'vertical';
+            } else if (position === 'bottom') {
+                this.align = 'vertical-reverse';
+            } else if (position === 'left') {
                 this.align = 'horizontal';
             } else if (position === 'right') {
-                this.$refs.tabs.style.flexDirection = 'row-reverse';
-                this.align = 'horizontal';
-            } else if (position === 'bottom') {
-                this.$refs.tabs.style.flexDirection = 'column-reverse';
-            } else if (position === 'top') {
-                this.$refs.tabs.style.flexDirection = 'column';
+                this.align = 'horizontal-reverse';
             }
         });
 
@@ -69,17 +67,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-    $tabs-border-color: #ebedf0;
-    $tabs-vertical-padding: 0 24px;
-    $tabs-horizontal-padding: 24px 0;
     .tabs { 
-        border: 1px solid $tabs-border-color;  
+        border: 1px solid #ebedf0;  
         display: flex;
-        &.align-horizontal {
-            padding: $tabs-horizontal-padding;
-        }
         &.align-vertical {
-            padding: $tabs-vertical-padding;
+            flex-direction: column;
+        }
+        &.align-vertical-reverse {
+            flex-direction: column-reverse;
+        }
+        &.align-horizontal {
+            flex-direction: row;
+        }
+        &.align-horizontal-reverse {
+            flex-direction: row-reverse;
         }
     }
 </style>

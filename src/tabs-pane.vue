@@ -1,12 +1,6 @@
 <template>
     <div class="tabs-pane"
-        v-bind:class="tabsPaneClasses"
-        v-if="align === 'vertical' && active">
-        <slot></slot>
-    </div>
-    <div class="tabs-pane"
-        v-bind:class="tabsPaneClasses"
-        v-else-if="align === 'horizontal'">
+        v-bind:class="tabsPaneClasses">
         <slot></slot>
     </div>
 </template>
@@ -23,14 +17,14 @@ export default {
     data() {
         return {
             active: false,
-            align: 'horizontal'
+            align: ''
         }
     },
     computed: {
         tabsPaneClasses() {
             return {
                 active: this.active,
-                [`align-${this.align}`]: true,
+                [this.align && `align-${this.align}`]: true,
             }
         }
     },
@@ -41,28 +35,25 @@ export default {
             this.active = (this.name === selected);
         });
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            if (position === 'left' || position === 'right') {
+             if (position === 'top' || position === 'bottom') {
+                 this.align = 'horizontal';
+             } else if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
-            } else {
-                this.align = 'horizontal';
-            }
+             } 
         });
     }
 }
 </script>
 <style lang="scss" scoped>
-    $tabs-pane-padding: 1em 0;
-    $tabs-pane-width: 100%;
-    $tabs-pane-flex-shrink: 0;
     .tabs-pane {
+        border: 1px solid green;
+        flex-shrink: 0;
+        width: 100%;
         &.align-horizontal {
-            flex-shrink: $tabs-pane-flex-shrink;
-            padding: $tabs-pane-padding;
-            width: $tabs-pane-width;
+
         }
         &.align-vertical {
-            /*TODO*/
-            padding: 0 1em;
+
         }
     }
 </style>

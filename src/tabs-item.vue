@@ -27,14 +27,14 @@ export default {
     data() {
         return {
             active: false,
-            align: 'horizontal',
+            align: '',
         }
     },
     computed: {
         tabsItemClasses() {
             return {
                 active: this.active,
-                [`align-${this.align}`]: true,
+                [this.align && `align-${this.align}`]: true,
             }
         }
     },
@@ -48,30 +48,27 @@ export default {
             this.active = (this.name === selected);
         });
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            if (position === 'left' || position === 'right') {
+             if (position === 'top' || position === 'bottom') {
+                 this.align = 'horizontal';
+             } else if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
-            } else {
-                this.align = 'horizontal';
-            }
+             } 
         });
     }
 }
 </script>
 <style lang="scss" scoped>
-    $tabs-item-height: 100%;
-    $tabs-item-padding: 0 1em;
     .tabs-item {
-        display: flex;  cursor: pointer;
-        &[disabled] { color: #bbbbbb; cursor: not-allowed; }
+        border: 1px solid red;
+        padding: 0.8em 1em;
+        cursor: pointer;
         &.align-horizontal {
-            padding: $tabs-item-padding; 
-            height: $tabs-item-height;
-            align-items: center;
+            &:not(:first-child) {
+                margin-left: 2em;
+            }
         }
         &.align-vertical {
-            padding: 1em 1em;
-            width: 100%;
-            justify-content: center;
+
         }
     }
 </style>
