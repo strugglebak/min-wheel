@@ -55,10 +55,10 @@ export default {
         flex-shrink: 0;
         width: 100%;
         &.align-horizontal {
-
+            padding: 1.5em 0;
         }
         &.align-vertical {
-
+            padding: 0 1.5em;
         }
     }
 </style>

@@ -73,22 +73,22 @@ export default {
     .tabs-nav {
         display: flex;
         flex-shrink: 0;
-        border: 1px solid green;
-        border-bottom: 1px solid #e8e8e8;
         position: relative;
         > .line {
-            border: 2px solid #1890ff;
+            border: 1px solid #1890ff;
             position: absolute;
+            transition: all 0.3s;
         }
         &.align-horizontal {
             flex-direction: row;
-            justify-content: flex-start;
             &.line-top {
+                border-bottom: 1px solid #e8e8e8;
                 > .line {
                     top: 100%;
                 }
             }
             &.line-bottom {
+                border-top: 1px solid #e8e8e8;
                 > .line {
                     bottom: 100%;
                 }
@@ -97,11 +97,13 @@ export default {
         &.align-vertical {
             flex-direction: column;
             &.line-left {
+                border-right: 1px solid #e8e8e8;
                 > .line {
                     left: 100%;
                 }
             }
             &.line-right {
+                border-left: 1px solid #e8e8e8;
                 > .line {
                     right: 100%;
                 }

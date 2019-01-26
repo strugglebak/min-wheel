@@ -28,6 +28,7 @@ export default {
         return {
             active: false,
             align: '',
+            position: '',
         }
     },
     computed: {
@@ -35,6 +36,7 @@ export default {
             return {
                 active: this.active,
                 [this.align && `align-${this.align}`]: true,
+                [this.position && `text-${this.position}`]: true,
             }
         }
     },
@@ -54,6 +56,7 @@ export default {
                     console.log('tabs item 触发 update selected 事件')
                 });
             }
+            this.position = position;
             if (position === 'top' || position === 'bottom') {
                 this.align = 'horizontal';
             } else if (position === 'left' || position === 'right') {
@@ -67,7 +70,6 @@ export default {
     .tabs-item {
         cursor: pointer;
         display: flex;
-        border: 1px solid red;
         &.align-horizontal {
             padding: 0.8em 1em;
             margin-right: 2em;
@@ -75,7 +77,12 @@ export default {
         &.align-vertical {
             padding: 0.5em 1.5em;
             margin-bottom: 1em;
-            justify-content: flex-end;
+            &.text-left {
+                justify-content: flex-end;
+            }
+            &.text-right {
+                justify-content: flex-start;
+            }
         }
     }
 </style>

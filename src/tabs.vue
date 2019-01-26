@@ -68,7 +68,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .tabs { 
-        border: 1px solid #ebedf0;  
+        border: 1px solid #1890ff;  
         display: flex;
         &.align-vertical {
             flex-direction: column;
