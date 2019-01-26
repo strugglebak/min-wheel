@@ -60,15 +60,15 @@ export default {
 <style lang="scss" scoped>
     .tabs-item {
         border: 1px solid red;
-        padding: 0.8em 1em;
         cursor: pointer;
         &.align-horizontal {
+            padding: 12px 16px;
             &:not(:first-child) {
                 margin-left: 2em;
             }
         }
         &.align-vertical {
-
+            padding: 8px 24px;
         }
     }
 </style>

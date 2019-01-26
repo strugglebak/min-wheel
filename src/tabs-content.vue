@@ -49,6 +49,7 @@ export default {
     .tabs-content {
         border: 1px solid blue;
         overflow: hidden;
+        width: 100%;
         > .tabs-pane-wrapper {
             display: flex;
             border: 1px solid red;

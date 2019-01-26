@@ -42,6 +42,7 @@ export default {
     .tabs-nav {
         display: flex;
         border: 1px solid green;
+        flex-shrink: 0;
         &.align-horizontal {
             flex-direction: row;
             justify-content: flex-start;

@@ -1,6 +1,12 @@
 <template>
     <div class="tabs-pane"
-        v-bind:class="tabsPaneClasses">
+        v-bind:class="tabsPaneClasses"
+        v-if="align && align === 'horizontal'">
+        <slot></slot>
+    </div>
+    <div class="tabs-pane"
+        v-bind:class="tabsPaneClasses"
+        v-else-if="(align && align === 'vertical') && active">
         <slot></slot>
     </div>
 </template>
