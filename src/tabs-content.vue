@@ -35,6 +35,7 @@ export default {
         });
 
         this.eventHub.$on('update:position-changed', (position, vm)=> {
+            this.$refs.tabsPaneWrapper.style = {};
              if (position === 'top' || position === 'bottom') {
                  this.align = 'horizontal';
              } else if (position === 'left' || position === 'right') {
