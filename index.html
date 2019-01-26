@@ -25,6 +25,16 @@
     <body>
       <div id="app">
         <div class="demo" style="padding: 0px 24px;">
+          <div style="margin: 20px 0;">
+            <select
+              v-on:change="xxx($event.target.value)">
+              <option disabled value="">请选择</option>
+              <option>top</option>
+              <option>bottom</option>
+              <option>left</option>
+              <option>right</option>
+            </select>
+          </div>
           <mw-tabs
             v-bind:selected.sync="selectedTabsItem"
             v-bind:position-changed.sync="positionChangedTabsItem"
@@ -32,9 +42,6 @@
             v-on:update:position-changed="zzz"
             >
             <mw-tabs-nav>
-              <!-- <template slot="actions">
-                <button>设置</button>
-              </template> -->
               <mw-tabs-item name="tab1" order="1">tab 1 tab1 tab1</mw-tabs-item>
               <mw-tabs-item name="tab2" order="2">tab 2 tab2</mw-tabs-item>
               <mw-tabs-item name="tab3" order="3">tab 3</mw-tabs-item>

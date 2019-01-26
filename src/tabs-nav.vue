@@ -29,7 +29,7 @@ export default {
         },
         tabsNavClasses() {
             return {
-                [this.align && `align-${this.align}`]: true,
+                [`align-${this.align}`]: true,
             }
         }
     },
@@ -54,9 +54,10 @@ export default {
         });
 
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            console.log('监听 position changed');
              if (position === 'left' || position === 'right') {
                 this.align = `vertical-${position}`;
+             } else {
+                 this.align = 'horizontal';
              }
         });
     },
@@ -71,6 +72,7 @@ export default {
         flex-shrink: 0;
         &.align-horizontal {
             display: flex; 
+            align-items: center;
             height: $tabs-nav-height; border-bottom: 1px solid $tabs-nav-border-color;
             position: relative;
 
@@ -101,6 +103,7 @@ export default {
                 margin-bottom: auto;
             }
         }
+
         &.align-vertical-right {
             display: flex;
             border-left: 1px solid $tabs-nav-border-color;

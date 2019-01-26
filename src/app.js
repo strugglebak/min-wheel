@@ -20,6 +20,8 @@ import TabsItem from './tabs-item'
 import TabsContent from './tabs-content'
 import TabsPane from './tabs-pane'
 
+import EventHub from '../plugins/eventHub-plugin.js'
+
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
 Vue.component('mw-button-group', ButtonGroup);
@@ -51,6 +53,7 @@ new Vue({
         message: 'hello world',
         selectedTabsItem: 'tab1',
         positionChangedTabsItem: 'top',
+        eventHub: EventHub,
     },
     methods: {
         inputChange (e) { console.log(e); },
@@ -64,6 +67,10 @@ new Vue({
         },
         zzz() {
             console.log('zzz');
+        },
+        xxx(position) {
+            this.eventHub.$emit('update:position-changed', position, '');
+            console.log(position)
         }
     }, 
     created(){

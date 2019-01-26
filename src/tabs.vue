@@ -5,7 +5,8 @@
     </div>
 </template>
 <script>
-import Vue from 'vue'
+import EventHub from '../plugins/eventHub-plugin.js'
+
 export default {
     name: 'MwTabs',
     props: {
@@ -30,7 +31,7 @@ export default {
     },
     data() {
         return {
-            eventHub: new Vue(),
+            eventHub: EventHub,
             align: 'vertical'
         }
     },
@@ -69,12 +70,16 @@ export default {
 </script>
 <style lang="scss" scoped>
     $tabs-border-color: #ebedf0;
-    $tabs-padding: 0 24px;
-    .tabs { border: 1px solid $tabs-border-color; padding: $tabs-padding; 
+    $tabs-vertical-padding: 0 24px;
+    $tabs-horizontal-padding: 24px 0;
+    .tabs { 
+        border: 1px solid $tabs-border-color;  
         display: flex;
-        flex-direction: column;
         &.align-horizontal {
-            padding: 24px 0;
+            padding: $tabs-horizontal-padding;
+        }
+        &.align-vertical {
+            padding: $tabs-vertical-padding;
         }
     }
 </style>

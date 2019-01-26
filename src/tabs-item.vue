@@ -50,6 +50,8 @@ export default {
         this.eventHub.$on('update:position-changed', (position, vm)=> {
             if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
+            } else {
+                this.align = 'horizontal';
             }
         });
     }
