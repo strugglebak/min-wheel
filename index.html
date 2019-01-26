@@ -24,17 +24,19 @@
     </style>
     <body>
       <div id="app">
-        <div class="demo" style="padding: 0 24px;">
+        <div class="demo" style="padding: 0px 24px;">
           <mw-tabs
             v-bind:selected.sync="selectedTabsItem"
+            v-bind:position-changed.sync="positionChangedTabsItem"
             v-on:update:selected="yyy"
+            v-on:update:position-changed="zzz"
             >
             <mw-tabs-nav>
-              <template slot="actions">
+              <!-- <template slot="actions">
                 <button>设置</button>
-              </template>
+              </template> -->
               <mw-tabs-item name="tab1" order="1">tab 1 tab1 tab1</mw-tabs-item>
-              <mw-tabs-item name="tab2" order="2" disabled>tab 2 tab2</mw-tabs-item>
+              <mw-tabs-item name="tab2" order="2">tab 2 tab2</mw-tabs-item>
               <mw-tabs-item name="tab3" order="3">tab 3</mw-tabs-item>
             </mw-tabs-nav>
             <mw-tabs-content>

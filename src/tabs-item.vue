@@ -22,17 +22,19 @@ export default {
         disabled: {
             type: Boolean,
             default: false
-        }
+        },
     },
     data() {
         return {
-            active: false 
+            active: false,
+            align: 'horizontal',
         }
     },
     computed: {
         tabsItemClasses() {
             return {
                 active: this.active,
+                [`align-${this.align}`]: true,
             }
         }
     },
@@ -45,6 +47,11 @@ export default {
         this.eventHub.$on('update:selected', (selected, vm)=> {
             this.active = (this.name === selected);
         });
+        this.eventHub.$on('update:position-changed', (position, vm)=> {
+            if (position === 'left' || position === 'right') {
+                this.align = 'vertical';
+            }
+        });
     }
 }
 </script>
@@ -52,8 +59,17 @@ export default {
     $tabs-item-height: 100%;
     $tabs-item-padding: 0 1em;
     .tabs-item {
-        display: flex; align-items: center; cursor: pointer;
-        padding: $tabs-item-padding; height: $tabs-item-height;
+        display: flex;  cursor: pointer;
         &[disabled] { color: #bbbbbb; cursor: not-allowed; }
+        &.align-horizontal {
+            padding: $tabs-item-padding; 
+            height: $tabs-item-height;
+            align-items: center;
+        }
+        &.align-vertical {
+            padding: 1em 1em;
+            width: 100%;
+            justify-content: center;
+        }
     }
 </style>

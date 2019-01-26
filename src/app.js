@@ -50,6 +50,7 @@ new Vue({
         loadingState3: false,
         message: 'hello world',
         selectedTabsItem: 'tab1',
+        positionChangedTabsItem: 'top',
     },
     methods: {
         inputChange (e) { console.log(e); },
@@ -61,6 +62,9 @@ new Vue({
             console.log('yyy');
             console.log(data);
         },
+        zzz() {
+            console.log('zzz');
+        }
     }, 
     created(){
         setTimeout(() => {
