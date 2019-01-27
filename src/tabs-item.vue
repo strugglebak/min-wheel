@@ -50,9 +50,9 @@ export default {
             this.active = (this.name === selected);
         });
         this.eventHub.$on('update:position-changed', (position, vm)=> {
-            if (this.active) {
-                this.eventHub.$emit('update:selected', this.name, this);
-            }
+            // if (this.active) {
+            //     this.eventHub.$emit('update:selected', this.name, this);
+            // }
             this.position = position;
             if (position === 'top' || position === 'bottom') {
                 this.align = 'horizontal';

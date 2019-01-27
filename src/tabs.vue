@@ -67,23 +67,20 @@ export default {
 </script>
 <style lang="scss" scoped>
     .tabs { 
+        padding: 2em 1.5em;
         border: 1px solid #1890ff;  
         display: flex;
         &.align-vertical {
             flex-direction: column;
-            padding: 3em 2em;
         }
         &.align-vertical-reverse {
             flex-direction: column-reverse;
-            padding: 3em 2em;
         }
         &.align-horizontal {
             flex-direction: row;
-            padding: 2em 1.5em;
         }
         &.align-horizontal-reverse {
             flex-direction: row-reverse;
-            padding: 2em 1.5em;
         }
     }
 </style>

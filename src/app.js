@@ -69,8 +69,6 @@ new Vue({
         },
         positionChange(position) {
             console.log('change position')
-            console.log('position', this.position)
-            console.log('selected', this.selected)
 
             this.$children.forEach((e) => {
                 if (e && e.$options.name === 'MwTabs') {

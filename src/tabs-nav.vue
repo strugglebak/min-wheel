@@ -25,7 +25,7 @@ export default {
         updateLineStyle(vm) {
             if (vm.disabled) { return }
             this.$nextTick(()=> {
-                let {width, height, top, bottom, left, right} = vm.$el.getBoundingClientRect();
+                let {width, height, top, left} = vm.$el.getBoundingClientRect();
                 if (this.align === 'horizontal') {
                     this.$refs.line.style.height = '2px';
                     this.$refs.line.style.width = `${width}px`;
