@@ -55,7 +55,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .tabs-item {
-        cursor: pointer; display: flex; 
+        cursor: pointer; display: flex; transition: color 0.3s; 
         &.active { color: #1890ff; }
         &:hover { color: #40a9ff }
         &.align-horizontal { padding: 0.8em 1em; margin-right: 2em; }
