@@ -39,7 +39,8 @@ export default {
             this.$children.forEach((element) => {
                 if (element && element.$options.name === 'MwTabsNav') {
                     element.$children.forEach((elementChild)=> {
-                        if (elementChild.$options.name === 'MwTabsItem' && this.selected === elementChild.name) {
+                        if (elementChild.$options.name === 'MwTabsItem' 
+                                && this.selected === elementChild.name) {
                             vm = elementChild;
                         }
                     })
@@ -49,6 +50,7 @@ export default {
         },
         emitSignal(vm) {
             this.eventHub.$emit('update:position-changed', this.tabsPosition, vm);
+            this.eventHub.$emit('update:selected', this.selected, vm);
         },
     },
     data() {

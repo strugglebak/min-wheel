@@ -31,6 +31,8 @@ export default {
     methods: {
         listenPositionChanged() {
             this.eventHub.$on('update:position-changed', (position, vm)=> {
+                console.log('tabs pane 监听到了 position changed 事件');
+                this.active = (this.name === vm.name)
                 let container = {
                         'top': 'horizontal', 'bottom': 'horizontal',
                         'left': 'vertical', 'right': 'vertical'

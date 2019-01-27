@@ -16,9 +16,13 @@ export default {
         }
     },
     methods: {
+        clearTabsPaneWrapperStyle() {
+            this.$refs.tabsPaneWrapper.style.transform = '';
+            this.$refs.tabsPaneWrapper.style.transitionProperty = '';
+        },
         listenPositionChanged() {
             this.eventHub.$on('update:position-changed', (position, vm)=> {
-                this.$refs.tabsPaneWrapper.style = {};
+                this.clearTabsPaneWrapperStyle();
                 let container = {
                     'top': 'horizontal', 'bottom': 'horizontal',
                     'left': 'vertical', 'right': 'vertical'
@@ -34,6 +38,7 @@ export default {
                     if (this.align === 'horizontal') {
                         let percent = (vm.order - 1) * 100;
                         this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;
+                        this.$refs.tabsPaneWrapper.style.transitionProperty = 'transform';
                     }            
                 });
             });
@@ -51,7 +56,7 @@ export default {
 <style lang="scss" scoped>
     .tabs-content {
         overflow: hidden; width: 100%;
-        > .tabs-pane-wrapper { display: flex; transition: all 0.45s; }
+        > .tabs-pane-wrapper { display: flex; transition-duration: 0.45s; }
 
         &.align-horizontal {
             > .tabs-pane-wrapper { flex-direction: row; }
