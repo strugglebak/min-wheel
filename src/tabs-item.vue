@@ -11,25 +11,12 @@ export default {
     name: 'MwTabsItem',
     inject: ['eventHub'],
     props: {
-        name: {
-            type: String,
-            required: true
-        },
-        order: {
-            type: [Number, String],
-            required: true,
-        },
-        disabled: {
-            type: Boolean,
-            default: false
-        },
+        name: { type: String, required: true },
+        order: { type: [Number, String], required: true, },
+        disabled: { type: Boolean, default: false },
     },
     data() {
-        return {
-            active: false,
-            align: '',
-            position: '',
-        }
+        return { active: false, align: '', position: '', }
     },
     computed: {
         tabsItemClasses() {
@@ -43,43 +30,36 @@ export default {
     methods: {
         onclick() {
             this.eventHub.$emit('update:selected', this.name, this);
+        },
+        listenPositionChanged() {
+            this.eventHub.$on('update:position-changed', (position, vm)=> {
+                this.position = position;
+                let container = {
+                    'top': 'horizontal', 'bottom': 'horizontal',
+                    'left': 'vertical', 'right': 'vertical'
+                };
+                this.align = container[position];
+            });
+        },
+        listenTabSelected() {
+            this.eventHub.$on('update:selected', (selected, vm)=> {
+                this.active = (this.name === selected);
+            });
         }
     },
     created() {
-        this.eventHub.$on('update:selected', (selected, vm)=> {
-            this.active = (this.name === selected);
-        });
-        this.eventHub.$on('update:position-changed', (position, vm)=> {
-            // if (this.active) {
-            //     this.eventHub.$emit('update:selected', this.name, this);
-            // }
-            this.position = position;
-            if (position === 'top' || position === 'bottom') {
-                this.align = 'horizontal';
-            } else if (position === 'left' || position === 'right') {
-                this.align = 'vertical';
-            } 
-        });
+        this.listenTabSelected();
+        this.listenPositionChanged();
     }
 }
 </script>
 <style lang="scss" scoped>
     .tabs-item {
-        cursor: pointer;
-        display: flex;
-        &.align-horizontal {
-            padding: 0.8em 1em;
-            margin-right: 2em;
-        }
-        &.align-vertical {
-            padding: 0.5em 1.5em;
-            margin-bottom: 1em;
-            &.text-left {
-                justify-content: flex-end;
-            }
-            &.text-right {
-                justify-content: flex-start;
-            }
+        cursor: pointer; display: flex;
+        &.align-horizontal { padding: 0.8em 1em; margin-right: 2em; }
+        &.align-vertical { padding: 0.5em 1.5em; margin-bottom: 1em;
+            &.text-left { justify-content: flex-end; }
+            &.text-right { justify-content: flex-start; }
         }
     }
 </style>

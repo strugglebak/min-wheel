@@ -12,57 +12,52 @@ export default {
     inject: ['eventHub'],
     computed: {
         tabsContentClasses() {
-            return {
-                [this.align && `align-${this.align}`]: true,
-            }
+            return { [this.align && `align-${this.align}`]: true, }
+        }
+    },
+    methods: {
+        listenPositionChanged() {
+            this.eventHub.$on('update:position-changed', (position, vm)=> {
+                this.$refs.tabsPaneWrapper.style = {};
+                let container = {
+                    'top': 'horizontal', 'bottom': 'horizontal',
+                    'left': 'vertical', 'right': 'vertical'
+                };
+                this.align = container[position];
+            });
+        },
+        listenTabSelected() {
+            let n = this.$children.length;
+            this.eventHub.$on('update:selected', (selected, vm)=> {
+                if (vm.disabled) { return }
+                this.$nextTick(()=> {
+                    if (this.align === 'horizontal') {
+                        let percent = (vm.order - 1) * 100;
+                        this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;
+                    }            
+                });
+            });
         }
     },
     data() {
-        return {
-            align: '',
-        }
+        return { align: '', }
     },
     mounted() {
-        let n = this.$children.length;
-        this.eventHub.$on('update:selected', (selected, vm)=> {
-            if (vm.disabled) { return }
-            this.$nextTick(()=> {
-                if (this.align === 'horizontal') {
-                    let percent = (vm.order - 1) * 100;
-                    this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;
-                }            
-            });
-        });
-
-        this.eventHub.$on('update:position-changed', (position, vm)=> {
-            this.$refs.tabsPaneWrapper.style = {};
-             if (position === 'top' || position === 'bottom') {
-                 this.align = 'horizontal';
-             } else if (position === 'left' || position === 'right') {
-                this.align = 'vertical';
-             } 
-        });
+        this.listenTabSelected();
+        this.listenPositionChanged();
     },
 }
 </script>
 <style lang="scss" scoped>
     .tabs-content {
-        overflow: hidden;
-        width: 100%;
-        > .tabs-pane-wrapper {
-            display: flex;
-            transition: all 0.45s;
-        }
+        overflow: hidden; width: 100%;
+        > .tabs-pane-wrapper { display: flex; transition: all 0.45s; }
 
         &.align-horizontal {
-            > .tabs-pane-wrapper {
-                flex-direction: row;
-            }
+            > .tabs-pane-wrapper { flex-direction: row; }
         }
         &.align-vertical {
-            > .tabs-pane-wrapper {
-                flex-direction: column;
-            }
+            > .tabs-pane-wrapper { flex-direction: column; }
         }
     }
 </style>

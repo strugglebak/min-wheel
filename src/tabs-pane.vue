@@ -15,16 +15,10 @@ export default {
     name: 'MwTabsPane',
     inject: ['eventHub'],
     props: {
-        name: {
-            type: String,
-            required: true
-        },
+        name: { type: String, required: true },
     },
     data() {
-        return {
-            active: false,
-            align: ''
-        }
+        return { active: false, align: '' }
     },
     computed: {
         tabsPaneClasses() {
@@ -35,30 +29,31 @@ export default {
         }
     },
     methods: {
+        listenPositionChanged() {
+            this.eventHub.$on('update:position-changed', (position, vm)=> {
+                let container = {
+                        'top': 'horizontal', 'bottom': 'horizontal',
+                        'left': 'vertical', 'right': 'vertical'
+                    };
+                this.align = container[position];
+            });
+        },
+        listenTabSelected() {
+            this.eventHub.$on('update:selected', (selected, vm)=> {
+                this.active = (this.name === selected);
+            });
+        },
     },
     created() {
-        this.eventHub.$on('update:selected', (selected, vm)=> {
-            this.active = (this.name === selected);
-        });
-        this.eventHub.$on('update:position-changed', (position, vm)=> {
-             if (position === 'top' || position === 'bottom') {
-                 this.align = 'horizontal';
-             } else if (position === 'left' || position === 'right') {
-                this.align = 'vertical';
-             } 
-        });
+        this.listenTabSelected();
+        this.listenPositionChanged();
     }
 }
 </script>
 <style lang="scss" scoped>
     .tabs-pane {
-        flex-shrink: 0;
-        width: 100%;
-        &.align-horizontal {
-            padding: 1.5em 0;
-        }
-        &.align-vertical {
-            padding: 0 1.5em;
-        }
+        flex-shrink: 0; width: 100%;
+        &.align-horizontal { padding: 1.5em 0; }
+        &.align-vertical { padding: 0 1.5em; }
     }
 </style>
