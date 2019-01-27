@@ -39,8 +39,12 @@
           <mw-tabs
             v-bind:selected.sync="selected"
             v-bind:position-changed.sync="positionChanged"
+            v-bind:enable-extra="true"
             >
             <mw-tabs-nav>
+              <template slot="actions">
+                <mw-button>Extra Action</mw-button>
+              </template>
               <mw-tabs-item name="tab1" order="1">tab 1 tab1 tab1</mw-tabs-item>
               <mw-tabs-item name="tab2" order="2">tab 2 tab2</mw-tabs-item>
               <mw-tabs-item name="tab3" order="3">tab 3</mw-tabs-item>

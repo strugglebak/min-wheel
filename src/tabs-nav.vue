@@ -3,7 +3,8 @@
         v-bind:class="tabsNavClasses">
         <div class="line" ref="line"></div>
         <slot></slot>
-        <div class="actions-wrapper">
+        <div class="actions-wrapper"
+            v-if="extra">
             <slot name="actions"></slot>
         </div>
     </div>
@@ -69,6 +70,7 @@ export default {
                     'left': 'vertical', 'right': 'vertical'
                 };
                 this.align = container[position];
+                this.extra = this.$parent.enableExtra;
                 this.clearLineStyle();
                 this.asyncGetParentStyle(3, vm);
             });
@@ -85,6 +87,7 @@ export default {
             parentLeft: 0, parentTop: 0,
             parentPaddingLeft: 0, parentPaddingTop: 0,
             linePosition: '',
+            extra: false,
         }
     },
     mounted() {
@@ -105,6 +108,9 @@ export default {
             &.line-bottom { border-top: 1px solid #e8e8e8;
                 > .line { bottom: 100%; }
             }
+            > .actions-wrapper {
+                margin-left: auto;
+            }
         }
 
         &.align-vertical { flex-direction: column;
@@ -113,6 +119,11 @@ export default {
             }
             &.line-right { border-left: 1px solid #e8e8e8;
                 > .line { right: 100%; }
+            }
+            > .actions-wrapper {
+                display: flex;
+                justify-content: flex-end;
+                padding-right: 1em;
             }
         }
     }

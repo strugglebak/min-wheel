@@ -52,7 +52,7 @@ new Vue({
         loadingState3: false,
         message: 'hello world',
         selected: 'tab1',
-        positionChanged: 'left',
+        positionChanged: 'top',
         eventHub: EventHub,
     },
     methods: {

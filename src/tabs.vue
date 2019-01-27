@@ -15,7 +15,8 @@ export default {
             validator: function(value) {
                 return ['top', 'bottom', 'left', 'right'].includes(value);
             }
-        }
+        },
+        enableExtra: { type: Boolean, default: false }
     },
     computed: {
         tabsClasses() {
