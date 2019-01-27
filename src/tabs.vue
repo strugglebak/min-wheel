@@ -11,7 +11,7 @@ export default {
     name: 'MwTabs',
     props: {
         selected: { type: String, required: true },
-        tabsPosition: { type: String, default: 'top',
+        positionChanged: { type: String, default: 'top',
             validator: function(value) {
                 return ['top', 'bottom', 'left', 'right'].includes(value);
             }
@@ -49,7 +49,7 @@ export default {
             return vm;
         },
         emitSignal(vm) {
-            this.eventHub.$emit('update:position-changed', this.tabsPosition, vm);
+            this.eventHub.$emit('update:position-changed', this.positionChanged, vm);
         },
     },
     data() {
