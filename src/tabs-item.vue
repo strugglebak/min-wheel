@@ -33,6 +33,7 @@ export default {
         },
         listenPositionChanged() {
             this.eventHub.$on('update:position-changed', (position, vm)=> {
+                this.active = (this.name === vm.name);
                 this.position = position;
                 let container = {
                     'top': 'horizontal', 'bottom': 'horizontal',
