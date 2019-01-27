@@ -2,7 +2,7 @@
     <div class="tabs-item" 
         v-bind:class="tabsItemClasses"
         v-bind:disabled="disabled"
-        v-on:click="onclick">
+        v-on:click="onclick" v-bind:data-name="name">
         <slot></slot>
     </div>
 </template>
@@ -71,5 +71,6 @@ export default {
             &.text-left { justify-content: flex-end; }
             &.text-right { justify-content: flex-start; }
         }
+        &[disabled]{ color: #bbbbbb; cursor: not-allowed; } 
     }
 </style>
