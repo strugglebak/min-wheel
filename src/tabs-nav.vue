@@ -27,10 +27,12 @@ export default {
             this.$nextTick(()=> {
                 let {width, height, top, left} = vm.$el.getBoundingClientRect();
                 if (this.align === 'horizontal') {
+                    this.$refs.line.style.transitionProperty = 'left';
                     this.$refs.line.style.height = '2px';
                     this.$refs.line.style.width = `${width}px`;
                     this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
                 } else if (this.align === 'vertical') {
+                    this.$refs.line.style.transitionProperty = 'top';
                     this.$refs.line.style.width = '2px';
                     this.$refs.line.style.height = `${height}px`;
                     this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
@@ -96,7 +98,7 @@ export default {
         > .line {
             border: 1px solid #1890ff;
             position: absolute;
-            transition: all 0.3s;
+            transition-duration: 0.3s;
         }
         &.align-horizontal {
             flex-direction: row;

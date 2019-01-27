@@ -61,12 +61,6 @@ new Vue({
         showToastAtTop() { let text = ` 更新成功 `; this.$toast({ text, closeButton: null, position: 'top', }); },
         showToastAtMiddle() { let text = ` 更新成功 `; this.$toast({ text, position: 'middle', }); },
         showToastAtBottom() { let text = ` 更新成功 `; this.$toast({ text, position: 'bottom', }); },
-        onSelected() {
-            console.log('on selected')
-        },
-        onPositionChanged() {
-            console.log('on position changed')
-        },
         positionChange(position) {
             console.log('change position')
 
@@ -77,7 +71,6 @@ new Vue({
                             eChild.$children.forEach((e)=> {
                                 if (e.$options.name === 'MwTabsItem' && this.selected === e.name) {
                                     this.eventHub.$emit('update:position-changed', position, e);
-                                    this.eventHub.$emit('update:selected', this.selected, e);
                                 }
                             });
                          }
