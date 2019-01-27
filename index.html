@@ -27,7 +27,7 @@
         <div class="demo" style="padding: 0px 24px;">
           <div style="margin: 20px 0;">
             <select
-              v-on:change="xxx($event.target.value)">
+              v-on:change="positionChange($event.target.value)">
               <option disabled value="">请选择</option>
               <option>top</option>
               <option>bottom</option>
@@ -36,10 +36,10 @@
             </select>
           </div>
           <mw-tabs
-            v-bind:selected.sync="selectedTabsItem"
-            v-bind:position-changed.sync="positionChangedTabsItem"
-            v-on:update:selected="yyy"
-            v-on:update:position-changed="zzz"
+            v-bind:selected.sync="selected"
+            v-bind:position-changed.sync="position"
+            v-on:update:selected="onSelected"
+            v-on:update:position-changed="onPositionChanged"
             >
             <mw-tabs-nav>
               <mw-tabs-item name="tab1" order="1">tab 1 tab1 tab1</mw-tabs-item>

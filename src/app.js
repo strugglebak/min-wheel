@@ -51,8 +51,8 @@ new Vue({
         loadingState2: false,
         loadingState3: false,
         message: 'hello world',
-        selectedTabsItem: 'tab1',
-        positionChangedTabsItem: 'top',
+        selected: 'tab1',
+        position: 'top',
         eventHub: EventHub,
     },
     methods: {
@@ -61,16 +61,31 @@ new Vue({
         showToastAtTop() { let text = ` 更新成功 `; this.$toast({ text, closeButton: null, position: 'top', }); },
         showToastAtMiddle() { let text = ` 更新成功 `; this.$toast({ text, position: 'middle', }); },
         showToastAtBottom() { let text = ` 更新成功 `; this.$toast({ text, position: 'bottom', }); },
-        yyy(data) {
-            console.log('yyy');
-            console.log(data);
+        onSelected() {
+            console.log('on selected')
         },
-        zzz() {
-            console.log('zzz');
+        onPositionChanged() {
+            console.log('on position changed')
         },
-        xxx(position) {
-            this.eventHub.$emit('update:position-changed', position, '');
-            console.log(position)
+        positionChange(position) {
+            console.log('change position')
+            console.log('position', this.position)
+            console.log('selected', this.selected)
+
+            this.$children.forEach((e) => {
+                if (e && e.$options.name === 'MwTabs') {
+                    e.$children.forEach((eChild)=> {
+                         if (eChild && eChild.$options.name === 'MwTabsNav') {
+                            eChild.$children.forEach((e)=> {
+                                if (e.$options.name === 'MwTabsItem' && this.selected === e.name) {
+                                    this.eventHub.$emit('update:position-changed', position, e);
+                                    this.eventHub.$emit('update:selected', this.selected, e);
+                                }
+                            });
+                         }
+                     });
+                }
+            });
         }
     }, 
     created(){

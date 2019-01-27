@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/strugglebak/min-wheel#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "chai-spies": "^1.0.0",
     "vue": "^2.5.21",
     "vue-hot-reload-api": "^2.3.1"

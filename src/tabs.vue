@@ -57,8 +57,8 @@ export default {
            if (element && element.$options.name === 'MwTabsNav') {
                element.$children.forEach((elementChild)=> {
                    if (elementChild.$options.name === 'MwTabsItem' && this.selected === elementChild.name) {
-                        this.eventHub.$emit('update:selected', this.selected, elementChild);
                         this.eventHub.$emit('update:position-changed', this.tabsPosition, elementChild);
+                        this.eventHub.$emit('update:selected', this.selected, elementChild);
                    }
                })
            }
@@ -72,15 +72,19 @@ export default {
         display: flex;
         &.align-vertical {
             flex-direction: column;
+            padding: 3em 2em;
         }
         &.align-vertical-reverse {
             flex-direction: column-reverse;
+            padding: 3em 2em;
         }
         &.align-horizontal {
             flex-direction: row;
+            padding: 2em 1.5em;
         }
         &.align-horizontal-reverse {
             flex-direction: row-reverse;
+            padding: 2em 1.5em;
         }
     }
 </style>

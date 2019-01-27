@@ -9,6 +9,7 @@
     </div>
 </template>
 <script>
+import 'babel-polyfill'
 export default {
     name: 'MwTabsNav',
     inject: ['eventHub'],
@@ -21,10 +22,41 @@ export default {
         },
     },
     methods: {
-        getParentPosition() {
+        timeout(ms) {
+            return new Promise((resolve) => {
+                setTimeout(resolve, ms);
+            });
+        },
+        async asyncGetParentStyle(ms=5, element) {
+            let el = this.$parent.$el;
+            let style = getComputedStyle(el);
+
+            await this.timeout(ms);
+
             let {left, top} = this.$parent.$el.getBoundingClientRect();
             this.parentLeft = left;
             this.parentTop = top;
+            this.parentPaddingLeft = style['paddingLeft'].split('px')[0];
+            this.parentPaddingTop = style['paddingTop'].split('px')[0];
+
+            let vm = element;
+            this.updateLineStyle(vm);
+        },
+        updateLineStyle(vm) {
+            if (vm.disabled) { return }
+            this.$nextTick(()=> {
+                // this.$refs.line.style = {};
+                let {width, height, top, bottom, left, right} = vm.$el.getBoundingClientRect();
+                if (this.align === 'horizontal') {
+                    this.$refs.line.style.height = '2px';
+                    this.$refs.line.style.width = `${width}px`;
+                    this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
+                } else if (this.align === 'vertical') {
+                    this.$refs.line.style.width = '2px';
+                    this.$refs.line.style.height = `${height}px`;
+                    this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
+                }
+            });
         }
     },
     data() {
@@ -32,32 +64,15 @@ export default {
             align: '',
             parentLeft: 0,
             parentTop: 0,
+            parentPaddingLeft: 0,
+            parentPaddingTop: 0,
             linePosition: '',
         }
     },
     mounted() {
-        this.getParentPosition();
-        this.eventHub.$on('update:selected', (selected, vm)=> {
-            if (vm.disabled) { return }
-            this.$nextTick(()=> {
-                let {width, height, top, bottom, left, right} = vm.$el.getBoundingClientRect();
-                console.log('width, height, top, bottom, left, right');
-                console.log(width, height, top, bottom, left, right);
-                if (this.align === 'horizontal') {
-                    this.$refs.line.style.height = '2px';
-                    this.$refs.line.style.width = `${width}px`;
-                    this.$refs.line.style.left = `${left - this.parentLeft}px`;
-                } else if (this.align === 'vertical') {
-                    this.$refs.line.style.width = '2px';
-                    this.$refs.line.style.height = `${height}px`;
-                    this.$refs.line.style.top = `${top - this.parentTop}px`;
-                }
-            });
-        });
 
         this.eventHub.$on('update:position-changed', (position, vm)=> {
             this.linePosition = position;
-            
             // clear the line style which is very important !!!
             this.$refs.line.style = {};
             if (position === 'top' || position === 'bottom') {
@@ -65,6 +80,11 @@ export default {
             } else if (position === 'left' || position === 'right') {
                 this.align = 'vertical';
             } 
+            this.asyncGetParentStyle(3, vm);
+        });
+
+        this.eventHub.$on('update:selected', (selected, vm)=> {
+            this.updateLineStyle(vm);
         });
     },
 }

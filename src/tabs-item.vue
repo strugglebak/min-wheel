@@ -51,10 +51,7 @@ export default {
         });
         this.eventHub.$on('update:position-changed', (position, vm)=> {
             if (this.active) {
-                this.$nextTick(()=> {
-                    this.eventHub.$emit('update:selected', this.name, this);
-                    console.log('tabs item 触发 update selected 事件')
-                });
+                this.eventHub.$emit('update:selected', this.name, this);
             }
             this.position = position;
             if (position === 'top' || position === 'bottom') {
