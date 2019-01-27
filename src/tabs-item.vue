@@ -22,6 +22,7 @@ export default {
         tabsItemClasses() {
             return {
                 active: this.active,
+                disabled: this.disabled,
                 [this.align && `align-${this.align}`]: true,
                 [this.position && `text-${this.position}`]: true,
             }
