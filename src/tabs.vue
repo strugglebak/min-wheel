@@ -67,9 +67,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-border-color: #1890ff;
     .tabs { 
         padding: 2em 1.5em;
-        border: 1px solid #1890ff;  
+        border: 1px solid $tabs-border-color;  
         display: flex;
         &.align-vertical { flex-direction: column; }
         &.align-vertical-reverse { flex-direction: column-reverse; }

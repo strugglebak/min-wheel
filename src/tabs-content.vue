@@ -54,9 +54,11 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-content-width: 100%;
+    $tabs-content-animation-delay: 0.45s;
     .tabs-content {
-        overflow: hidden; width: 100%;
-        > .tabs-pane-wrapper { display: flex; transition-duration: 0.45s; }
+        overflow: hidden; width: $tabs-content-width;
+        > .tabs-pane-wrapper { display: flex; transition-duration: $tabs-content-animation-delay }
 
         &.align-horizontal {
             > .tabs-pane-wrapper { flex-direction: row; }

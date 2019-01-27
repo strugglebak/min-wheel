@@ -97,34 +97,31 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-nav-line-color: #1890ff;
+    $tabs-nav-line-animation-delay: 0.3s;
+    $tabs-nav-border-color: #e8e8e8;
     .tabs-nav {
         display: flex; flex-shrink: 0; position: relative;
-        > .line { border: 1px solid #1890ff; position: absolute; transition-duration: 0.3s; }
+        > .line { border: 1px solid $tabs-nav-line-color; position: absolute; transition-duration: $tabs-nav-line-animation-delay; }
 
         &.align-horizontal { flex-direction: row;
-            &.line-top { border-bottom: 1px solid #e8e8e8;
+            &.line-top { border-bottom: 1px solid $tabs-nav-border-color;
                 > .line { top: 100%; }
             }
-            &.line-bottom { border-top: 1px solid #e8e8e8;
+            &.line-bottom { border-top: 1px solid $tabs-nav-border-color;
                 > .line { bottom: 100%; }
             }
-            > .actions-wrapper {
-                margin-left: auto;
-            }
+            > .actions-wrapper { margin-left: auto; }
         }
 
         &.align-vertical { flex-direction: column;
-            &.line-left { border-right: 1px solid #e8e8e8;
+            &.line-left { border-right: 1px solid $tabs-nav-border-color;
                 > .line { left: 100%; }
             }
-            &.line-right { border-left: 1px solid #e8e8e8;
+            &.line-right { border-left: 1px solid $tabs-nav-border-color;
                 > .line { right: 100%; }
             }
-            > .actions-wrapper {
-                display: flex;
-                justify-content: flex-end;
-                padding-right: 1em;
-            }
+            > .actions-wrapper { display: flex; justify-content: flex-end; padding-right: 1em; }
         }
     }
 </style>

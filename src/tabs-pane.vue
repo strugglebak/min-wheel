@@ -52,9 +52,12 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-pane-width: 100%;
+    $tabs-pane-align-horizontal-padding: 1.5em 0;
+    $tabs-pane-align-vertical-padding: 0 1.5em;
     .tabs-pane {
-        flex-shrink: 0; width: 100%;
-        &.align-horizontal { padding: 1.5em 0; }
-        &.align-vertical { padding: 0 1.5em; }
+        flex-shrink: 0; width: $tabs-pane-width;
+        &.align-horizontal { padding: $tabs-pane-align-horizontal-padding }
+        &.align-vertical { padding: $tabs-pane-align-vertical-padding }
     }
 </style>

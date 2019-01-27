@@ -55,12 +55,19 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $tabs-item-color-animation-delay: 0.3s;
+    $tabs-item-active-color: #1890ff;
+    $tabs-item-hover-color: #40a9ff;
+    $tabs-item-align-horizontal-padding: 0.8em 1em;
+    $tabs-item-align-horizontal-margin-right: 2em;
+    $tabs-item-align-vertical-padding: 0.5em 1.5em;
+    $tabs-item-align-vertical-margin-bottom: 1em;
     .tabs-item {
-        cursor: pointer; display: flex; transition: color 0.3s; 
-        &.active { color: #1890ff; }
-        &:hover { color: #40a9ff }
-        &.align-horizontal { padding: 0.8em 1em; margin-right: 2em; }
-        &.align-vertical { padding: 0.5em 1.5em; margin-bottom: 1em;
+        cursor: pointer; display: flex; transition: color $tabs-item-color-animation-delay; 
+        &.active { color: $tabs-item-active-color; }
+        &:hover { color:  $tabs-item-hover-color}
+        &.align-horizontal { padding: $tabs-item-align-horizontal-padding; margin-right: $tabs-item-align-horizontal-margin-right; }
+        &.align-vertical { padding: $tabs-item-align-vertical-padding; margin-bottom: $tabs-item-align-vertical-margin-bottom;
             &.text-left { justify-content: flex-end; }
             &.text-right { justify-content: flex-start; }
         }
