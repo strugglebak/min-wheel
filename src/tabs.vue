@@ -50,7 +50,6 @@ export default {
         },
         emitSignal(vm) {
             this.eventHub.$emit('update:position-changed', this.tabsPosition, vm);
-            this.eventHub.$emit('update:selected', this.selected, vm);
         },
     },
     data() {

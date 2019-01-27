@@ -40,7 +40,6 @@ export default {
             this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
         },
         updateLineStyle(vm) {
-            console.log('tabs nav update line style');
             if (vm.disabled) { return }
             this.$nextTick(()=> {
                 if (this.align === 'horizontal') { this.updateLineStyleInHorizontal(vm); } 
