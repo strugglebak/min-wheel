@@ -30,10 +30,10 @@ export default {
     },
     methods: {
         onclick() {
-            this.eventHub.$emit('update:selected', this.name, this);
+            this.eventHub && this.eventHub.$emit('update:selected', this.name, this);
         },
         listenPositionChanged() {
-            this.eventHub.$on('update:position-changed', (position, vm)=> {
+            this.eventHub && this.eventHub.$on('update:position-changed', (position, vm)=> {
                 this.active = (this.name === vm.name);
                 this.position = position;
                 let container = {
@@ -44,7 +44,7 @@ export default {
             });
         },
         listenTabSelected() {
-            this.eventHub.$on('update:selected', (selected, vm)=> {
+            this.eventHub && this.eventHub.$on('update:selected', (selected, vm)=> {
                 this.active = (this.name === selected);
             });
         }
