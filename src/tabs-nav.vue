@@ -22,6 +22,21 @@ export default {
         },
     },
     methods: {
+        updateLineStyle(vm) {
+            if (vm.disabled) { return }
+            this.$nextTick(()=> {
+                let {width, height, top, bottom, left, right} = vm.$el.getBoundingClientRect();
+                if (this.align === 'horizontal') {
+                    this.$refs.line.style.height = '2px';
+                    this.$refs.line.style.width = `${width}px`;
+                    this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
+                } else if (this.align === 'vertical') {
+                    this.$refs.line.style.width = '2px';
+                    this.$refs.line.style.height = `${height}px`;
+                    this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
+                }
+            });
+        },
         timeout(ms) {
             return new Promise((resolve) => {
                 setTimeout(resolve, ms);
@@ -42,22 +57,6 @@ export default {
             let vm = element;
             this.updateLineStyle(vm);
         },
-        updateLineStyle(vm) {
-            if (vm.disabled) { return }
-            this.$nextTick(()=> {
-                // this.$refs.line.style = {};
-                let {width, height, top, bottom, left, right} = vm.$el.getBoundingClientRect();
-                if (this.align === 'horizontal') {
-                    this.$refs.line.style.height = '2px';
-                    this.$refs.line.style.width = `${width}px`;
-                    this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
-                } else if (this.align === 'vertical') {
-                    this.$refs.line.style.width = '2px';
-                    this.$refs.line.style.height = `${height}px`;
-                    this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
-                }
-            });
-        }
     },
     data() {
         return {

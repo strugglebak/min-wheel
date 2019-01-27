@@ -58,7 +58,6 @@ export default {
                element.$children.forEach((elementChild)=> {
                    if (elementChild.$options.name === 'MwTabsItem' && this.selected === elementChild.name) {
                         this.eventHub.$emit('update:position-changed', this.tabsPosition, elementChild);
-                        this.eventHub.$emit('update:selected', this.selected, elementChild);
                    }
                })
            }
