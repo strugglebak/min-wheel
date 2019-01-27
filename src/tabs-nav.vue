@@ -27,6 +27,7 @@ export default {
             this.$refs.line.style = {};
         },
         updateLineStyleInHorizontal(vm) {
+            if (!this.$refs.line) { return }
             let {width, left} = vm.$el.getBoundingClientRect();
             this.$refs.line.style.transitionProperty = 'left';
             this.$refs.line.style.height = '2px';
@@ -34,6 +35,7 @@ export default {
             this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
         },
         updateLineStyleInVertical(vm) {
+            if (!this.$refs.line) { return }
             let {height, top} = vm.$el.getBoundingClientRect();
             this.$refs.line.style.transitionProperty = 'top';
             this.$refs.line.style.width = '2px';

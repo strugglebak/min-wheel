@@ -35,6 +35,7 @@ export default {
             this.eventHub.$on('update:selected', (selected, vm)=> {
                 if (vm.disabled) { return }
                 this.$nextTick(()=> {
+                    if (!this.$refs.tabsPaneWrapper) {return}
                     if (this.align === 'horizontal') {
                         let percent = (vm.order - 1) * 100;
                         this.$refs.tabsPaneWrapper.style.transform = `translateX(-${percent}%)`;
