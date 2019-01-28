@@ -12,6 +12,12 @@
 <script>
 export default {
     name: 'MwPopover',
+    props: {
+        offset: {
+            type: [String, Number],
+            default: 12,
+        }
+    },
     methods: {
         open() {
             this.isVisible = true;
@@ -48,9 +54,8 @@ export default {
                 document.body.appendChild(this.$refs.contentWrapper);
                 let {left, top} = this.$el.getBoundingClientRect();
                 let contentHeight = this.$refs.contentWrapper.getBoundingClientRect().height;
-                let offset = 12;
                 this.$refs.contentWrapper.style.left = `${left}px`;
-                this.$refs.contentWrapper.style.top = `${top - contentHeight - offset}px`;
+                this.$refs.contentWrapper.style.top = `${top - contentHeight - (this.offset - '0')}px`;
             });
         },
     },
