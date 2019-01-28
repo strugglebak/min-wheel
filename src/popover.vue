@@ -25,22 +25,34 @@ export default {
         },
         onDocumentClick(e) {
             console.log('document 被点击')
-            console.log(e.target)
-            if (!this.$refs.popover.contains(e.target)) {
-                this.close()
+            if ( !(this.$refs.popover.contains(e.target) || this.$refs.contentWrapper.contains(e.target)) ) {
+                this.close();
             }
         },
         onPopoverClick(e) {
             console.log('popover 被点击')
             // if the scope of click inside the trigger-wrapper (include the trigger-wrapper)
-            if (this.$refs.triggerWrapper.contains(e.target)) {
-                if (!this.isVisible) {
-                    this.open();
-                } else {
-                    this.close();
+            this.$nextTick(()=> {
+                if (this.$refs.triggerWrapper.contains(e.target)) {
+                    if (!this.isVisible) {
+                        this.open();
+                        this.appendPopoverContent();
+                    } else {
+                        this.close();
+                    }
                 }
-            }
-        }
+            });
+        },
+        appendPopoverContent() {
+            this.$nextTick(()=> {
+                document.body.appendChild(this.$refs.contentWrapper);
+                let {left, top} = this.$el.getBoundingClientRect();
+                let contentHeight = this.$refs.contentWrapper.getBoundingClientRect().height;
+                console.log(left, top)
+                this.$refs.contentWrapper.style.left = `${left}px`;
+                this.$refs.contentWrapper.style.top = `${top - contentHeight}px`;
+            });
+        },
     },
     data() {
         return {
@@ -61,15 +73,13 @@ export default {
     .popover {
         border: 1px solid green;
         display: inline-block;
-        position: relative;
-        > .content-wrapper {
-            position: absolute;
-            left: 0;
-            bottom: 100%;
-            border: 1px solid red;
-        }
         > .trigger-wrapper {
             padding: 1em;
         }
+    }
+
+    .content-wrapper {
+        position: absolute;
+        border: 1px solid red;
     }
 </style>
