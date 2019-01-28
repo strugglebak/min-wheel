@@ -22,6 +22,8 @@ import TabsPane from './tabs-pane'
 
 import EventHub from '../plugins/eventHub-plugin.js'
 
+import Popover from './popover'
+
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
 Vue.component('mw-button-group', ButtonGroup);
@@ -43,6 +45,8 @@ Vue.component('mw-tabs-nav', TabsNav);
 Vue.component('mw-tabs-item', TabsItem);
 Vue.component('mw-tabs-content', TabsContent);
 Vue.component('mw-tabs-pane', TabsPane);
+
+Vue.component('mw-popover', Popover);
 
 new Vue({
     el: '#app',
