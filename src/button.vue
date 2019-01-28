@@ -53,15 +53,13 @@
 
     display: inline-flex; justify-content: center; align-items: center; vertical-align: middle;
 
-    > .button-content { order: 2; margin-left: 0.1em;}
+    > .button-content { order: 2; margin-left: 0.1em; }
     > .icon { order: 1; }
     &.icon-right { 
-      > .button-content { order: 1; margin-left: 0; margin-right: 0.1em;}
+      > .button-content { order: 1; margin-left: 0; margin-right: 0.1em; }
       > .icon { order: 2; } 
     } 
 
-    .loading {
-      animation: roll 2s infinite linear;
-    }
+    .loading { animation: roll 2s infinite linear; }
   } 
 </style>
