@@ -1,6 +1,6 @@
 <template>
     <div class="tabs-pane"
-        v-bind:class="tabsPaneClasses" v-bind:data-name="xxx"
+        v-bind:class="tabsPaneClasses" v-bind:data-name="name"
         v-if="align && align === 'horizontal'">
         <slot></slot>
     </div>
