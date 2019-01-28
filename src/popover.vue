@@ -48,9 +48,9 @@ export default {
                 document.body.appendChild(this.$refs.contentWrapper);
                 let {left, top} = this.$el.getBoundingClientRect();
                 let contentHeight = this.$refs.contentWrapper.getBoundingClientRect().height;
-                console.log(left, top)
+                let offset = 12;
                 this.$refs.contentWrapper.style.left = `${left}px`;
-                this.$refs.contentWrapper.style.top = `${top - contentHeight}px`;
+                this.$refs.contentWrapper.style.top = `${top - contentHeight - offset}px`;
             });
         },
     },
@@ -71,15 +71,17 @@ export default {
 </script>
 <style lang="scss" scoped>
     .popover {
-        border: 1px solid green;
         display: inline-block;
         > .trigger-wrapper {
-            padding: 1em;
         }
     }
 
     .content-wrapper {
         position: absolute;
-        border: 1px solid red;
+        border: 1px solid #c8c8c8;
+        min-width: 150px;
+        border-radius: 4px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        padding: 1.2em 1.4em;
     }
 </style>
