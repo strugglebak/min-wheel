@@ -41,7 +41,6 @@ export default {
             this.isVisible = true;
             document.addEventListener('click', this.onDocumentClick);
             console.log('document 监听了 click listener');
-
             this.appendPopoverContent();
             this.positionPopoverContent();
         },
@@ -49,6 +48,45 @@ export default {
             this.isVisible = false;
             document.removeEventListener('click', this.onDocumentClick);
             console.log('document 移除了 click listener')
+        },
+        onPopoverContentMouseEnter(e) {
+            this.isMouseOut = false;
+            console.log('content wrapper have mouse in')
+        },
+        onPopoverContentMouseLeave(e) {
+            this.isMouseOut = true;
+            console.log('content wrapper have mouse leave')
+            setTimeout(() => {
+                let contentWrapper = this.$refs.contentWrapper;
+                if (contentWrapper) {
+                    contentWrapper.removeEventListener('mouseenter', this.onPopoverContentMouseEnter);
+                    contentWrapper.removeEventListener('mouseleave', this.onPopoverContentMouseLeave);
+                }
+                this.close();
+            }, 200);
+        },
+        onPopoverMouseEnter(e) {
+            console.log('mouse enter')
+            this.open();
+            this.$nextTick(()=> {
+                this.$refs.contentWrapper.addEventListener('mouseenter', this.onPopoverContentMouseEnter);
+                console.log('content-wrapper 监听了 mouse enter');
+                this.$refs.contentWrapper.addEventListener('mouseleave', this.onPopoverContentMouseLeave);
+                console.log('content-wrapper 监听了 mouse leave');
+            });
+        },
+        onPopoverMouseLeave(e) {
+            console.log('mouse leave')
+            setTimeout(() => {
+                if (this.isMouseOut) {
+                    let contentWrapper = this.$refs.contentWrapper;
+                    if (contentWrapper) {
+                        contentWrapper.removeEventListener('mouseenter', this.onPopoverContentMouseEnter);
+                        contentWrapper.removeEventListener('mouseleave', this.onPopoverContentMouseLeave);
+                    }
+                    this.close();
+                }
+            }, 200);
         },
         onDocumentClick(e) {
             console.log('document 被点击')
@@ -99,6 +137,7 @@ export default {
     data() {
         return {
             isVisible: false,
+            isMouseOut: true,
         }
     },
     mounted() {
@@ -106,9 +145,9 @@ export default {
             this.$refs.popover.addEventListener('click', this.onPopoverClick);
             console.log('popover 监听了 click')
         } else if (this.trigger === 'hover') {
-            this.$refs.popover.addEventListener('mouseenter', this.open);
+            this.$refs.popover.addEventListener('mouseenter', this.onPopoverMouseEnter);
             console.log('popover 监听了 mouse enter')
-            this.$refs.popover.addEventListener('mouseleave', this.close);
+            this.$refs.popover.addEventListener('mouseleave', this.onPopoverMouseLeave);
             console.log('popover 监听了 mouse leave')
         }
     },
@@ -117,9 +156,9 @@ export default {
             this.$refs.popover.removeEventListener('click', this.onPopoverClick);
             console.log('popover 移除了 click')
         } else if (this.trigger === 'hover') {
-            this.$refs.popover.removeEventListener('mouseenter', this.open);
+            this.$refs.popover.removeEventListener('mouseenter', this.onPopoverMouseEnter);
             console.log('popover 移除了 mouse enter')
-            this.$refs.popover.removeEventListener('mouseleave', this.close);
+            this.$refs.popover.removeEventListener('mouseleave', this.onPopoverMouseLeave);
             console.log('popover 移除了 mouse leave')
         }
     }
