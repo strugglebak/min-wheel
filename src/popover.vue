@@ -13,24 +13,14 @@
 export default {
     name: 'MwPopover',
     props: {
-        offset: {
-            type: [String, Number],
-            default: 12,
-        },
-        position: {
-            type: String,
-            default: 'top',
+        offset: { type: [String, Number], default: 12, },
+        position: { type: String, default: 'top',
             validator: function(value) {
                 return ['top', 'bottom', 'left', 'right'].includes(value);
             }
         },
-        width: {
-            type: [String, Number],
-            default: 200,
-        },
-        trigger: {
-            type: String,
-            default: 'click',
+        width: { type: [String, Number], default: 200, },
+        trigger: { type: String, default: 'click',
             validator: function(value) {
                 return ['click', 'hover'].includes(value);
             }
@@ -40,22 +30,18 @@ export default {
         open() {
             this.isVisible = true;
             document.addEventListener('click', this.onDocumentClick);
-            console.log('document 监听了 click listener');
             this.appendPopoverContent();
             this.positionPopoverContent();
         },
         close() {
             this.isVisible = false;
             document.removeEventListener('click', this.onDocumentClick);
-            console.log('document 移除了 click listener')
         },
         onPopoverContentMouseEnter(e) {
             this.isMouseOut = false;
-            console.log('content wrapper have mouse in')
         },
         onPopoverContentMouseLeave(e) {
             this.isMouseOut = true;
-            console.log('content wrapper have mouse leave')
             setTimeout(() => {
                 let contentWrapper = this.$refs.contentWrapper;
                 if (contentWrapper) {
@@ -66,17 +52,13 @@ export default {
             }, 200);
         },
         onPopoverMouseEnter(e) {
-            console.log('mouse enter')
             this.open();
             this.$nextTick(()=> {
                 this.$refs.contentWrapper.addEventListener('mouseenter', this.onPopoverContentMouseEnter);
-                console.log('content-wrapper 监听了 mouse enter');
                 this.$refs.contentWrapper.addEventListener('mouseleave', this.onPopoverContentMouseLeave);
-                console.log('content-wrapper 监听了 mouse leave');
             });
         },
         onPopoverMouseLeave(e) {
-            console.log('mouse leave')
             setTimeout(() => {
                 if (this.isMouseOut) {
                     let contentWrapper = this.$refs.contentWrapper;
@@ -89,21 +71,15 @@ export default {
             }, 200);
         },
         onDocumentClick(e) {
-            console.log('document 被点击')
-            if ( !(this.$refs.popover.contains(e.target) || this.$refs.contentWrapper.contains(e.target)) ) {
+            if ( !(this.$refs.popover.contains(e.target) 
+                || this.$refs.contentWrapper.contains(e.target)) ) {
                 this.close();
             }
         },
         onPopoverClick(e) {
-            console.log('popover 被点击')
-            // if the scope of click inside the trigger-wrapper (include the trigger-wrapper)
             this.$nextTick(()=> {
                 if (this.$refs.triggerWrapper.contains(e.target)) {
-                    if (!this.isVisible) {
-                        this.open();
-                    } else {
-                        this.close();
-                    }
+                    this.isVisible ? this.close() : this.open();
                 }
             });
         },
@@ -118,65 +94,54 @@ export default {
                 let contentWrapper = this.$refs.contentWrapper;
                 let {top, bottom, left, right} = this.$el.getBoundingClientRect();
                 let {height: contentHeight, width: contentWidth} = contentWrapper.getBoundingClientRect();
-                if (this.position === 'top') {
-                    contentWrapper.style.left = `${left + window.scrollX}px`;
-                    contentWrapper.style.top = `${top + window.scrollY - contentHeight - this.offset}px`;
-                } else if (this.position == 'bottom') {
-                    contentWrapper.style.left = `${left + window.scrollX}px`;
-                    contentWrapper.style.top = `${bottom + window.scrollY + this.offset}px`;
-                } else if (this.position === 'left') {
-                    contentWrapper.style.left = `${left + window.scrollX - contentWidth - this.offset}px`;
-                    contentWrapper.style.top = `${top + window.scrollY}px`;
-                } else if (this.position === 'right') {
-                    contentWrapper.style.left = `${right + window.scrollX + this.offset}px`;
-                    contentWrapper.style.top = `${top + window.scrollY}px`;
-                }
+                let positions = {
+                    bottom: { left: `${left + window.scrollX}px`, top: `${bottom + window.scrollY + this.offset}px` },
+                    right: { left: `${right + window.scrollX + this.offset}px`, top: `${top + window.scrollY}px` },
+                    top: {
+                        left: `${left + window.scrollX}px`,
+                        top: `${top + window.scrollY - contentHeight - this.offset}px`
+                    },
+                    left: {
+                        left: `${left + window.scrollX - contentWidth - this.offset}px`,
+                        top: `${top + window.scrollY}px`
+                    },
+                };
+                contentWrapper.style.left = positions[this.position].left;
+                contentWrapper.style.top = positions[this.position].top;
             });
         }
     },
     data() {
-        return {
-            isVisible: false,
-            isMouseOut: true,
-        }
+        return { isVisible: false, isMouseOut: true, }
     },
     mounted() {
         if (this.trigger === 'click') {
             this.$refs.popover.addEventListener('click', this.onPopoverClick);
-            console.log('popover 监听了 click')
         } else if (this.trigger === 'hover') {
             this.$refs.popover.addEventListener('mouseenter', this.onPopoverMouseEnter);
-            console.log('popover 监听了 mouse enter')
             this.$refs.popover.addEventListener('mouseleave', this.onPopoverMouseLeave);
-            console.log('popover 监听了 mouse leave')
         }
     },
     destroyed() {
         if (this.trigger === 'click') {
             this.$refs.popover.removeEventListener('click', this.onPopoverClick);
-            console.log('popover 移除了 click')
         } else if (this.trigger === 'hover') {
             this.$refs.popover.removeEventListener('mouseenter', this.onPopoverMouseEnter);
-            console.log('popover 移除了 mouse enter')
             this.$refs.popover.removeEventListener('mouseleave', this.onPopoverMouseLeave);
-            console.log('popover 移除了 mouse leave')
         }
     }
 }
 </script>
 <style lang="scss" scoped>
-    .popover {
-        display: inline-block;
-        > .trigger-wrapper {
-        }
-    }
-
-    .content-wrapper {
-        position: absolute;
-        border: 1px solid #c8c8c8;
-        border-radius: 4px;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-        padding: 1.2em 1.4em;
-        word-break: break-all;
+    $content-wrapper-border-color: #c8c8c8;
+    $content-wrapper-border-radius: 4px;
+    $content-wrapper-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    $content-wrapper-padding: 1.2em 1.4em;
+    .popover { display: inline-block; }
+    .content-wrapper { position: absolute; word-break: break-all;
+        border: 1px solid $content-wrapper-border-color;
+        border-radius: $content-wrapper-border-radius;
+        box-shadow: $content-wrapper-box-shadow;
+        padding: $content-wrapper-padding;
     }
 </style>
