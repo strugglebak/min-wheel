@@ -1,9 +1,12 @@
 <template>
     <div class="popover" ref="popover">
-        <div class="content-wrapper" ref="contentWrapper"
-            v-if="isVisible">
-            <slot name="content"></slot>
-        </div>
+        <transition name="fade">
+            <div class="content-wrapper" ref="contentWrapper"
+                v-bind:class="contentWrapperClasses"
+                v-if="isVisible">
+                <slot name="content"></slot>
+            </div>
+        </transition>
         <div class="trigger-wrapper" ref="triggerWrapper">
             <slot></slot>
         </div>
@@ -23,6 +26,13 @@ export default {
         trigger: { type: String, default: 'click',
             validator: function(value) {
                 return ['click', 'hover'].includes(value);
+            }
+        }
+    },
+    computed: {
+        contentWrapperClasses() {
+            return {
+                [`pop-${this.isVisible}`]: true,
             }
         }
     },
@@ -137,11 +147,25 @@ export default {
     $content-wrapper-border-radius: 4px;
     $content-wrapper-box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
     $content-wrapper-padding: 1.2em 1.4em;
+    @keyframes fade-in {
+        0% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    @keyframes fade-out {
+        0% { opacity: 1; }
+        100% { opacity: 0; }
+    }
     .popover { display: inline-block; }
     .content-wrapper { position: absolute; word-break: break-all;
         border: 1px solid $content-wrapper-border-color;
         border-radius: $content-wrapper-border-radius;
         box-shadow: $content-wrapper-box-shadow;
         padding: $content-wrapper-padding;
+    }
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 0.45s;
+    }
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
     }
 </style>
