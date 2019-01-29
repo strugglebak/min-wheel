@@ -29,18 +29,20 @@ export default {
         updateLineStyleInHorizontal(vm) {
             if (!this.$refs.line) { return }
             let {width, left} = vm.$el.getBoundingClientRect();
-            this.$refs.line.style.transitionProperty = 'left';
-            this.$refs.line.style.height = '2px';
-            this.$refs.line.style.width = `${width}px`;
-            this.$refs.line.style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
+            let style = this.$refs.line.style;
+            style.transitionProperty = 'left';
+            style.height = '2px';
+            style.width = `${width}px`;
+            style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
         },
         updateLineStyleInVertical(vm) {
             if (!this.$refs.line) { return }
             let {height, top} = vm.$el.getBoundingClientRect();
-            this.$refs.line.style.transitionProperty = 'top';
-            this.$refs.line.style.width = '2px';
-            this.$refs.line.style.height = `${height}px`;
-            this.$refs.line.style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
+            let style = this.$refs.line.style;
+            style.transitionProperty = 'top';
+            style.width = '2px';
+            style.height = `${height}px`;
+            style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
         },
         updateLineStyle(vm) {
             if (vm.disabled) { return }
