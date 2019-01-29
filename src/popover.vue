@@ -2,7 +2,6 @@
     <div class="popover" ref="popover">
         <transition name="fade">
             <div class="content-wrapper" ref="contentWrapper"
-                v-bind:class="contentWrapperClasses"
                 v-if="isVisible">
                 <slot name="content" v-bind:close="close"></slot>
             </div>
@@ -26,13 +25,6 @@ export default {
         trigger: { type: String, default: 'click',
             validator: function(value) {
                 return ['click', 'hover'].includes(value);
-            }
-        }
-    },
-    computed: {
-        contentWrapperClasses() {
-            return {
-                [`pop-${this.isVisible}`]: true,
             }
         }
     },
