@@ -73,10 +73,14 @@ export default {
             }, 200);
         },
         onDocumentClick(e) {
-            if ( !(this.$refs.popover.contains(e.target) 
-                || this.$refs.contentWrapper.contains(e.target)) ) {
+            this.$nextTick(()=> {
+                let {popover, contentWrapper} = this.$refs;
+                let el = e.target;
+                if ( popover && (popover === el || popover.contains(el)) ) { return }
+                if ( contentWrapper && (contentWrapper === el || contentWrapper.contains(el)) ) { return }
+
                 this.close();
-            }
+            })
         },
         onPopoverClick(e) {
             this.$nextTick(()=> {
@@ -87,8 +91,10 @@ export default {
         },
         appendPopoverContent() {
             this.$nextTick(()=> {
-                this.$refs.contentWrapper.style.width = `${this.width}px`;
-                document.body.appendChild(this.$refs.contentWrapper);
+                let contentWrapper = this.$refs.contentWrapper;
+                if (!contentWrapper) { return }
+                contentWrapper.style.width = `${this.width}px`;
+                document.body.appendChild(contentWrapper);
             });
         },
         positionPopoverContent() {
