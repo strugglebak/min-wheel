@@ -54,8 +54,9 @@ export default {
                 document.body.appendChild(this.$refs.contentWrapper);
                 let {left, top} = this.$el.getBoundingClientRect();
                 let contentHeight = this.$refs.contentWrapper.getBoundingClientRect().height;
-                this.$refs.contentWrapper.style.left = `${left}px`;
-                this.$refs.contentWrapper.style.top = `${top - contentHeight - (this.offset - '0')}px`;
+                this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
+                console.log(contentHeight)
+                this.$refs.contentWrapper.style.top = `${top + window.scrollY - contentHeight}px`;
             });
         },
     },
