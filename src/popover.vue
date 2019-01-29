@@ -23,6 +23,10 @@ export default {
             validator: function(value) {
                 return ['top', 'bottom', 'left', 'right'].includes(value);
             }
+        },
+        width: {
+            type: [String, Number],
+            default: 200,
         }
     },
     methods: {
@@ -60,6 +64,7 @@ export default {
         appendPopoverContent() {
             this.$nextTick(()=> {
                 document.body.appendChild(this.$refs.contentWrapper);
+                this.$refs.contentWrapper.style.width = `${this.width}px`;
             });
         },
         positionPopoverContent() {
@@ -111,5 +116,6 @@ export default {
         border-radius: 4px;
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         padding: 1.2em 1.4em;
+        word-break: break-all;
     }
 </style>
