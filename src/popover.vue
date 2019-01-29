@@ -27,6 +27,13 @@ export default {
         width: {
             type: [String, Number],
             default: 200,
+        },
+        trigger: {
+            type: String,
+            default: 'click',
+            validator: function(value) {
+                return ['click', 'hover'].includes(value);
+            }
         }
     },
     methods: {
@@ -34,6 +41,9 @@ export default {
             this.isVisible = true;
             document.addEventListener('click', this.onDocumentClick);
             console.log('document 监听了 click listener');
+
+            this.appendPopoverContent();
+            this.positionPopoverContent();
         },
         close() {
             this.isVisible = false;
@@ -53,8 +63,6 @@ export default {
                 if (this.$refs.triggerWrapper.contains(e.target)) {
                     if (!this.isVisible) {
                         this.open();
-                        this.appendPopoverContent();
-                        this.positionPopoverContent();
                     } else {
                         this.close();
                     }
@@ -63,8 +71,8 @@ export default {
         },
         appendPopoverContent() {
             this.$nextTick(()=> {
-                document.body.appendChild(this.$refs.contentWrapper);
                 this.$refs.contentWrapper.style.width = `${this.width}px`;
+                document.body.appendChild(this.$refs.contentWrapper);
             });
         },
         positionPopoverContent() {
@@ -94,12 +102,26 @@ export default {
         }
     },
     mounted() {
-        this.$refs.popover.addEventListener('click', this.onPopoverClick);
-        console.log('popover 监听了 click')
+        if (this.trigger === 'click') {
+            this.$refs.popover.addEventListener('click', this.onPopoverClick);
+            console.log('popover 监听了 click')
+        } else if (this.trigger === 'hover') {
+            this.$refs.popover.addEventListener('mouseenter', this.open);
+            console.log('popover 监听了 mouse enter')
+            this.$refs.popover.addEventListener('mouseleave', this.close);
+            console.log('popover 监听了 mouse leave')
+        }
     },
     destroyed() {
-        this.$refs.popover.removeEventListener('click', this.onPopoverClick);
-        console.log('popover 移除了 click')
+        if (this.trigger === 'click') {
+            this.$refs.popover.removeEventListener('click', this.onPopoverClick);
+            console.log('popover 移除了 click')
+        } else if (this.trigger === 'hover') {
+            this.$refs.popover.removeEventListener('mouseenter', this.open);
+            console.log('popover 移除了 mouse enter')
+            this.$refs.popover.removeEventListener('mouseleave', this.close);
+            console.log('popover 移除了 mouse leave')
+        }
     }
 }
 </script>
