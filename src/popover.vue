@@ -74,15 +74,15 @@ export default {
                 let {height: contentHeight, width: contentWidth} = contentWrapper.getBoundingClientRect();
                 if (this.position === 'top') {
                     contentWrapper.style.left = `${left + window.scrollX}px`;
-                    contentWrapper.style.top = `${top + window.scrollY - contentHeight}px`;
+                    contentWrapper.style.top = `${top + window.scrollY - contentHeight - this.offset}px`;
                 } else if (this.position == 'bottom') {
                     contentWrapper.style.left = `${left + window.scrollX}px`;
-                    contentWrapper.style.top = `${bottom + window.scrollY}px`;
+                    contentWrapper.style.top = `${bottom + window.scrollY + this.offset}px`;
                 } else if (this.position === 'left') {
-                    contentWrapper.style.left = `${left + window.scrollX - contentWidth}px`;
+                    contentWrapper.style.left = `${left + window.scrollX - contentWidth - this.offset}px`;
                     contentWrapper.style.top = `${top + window.scrollY}px`;
                 } else if (this.position === 'right') {
-                    contentWrapper.style.left = `${right + window.scrollX}px`;
+                    contentWrapper.style.left = `${right + window.scrollX + this.offset}px`;
                     contentWrapper.style.top = `${top + window.scrollY}px`;
                 }
             });
