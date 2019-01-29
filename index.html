@@ -26,14 +26,43 @@
       <div id="app">
 
         <div class="demo" style=" 
-          padding: 1000px;
-          margin-left: 10px;
-          border: 1px solid red;
+          padding-left: 300px;
+          margin: 100px auto;
+          border: 1px solid blue;
           ">
-          <mw-popover>
+          <mw-popover
+            position="left"
+          >
             <template slot="content">
               <h3>标题</h3>
-              <span>这是一段内容 这是一段内容 这是一段内容</span>
+              <span>这是一段内容,这是一段内容,这是一段内容。</span>
+            </template>  
+            <button>Popover</button>
+          </mw-popover>
+          <mw-popover
+            position="top"
+          >
+            <template slot="content">
+              <h3>标题</h3>
+              <span>这是一段内容,这是一段内容,这是一段内容。</span>
+            </template>  
+            <button>Popover</button>
+          </mw-popover>
+          <mw-popover
+            position="bottom"
+          >
+            <template slot="content">
+              <h3>标题</h3>
+              <span>这是一段内容,这是一段内容,这是一段内容。</span>
+            </template>  
+            <button>Popover</button>
+          </mw-popover>
+          <mw-popover
+            position="right"
+          >
+            <template slot="content">
+              <h3>标题</h3>
+              <span>这是一段内容,这是一段内容,这是一段内容。</span>
             </template>  
             <button>Popover</button>
           </mw-popover>

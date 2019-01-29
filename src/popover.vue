@@ -16,6 +16,13 @@ export default {
         offset: {
             type: [String, Number],
             default: 12,
+        },
+        position: {
+            type: String,
+            default: 'top',
+            validator: function(value) {
+                return ['top', 'bottom', 'left', 'right'].includes(value);
+            }
         }
     },
     methods: {
@@ -43,6 +50,7 @@ export default {
                     if (!this.isVisible) {
                         this.open();
                         this.appendPopoverContent();
+                        this.positionPopoverContent();
                     } else {
                         this.close();
                     }
@@ -52,13 +60,28 @@ export default {
         appendPopoverContent() {
             this.$nextTick(()=> {
                 document.body.appendChild(this.$refs.contentWrapper);
-                let {left, top} = this.$el.getBoundingClientRect();
-                let contentHeight = this.$refs.contentWrapper.getBoundingClientRect().height;
-                this.$refs.contentWrapper.style.left = `${left + window.scrollX}px`;
-                console.log(contentHeight)
-                this.$refs.contentWrapper.style.top = `${top + window.scrollY - contentHeight}px`;
             });
         },
+        positionPopoverContent() {
+            this.$nextTick(()=> {
+                let contentWrapper = this.$refs.contentWrapper;
+                let {top, bottom, left, right} = this.$el.getBoundingClientRect();
+                let {height: contentHeight, width: contentWidth} = contentWrapper.getBoundingClientRect();
+                if (this.position === 'top') {
+                    contentWrapper.style.left = `${left + window.scrollX}px`;
+                    contentWrapper.style.top = `${top + window.scrollY - contentHeight}px`;
+                } else if (this.position == 'bottom') {
+                    contentWrapper.style.left = `${left + window.scrollX}px`;
+                    contentWrapper.style.top = `${bottom + window.scrollY}px`;
+                } else if (this.position === 'left') {
+                    contentWrapper.style.left = `${left + window.scrollX - contentWidth}px`;
+                    contentWrapper.style.top = `${top + window.scrollY}px`;
+                } else if (this.position === 'right') {
+                    contentWrapper.style.left = `${right + window.scrollX}px`;
+                    contentWrapper.style.top = `${top + window.scrollY}px`;
+                }
+            });
+        }
     },
     data() {
         return {
@@ -85,7 +108,6 @@ export default {
     .content-wrapper {
         position: absolute;
         border: 1px solid #c8c8c8;
-        min-width: 150px;
         border-radius: 4px;
         box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
         padding: 1.2em 1.4em;
