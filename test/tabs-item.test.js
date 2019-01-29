@@ -57,8 +57,6 @@ describe('TabsItem', () => {
         });
 
         let x = vm.$el.querySelector(`.tabs-item[data-name="xxx"]`);
-        const callback = sinon.fake();
-        x.addEventListener('click', callback);
         x.click();
 
         vm.$nextTick(() => {
