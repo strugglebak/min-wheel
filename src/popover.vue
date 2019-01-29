@@ -4,7 +4,7 @@
             <div class="content-wrapper" ref="contentWrapper"
                 v-bind:class="contentWrapperClasses"
                 v-if="isVisible">
-                <slot name="content"></slot>
+                <slot name="content" v-bind:close="close"></slot>
             </div>
         </transition>
         <div class="trigger-wrapper" ref="triggerWrapper">

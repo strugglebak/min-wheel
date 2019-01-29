@@ -32,9 +32,10 @@
             position="left"
             trigger="hover"
           >
-            <template slot="content">
+            <template slot="content" slot-scope="{close}">
               <h3>标题</h3>
               <span>这是一段内容,这是一段内容,这是一段内容。</span>
+              <button v-on:click="close">关闭</button>
             </template>  
             <mw-button>hover左边出现</mw-button>
           </mw-popover>
