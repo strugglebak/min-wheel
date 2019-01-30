@@ -11,15 +11,25 @@
 <script>
 export default {
     name: 'MwCollapseItem',
+    inject: ['eventHub'],
     props: {
         title: {
             type: String,
             required: true,
-        }
+        },
     },
     methods: {
+        open() {
+            this.isVisible = true;
+        },
+        close() {
+            this.isVisible = false;
+        },
         onTitleClick() {
-            this.isVisible = !this.isVisible;
+            if (!this.isVisible) {
+                this.open();
+                this.eventHub && this.eventHub.$emit('update:xxx', this);
+            }        
         }
     },
     data() {
@@ -28,6 +38,11 @@ export default {
         }
     },
     mounted() {
+        this.eventHub && this.eventHub.$on('update:xxx', (vm)=> {
+            if (vm !== this) {
+                this.close();
+            }
+        });
     }
 }
 </script>
