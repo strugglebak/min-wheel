@@ -30,10 +30,9 @@ export default {
         },
         onTitleClick() {
             if (!this.isVisible) {
-                this.open();
-                this.eventHub && this.eventHub.$emit('update:selected', this, this.name);
+                this.eventHub.$emit('update:addSelected', this, this.name);
             } else {
-                this.close();
+                this.eventHub.$emit('update:removeSelected', this, this.name);
             }
         }
     },
@@ -43,12 +42,11 @@ export default {
         }
     },
     mounted() {
-        if (!this.eventHub) { return }
-        this.eventHub.$on('update:selected', (vm, name)=> {
-            if (this !== vm || this.name !== name) {
-                this.close();
-            } else {
+        this.eventHub.$on('update:selected', (vm, names)=> {
+            if (names.includes(this.name)) {
                 this.open();
+            } else {
+                this.close();
             }
         });
     }
