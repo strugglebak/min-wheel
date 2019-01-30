@@ -17,6 +17,9 @@ export default {
             type: String,
             required: true,
         },
+        name: {
+            type: [String, Number]
+        }
     },
     methods: {
         open() {
@@ -28,7 +31,7 @@ export default {
         onTitleClick() {
             if (!this.isVisible) {
                 this.open();
-                this.eventHub && this.eventHub.$emit('update:xxx', this);
+                this.eventHub && this.eventHub.$emit('update:selected', this.name);
             } else {
                 this.close();
             }
@@ -40,9 +43,12 @@ export default {
         }
     },
     mounted() {
-        this.eventHub && this.eventHub.$on('update:xxx', (vm)=> {
-            if (vm !== this) {
+        if (!this.eventHub) { return }
+        this.eventHub.$on('update:selected', (name)=> {
+            if (name !== this.name) {
                 this.close();
+            } else {
+                this.open();
             }
         });
     }
