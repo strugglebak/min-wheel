@@ -29,7 +29,9 @@ export default {
             if (!this.isVisible) {
                 this.open();
                 this.eventHub && this.eventHub.$emit('update:xxx', this);
-            }        
+            } else {
+                this.close();
+            }
         }
     },
     data() {

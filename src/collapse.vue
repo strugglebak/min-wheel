@@ -17,9 +17,7 @@ export default {
         return {eventHub: new Vue(),}
     },
     provide() {
-        if (this.accordion) {
-            return { eventHub: this.eventHub };
-        }
+        return this.accordion ? { eventHub: this.eventHub} : { eventHub: undefined } 
     },
 }
 </script>
