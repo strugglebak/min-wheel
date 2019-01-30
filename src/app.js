@@ -23,6 +23,8 @@ import TabsPane from './tabs-pane'
 import EventHub from '../plugins/eventHub-plugin.js'
 
 import Popover from './popover'
+import Collapse from './collapse.vue'
+import CollapseItem from './collapse-item.vue'
 
 Vue.component('mw-button', Button);
 Vue.component('mw-icon', Icon);
@@ -47,6 +49,9 @@ Vue.component('mw-tabs-content', TabsContent);
 Vue.component('mw-tabs-pane', TabsPane);
 
 Vue.component('mw-popover', Popover);
+
+Vue.component('mw-collapse', Collapse);
+Vue.component('mw-collapse-item', CollapseItem);
 
 new Vue({
     el: '#app',
