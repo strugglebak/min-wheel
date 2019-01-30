@@ -31,7 +31,7 @@ export default {
         onTitleClick() {
             if (!this.isVisible) {
                 this.open();
-                this.eventHub && this.eventHub.$emit('update:selected', this.name);
+                this.eventHub && this.eventHub.$emit('update:selected', this, this.name);
             } else {
                 this.close();
             }
@@ -44,8 +44,8 @@ export default {
     },
     mounted() {
         if (!this.eventHub) { return }
-        this.eventHub.$on('update:selected', (name)=> {
-            if (name !== this.name) {
+        this.eventHub.$on('update:selected', (vm, name)=> {
+            if (this !== vm || this.name !== name) {
                 this.close();
             } else {
                 this.open();

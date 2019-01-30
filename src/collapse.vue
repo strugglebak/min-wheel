@@ -17,6 +17,18 @@ export default {
             type: String,
         }
     },
+    methods: {
+        findItemElement() {
+        let vm;
+        this.$children.forEach((element) => {
+            if ( element && element.$options.name === 'MwCollapseItem'
+                && this.selected === element.name ) {
+                    vm = element;
+            }
+        });
+        return vm;
+    },
+    },
     data() {
         return {eventHub: new Vue(),}
     },
@@ -24,11 +36,12 @@ export default {
         return this.accordion ? { eventHub: this.eventHub } : { eventHub: undefined } 
     },
     mounted() {
-        if (!this.eventHub) { return }
-        this.eventHub.$on('update:selected', (name)=> {
+        if (!this.eventHub || !this.selected) { return }
+        let vm = this.findItemElement();
+        this.eventHub.$on('update:selected', (vm, name)=> {
             this.$emit('update:selected', name);
-        })
-        this.eventHub.$emit('update:selected', this.selected);
+        });
+        this.eventHub.$emit('update:selected', vm, this.selected);
     }
 }
 </script>
