@@ -41,6 +41,7 @@ export default {
         },
         listenTabSelected() {
             this.eventHub.$on('update:selected', (selected, vm)=> {
+                if (vm.disabled) {return}
                 this.active = (this.name === selected);
             });
         },
