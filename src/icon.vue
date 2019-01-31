@@ -7,7 +7,11 @@
 import './svg.js'
 export default {
     name: "MwIcon",
-    props: ['name']
+    props: {
+        name: {
+            type: String
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>

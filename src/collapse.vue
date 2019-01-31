@@ -1,7 +1,6 @@
 <template>
     <div class="collapse">
         <slot></slot>
-    <span>{{selected}}</span>
     </div>   
 </template>
 <script>
@@ -52,7 +51,6 @@ export default {
         });
         this.eventHub.$on('update:removeSelected', (vm, name)=> {
             let selectedBackup;
-            console.log(this.accordion)
             if (this.accordion) {
                 selectedBackup = '';
             } else {
