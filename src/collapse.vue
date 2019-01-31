@@ -14,7 +14,7 @@ export default {
             default: false,
         },
         selected: {
-            type: Array
+            type: [String, Array]
         }
     },
     methods: {
@@ -43,18 +43,25 @@ export default {
         this.eventHub.$emit('update:selected', vm, this.selected);
 
         this.eventHub.$on('update:addSelected', (vm, name)=> {
-            let selectedBackup = JSON.parse(JSON.stringify(this.selected));
+            let selectedBackup;
             if (this.accordion) {
-                selectedBackup = [name];
+                selectedBackup = name;
             } else {
+                selectedBackup = JSON.parse(JSON.stringify(this.selected));
                 selectedBackup.push(name);
             }
             this.eventHub.$emit('update:selected', vm, selectedBackup);
         });
         this.eventHub.$on('update:removeSelected', (vm, name)=> {
-            let selectedBackup = JSON.parse(JSON.stringify(this.selected));
-            let index = selectedBackup.indexOf(name);
-            selectedBackup.splice(index, 1);
+            let selectedBackup;
+            console.log(this.accordion)
+            if (this.accordion) {
+                selectedBackup = '';
+            } else {
+                selectedBackup = JSON.parse(JSON.stringify(this.selected));
+                let index = selectedBackup.indexOf(name);
+                selectedBackup.splice(index, 1);
+            }
             this.eventHub.$emit('update:selected', vm, selectedBackup);
         });
     }

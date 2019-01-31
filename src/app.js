@@ -63,7 +63,7 @@ new Vue({
         selected: 'tab1',
         positionChanged: 'top',
         eventHub: EventHub,
-        selectedTab: ['tab1', 'tab2'],
+        selectedTab: ['tab1'],
     },
     methods: {
         inputChange (e) { console.log(e); },
