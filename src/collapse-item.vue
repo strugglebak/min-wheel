@@ -2,8 +2,7 @@
     <div class="collapse-item">
         <div class="collapse-item-title"
             v-on:click="onTitleClick"
-            v-bind:class="titleClasses"
-            >
+            v-bind:class="titleClasses">
             <mw-icon name="next"></mw-icon>
             <span>{{title}}</span>
         </div>
@@ -61,10 +60,18 @@ export default {
             }, 200);
         },
         onTitleClick() {
-            if (!this.isVisible) {
-                this.eventHub.$emit('update:addSelected', this, this.name);
+            if (this.eventHub) {
+                if (!this.isVisible) {
+                    this.eventHub.$emit('update:addSelected', this, this.name);
+                } else {
+                    this.eventHub.$emit('update:removeSelected', this, this.name);
+                }
             } else {
-                this.eventHub.$emit('update:removeSelected', this, this.name);
+                if (!this.isVisible) {
+                    this.open();
+                } else {
+                    this.close();
+                }
             }
         }
     },
@@ -75,7 +82,7 @@ export default {
         }
     },
     mounted() {
-        this.eventHub.$on('update:selected', (vm, names)=> {
+        this.eventHub && this.eventHub.$on('update:selected', (vm, names)=> {
             if (names.includes(this.name)) {
                 this.open();
             } else {
@@ -107,6 +114,7 @@ export default {
             border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
         }
         > .grow {
+            height: 0;
             transition: height 0.3s;
             overflow: hidden;
             > .collapse-item-content-wrapper {

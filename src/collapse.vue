@@ -32,9 +32,15 @@ export default {
         return {eventHub: new Vue(),}
     },
     provide() {
-        return { eventHub: this.eventHub };
+        if (this.selected) {
+            return { eventHub: this.eventHub };
+        } else {
+            return { eventHub: undefined }
+        }
     },
     mounted() {
+        if (!this.eventHub || !this.selected) { return }
+
         this.eventHub.$on('update:selected', (vm, names)=> {
             this.$emit('update:selected', names);
         });
