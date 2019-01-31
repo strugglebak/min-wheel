@@ -13,7 +13,7 @@ describe('Toast', () => {
   });
 
   describe('props', function () {
-    it('接受 isAutoClose', (done) => {
+    it('接受 isAutoClose 和 autoCloseDelay', (done) => {
       let div = document.createElement('div');
       document.body.appendChild(div);
       const Constructor = Vue.extend(Toast);
@@ -26,22 +26,9 @@ describe('Toast', () => {
       vm.$on('toastClose', () => {
         expect(document.body.contains(vm.$el)).to.eq(false);
         done();
+        vm.$el.remove();
+        vm.$destroy();
       });
-    });
-    it('接受 autoCloseDelay', (done) => {
-      let div = document.createElement('div');
-      document.body.appendChild(div);
-      const Constructor = Vue.extend(Toast);
-      const vm = new Constructor({
-        propsData: {
-          isAutoClose: true,
-          autoCloseDelay: 1
-        }
-      }).$mount(div);
-      setTimeout(() => {
-        expect(document.body.contains(vm.$el)).to.eq(false);
-        done();
-      }, 1500);
     });
     it('接受 isHtml', () => {
       const Constructor = Vue.extend(Toast)
@@ -54,6 +41,8 @@ describe('Toast', () => {
       vm.$mount();
       let strong = vm.$el.querySelector('#test');
       expect(strong).to.exist;
+      vm.$el.remove();
+      vm.$destroy();
     });
     it('接受 closeButton', () => {
       const callback = sinon.fake();
@@ -70,6 +59,8 @@ describe('Toast', () => {
       expect(closeButton.textContent.trim()).to.eq('hello world');
       closeButton.click();
       expect(callback).to.have.been.called;
+      vm.$el.remove();
+      vm.$destroy();
     });
     it('接受 position', () => {
       const Constructor = Vue.extend(Toast);
@@ -79,6 +70,8 @@ describe('Toast', () => {
         }
       }).$mount();
       expect(vm.$el.classList.contains('align-middle')).to.eq(true);
+      vm.$el.remove();
+      vm.$destroy();
     })
   });
 });
