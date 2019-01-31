@@ -39,8 +39,6 @@ export default {
         this.eventHub.$on('update:selected', (vm, names)=> {
             this.$emit('update:selected', names);
         });
-        let vm = this.findItemElement(this.selected)
-        this.eventHub.$emit('update:selected', vm, this.selected);
 
         this.eventHub.$on('update:addSelected', (vm, name)=> {
             let selectedBackup;
@@ -64,6 +62,9 @@ export default {
             }
             this.eventHub.$emit('update:selected', vm, selectedBackup);
         });
+
+        let vm = this.findItemElement(this.selected)
+        this.eventHub.$emit('update:selected', vm, this.selected);
     }
 }
 </script>
