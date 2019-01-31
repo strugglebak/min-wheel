@@ -2,7 +2,7 @@
     <div class="collapse-item">
         <div class="collapse-item-title"
             v-on:click="onTitleClick"
-            v-bind:class="iconNameClasses"
+            v-bind:class="titleClasses"
             >
             <mw-icon name="next"></mw-icon>
             <span>{{title}}</span>
@@ -38,7 +38,7 @@ export default {
         }
     },
     computed: {
-        iconNameClasses() {
+        titleClasses() {
             return {
                 [`icon-${this.iconDirection}`]: true,
             }
@@ -54,9 +54,11 @@ export default {
             });
         },
         close() {
-            this.isVisible = false;
             this.iconDirection = 'right';
             this.$refs.grow.style.height = 0;
+            setTimeout(() => {
+                this.isVisible = false;
+            }, 200);
         },
         onTitleClick() {
             if (!this.isVisible) {
@@ -89,15 +91,13 @@ export default {
         margin-top: -1px; margin-left: -1px; margin-right: -1px;
         > .collapse-item-title {
             cursor: pointer;
-            display: flex; align-items: center; padding: 0 12px;
+            display: flex; align-items: center; padding: 10px 12px;
             min-height: 32px;
             &.icon-right { 
-                border-bottom: none;
-                > .mw-icon { transform: rotate(0deg); transition: all 0.3s; }
+                > .mw-icon { transform: rotate(0deg); transition: transform 0.3s; }
             }
             &.icon-down { 
-                border-bottom: 1px solid rgba(153,153,153,1);
-                > .mw-icon { transform: rotate(90deg); transition: all 0.3s; }
+                > .mw-icon { transform: rotate(90deg); transition: transform 0.3s; }
             }
         }
         &:first-child {
