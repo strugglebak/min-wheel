@@ -93,34 +93,37 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+    $collapse-item-border-color: rgba(153,153,153,1);
+    $collapse-item-border-radius: 4px;
+    $collapse-item-animation-delay: 0.3s;
+    $collapse-item-content: 8px 12px;
+    $collapse-item-title-padding: 10px 12px;
     .collapse-item {
-        border: 1px solid rgba(153,153,153,1);
+        border: 1px solid $collapse-item-border-color;
         margin-top: -1px; margin-left: -1px; margin-right: -1px;
         > .collapse-item-title {
-            cursor: pointer;
-            display: flex; align-items: center; padding: 10px 12px;
-            min-height: 32px;
+            cursor: pointer; display: flex; align-items: center; padding: $collapse-item-title-padding; min-height: 32px;
             &.icon-right { 
-                > .mw-icon { transform: rotate(0deg); transition: transform 0.3s; }
+                > .mw-icon { transform: rotate(0deg); transition: transform $collapse-item-animation-delay; }
             }
             &.icon-down { 
-                > .mw-icon { transform: rotate(90deg); transition: transform 0.3s; }
+                > .mw-icon { transform: rotate(90deg); transition: transform $collapse-item-animation-delay; }
             }
         }
         &:first-child {
-            border-top-left-radius: 4px; border-top-right-radius: 4px;
+            border-top-left-radius: $collapse-item-border-radius; 
+            border-top-right-radius: $collapse-item-border-radius;
         }
         &:last-child {
-            border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
+            border-bottom-left-radius: $collapse-item-border-radius; 
+            border-bottom-right-radius: $collapse-item-border-radius;
         }
         > .grow {
             height: 0;
-            transition: height 0.3s;
+            transition: height $collapse-item-animation-delay;
             overflow: hidden;
             > .collapse-item-content-wrapper {
-                > .collapse-item-content {
-                    padding: 8px 12px;
-                }
+                > .collapse-item-content { padding: $collapse-item-content; }
             }
         }
     }

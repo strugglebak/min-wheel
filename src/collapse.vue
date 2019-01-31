@@ -8,13 +8,8 @@ import Vue from 'vue'
 export default {
     name: 'MwCollapse',
     props: {
-        accordion: {
-            type: Boolean,
-            default: false,
-        },
-        selected: {
-            type: [String, Array]
-        }
+        accordion: { type: Boolean, default: false, },
+        selected: { type: [String, Array] }
     },
     methods: {
         findItemElement(selected) {
@@ -26,6 +21,40 @@ export default {
                 }
             });
             return vm;
+        },
+        listenUpdateSelected() {
+            this.eventHub.$on('update:selected', (vm, names)=> {
+                this.$emit('update:selected', names);
+            });
+        },
+        listenAddUpdateSelected() {
+            this.eventHub.$on('update:addSelected', (vm, name)=> {
+                let selectedBackup;
+                if (this.accordion) {
+                    selectedBackup = name;
+                } else {
+                    selectedBackup = JSON.parse(JSON.stringify(this.selected));
+                    selectedBackup.push(name);
+                }
+                this.eventHub.$emit('update:selected', vm, selectedBackup);
+            });
+        },
+        listenRemoveUpdateSelected() {
+            this.eventHub.$on('update:removeSelected', (vm, name)=> {
+                let selectedBackup;
+                if (this.accordion) {
+                    selectedBackup = '';
+                } else {
+                    selectedBackup = JSON.parse(JSON.stringify(this.selected));
+                    let index = selectedBackup.indexOf(name);
+                    selectedBackup.splice(index, 1);
+                }
+                this.eventHub.$emit('update:selected', vm, selectedBackup);
+            });
+        },
+        emitSignal() {
+            let vm = this.findItemElement(this.selected)
+            this.eventHub.$emit('update:selected', vm, this.selected);
         },
     },
     data() {
@@ -40,35 +69,10 @@ export default {
     },
     mounted() {
         if (!this.eventHub || !this.selected) { return }
-
-        this.eventHub.$on('update:selected', (vm, names)=> {
-            this.$emit('update:selected', names);
-        });
-
-        this.eventHub.$on('update:addSelected', (vm, name)=> {
-            let selectedBackup;
-            if (this.accordion) {
-                selectedBackup = name;
-            } else {
-                selectedBackup = JSON.parse(JSON.stringify(this.selected));
-                selectedBackup.push(name);
-            }
-            this.eventHub.$emit('update:selected', vm, selectedBackup);
-        });
-        this.eventHub.$on('update:removeSelected', (vm, name)=> {
-            let selectedBackup;
-            if (this.accordion) {
-                selectedBackup = '';
-            } else {
-                selectedBackup = JSON.parse(JSON.stringify(this.selected));
-                let index = selectedBackup.indexOf(name);
-                selectedBackup.splice(index, 1);
-            }
-            this.eventHub.$emit('update:selected', vm, selectedBackup);
-        });
-
-        let vm = this.findItemElement(this.selected)
-        this.eventHub.$emit('update:selected', vm, this.selected);
+        this.listenUpdateSelected();
+        this.listenAddUpdateSelected();
+        this.listenRemoveUpdateSelected();
+        this.emitSignal();
     }
 }
 </script>
