@@ -1,7 +1,7 @@
 <template>
     <div class="collapse-item">
         <div class="collapse-item-title"
-            v-on:click="onTitleClick"
+            v-on:click="onTitleClick" v-bind:data-name="name"
             v-bind:class="titleClasses">
             <mw-icon name="next"></mw-icon>
             <span>{{title}}</span>
@@ -10,7 +10,7 @@
         <div class="grow" ref="grow">
             <div class="collapse-item-content-wrapper" ref="contentWrapper">
                 <div class="collapse-item-content" ref="content"
-                    v-show="isVisible">
+                    v-if="isVisible">
                     <slot></slot>
                 </div>
             </div>
@@ -20,7 +20,6 @@
 </template>
 <script>
 import Icon from './icon'
-import { inspect } from 'util';
 export default {
     name: 'MwCollapseItem',
     components: {
@@ -28,13 +27,8 @@ export default {
     },
     inject: ['eventHub'],
     props: {
-        title: {
-            type: String,
-            required: true,
-        },
-        name: {
-            type: [String, Number]
-        }
+        title: { type: String, required: true, },
+        name: { type: [String, Number] }
     },
     computed: {
         titleClasses() {
