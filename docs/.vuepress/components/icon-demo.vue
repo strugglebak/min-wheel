@@ -10,15 +10,20 @@
             <mw-icon name="loading"></mw-icon>
             <mw-icon name="settings"></mw-icon>
         </div>
-        <pre class="code"><code>{{code}}</code></pre>
+        <!-- <pre class="code"><code>{{code}}</code></pre> -->
+        <prism language="html">{{ code }}</prism>
     </div>
 </template>
 <script>
 import Icon from '../../../src/icon'
+import 'prismjs'
+// import 'prismjs/themes/prism.css'
+import Prism from 'vue-prism-component'
 
 export default {
     components: {
-        'mw-icon': Icon
+        'mw-icon': Icon,
+        Prism,
     },
     data() {
         return {
@@ -48,12 +53,12 @@ export default {
         & .mw-icon {
             width: 30px; height: 30px;
         }
-        & > pre.code {
-            // background: rgba(0,0,0,.04);
-            // color: rgba(0,0,0,.65);
-            > code {
-                letter-spacing: 0;
-            }
+        & pre {
+            font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+            background: #282c34;
+            border-radius: 4px;
+            line-height: 1.4;
+            font-size: 1.2em;
         }
     }
 </style>
