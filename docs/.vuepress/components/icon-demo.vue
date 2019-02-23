@@ -10,7 +10,8 @@
             <mw-icon name="loading"></mw-icon>
             <mw-icon name="settings"></mw-icon>
         </div>
-        <prism language="html">{{ code }}</prism>
+        <prism language="html">{{ htmlCode }}</prism>
+        <prism language="javascript">{{ javasriptCode }}</prism>
     </div>
 </template>
 <script>
@@ -25,22 +26,32 @@ export default {
     },
     data() {
         return {
-            code: `
-              <mw-icon name="error"></mw-icon>
-              <mw-icon name="info"></mw-icon>
-              <mw-icon name="down"></mw-icon>
-              <mw-icon name="up"></mw-icon>
-              <mw-icon name="next"></mw-icon>
-              <mw-icon name="back"></mw-icon>
-              <mw-icon name="loading"></mw-icon>
-              <mw-icon name="settings"></mw-icon>
-            `.replace(/^ {14}/gm, '').trim()
+            htmlCode: `
+              <!-- index.html -->
+              <div id="app">
+                <mw-icon name="error"></mw-icon>
+                <mw-icon name="info"></mw-icon>
+                <mw-icon name="down"></mw-icon>
+                <mw-icon name="up"></mw-icon>
+                <mw-icon name="next"></mw-icon>
+                <mw-icon name="back"></mw-icon>
+                <mw-icon name="loading"></mw-icon>
+                <mw-icon name="settings"></mw-icon>
+              </div>
+            `.replace(/^ {14}/gm, '').trim(),
+            javasriptCode: `
+              // app.js
+              import Vue from 'vue'
+              Vue.component('mw-icon', Icon);
+              new Vue({
+                  el: '#app'
+              });
+            `.replace(/^ {14}/gm, '').trim(),
       }
     },
 }
 </script>
 <style lang="scss" scoped>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
     .container {
         border: 1px solid rgba(0,0,0,.15);
         padding: 20px;
