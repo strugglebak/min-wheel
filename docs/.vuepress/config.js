@@ -11,6 +11,7 @@ module.exports = {
         children: [
           '/components/ICON.md',
           '/components/BUTTON.md',
+          '/components/BUTTON-GROUP.md',
         ],
       },
     ]
