@@ -9,6 +9,7 @@ module.exports = {
       {
         title: '组件',
         children: [
+          '/components/ICON.md',
           '/components/BUTTON.md',
         ],
       },

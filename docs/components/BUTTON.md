@@ -9,8 +9,6 @@ sidebarDepth: 2
 
 ## 基础用法
 <button-demo></button-demo>
-
-## 代码示例
 ``` html
 <mw-button>默认</mw-button>
 ```
