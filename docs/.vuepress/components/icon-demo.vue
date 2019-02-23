@@ -23,16 +23,16 @@ export default {
     data() {
         return {
             code: `
-                <mw-icon name="error"></mw-icon>
-                <mw-icon name="info"></mw-icon>
-                <mw-icon name="down"></mw-icon>
-                <mw-icon name="up"></mw-icon>
-                <mw-icon name="next"></mw-icon>
-                <mw-icon name="back"></mw-icon>
-                <mw-icon name="loading"></mw-icon>
-                <mw-icon name="settings"></mw-icon>
-            `.replace(/\t+| +/g, '').trim()
-        }
+              <mw-icon name="error"></mw-icon>
+              <mw-icon name="info"></mw-icon>
+              <mw-icon name="down"></mw-icon>
+              <mw-icon name="up"></mw-icon>
+              <mw-icon name="next"></mw-icon>
+              <mw-icon name="back"></mw-icon>
+              <mw-icon name="loading"></mw-icon>
+              <mw-icon name="settings"></mw-icon>
+            `.replace(/^ {14}/gm, '').trim()
+      }
     },
 }
 </script>
