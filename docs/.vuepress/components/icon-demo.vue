@@ -42,6 +42,7 @@ export default {
             javasriptCode: `
               // app.js
               import Vue from 'vue'
+              import Icon from 'min-wheel'
               Vue.component('mw-icon', Icon);
               new Vue({
                   el: '#app'
