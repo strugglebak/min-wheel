@@ -5,7 +5,7 @@ import ButtonGroup from './button-group'
 import Input from './input'
 import Row from './row'
 import Col from './col'
-import Layout from './layout' 
+import Layout from './layout'
 import Header from './header'
 import Sider from './sider'
 import Content from './content'
@@ -88,7 +88,7 @@ new Vue({
                 }
             });
         }
-    }, 
+    },
     created(){
         setTimeout(() => {
             // make a fake input change event
