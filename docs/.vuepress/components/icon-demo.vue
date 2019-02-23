@@ -10,14 +10,12 @@
             <mw-icon name="loading"></mw-icon>
             <mw-icon name="settings"></mw-icon>
         </div>
-        <!-- <pre class="code"><code>{{code}}</code></pre> -->
         <prism language="html">{{ code }}</prism>
     </div>
 </template>
 <script>
 import Icon from '../../../src/icon'
 import 'prismjs'
-// import 'prismjs/themes/prism.css'
 import Prism from 'vue-prism-component'
 
 export default {
