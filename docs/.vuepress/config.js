@@ -15,6 +15,7 @@ module.exports = {
           '/components/BUTTON-GROUP.md',
           '/components/INPUT.md',
           '/components/GRID.md',
+          '/components/LAYOUT.md',
         ],
       },
     ]
