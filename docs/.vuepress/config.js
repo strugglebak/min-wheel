@@ -12,6 +12,7 @@ module.exports = {
           '/components/ICON.md',
           '/components/BUTTON.md',
           '/components/BUTTON-GROUP.md',
+          '/components/INPUT.md',
         ],
       },
     ]
