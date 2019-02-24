@@ -16,6 +16,13 @@ sidebarDepth: 0
         font-size: 24px;
         line-height: 32px;
     }
+    h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    p {
+        font-size: 14px;
+    }
 </style>
 
 # Input 输入框
