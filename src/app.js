@@ -68,9 +68,9 @@ new Vue({
     methods: {
         inputChange (e) { console.log(e); },
         changeMessage () { this.message = this.message + '1'; },
-        showToastAtTop() { let text = ` 更新成功 `; this.$toast({ text, closeButton: null, position: 'top', }); },
-        showToastAtMiddle() { let text = ` 更新成功 `; this.$toast({ text, position: 'middle', }); },
-        showToastAtBottom() { let text = ` 更新成功 `; this.$toast({ text, position: 'bottom', }); },
+        showToastAtTop() { let text = ` 更新成功 `; this.$toast( text, {closeButton: null, position: 'top', }); },
+        showToastAtMiddle() { let text = ` 更新成功 `; this.$toast( text, { position: 'middle', }); },
+        showToastAtBottom() { let text = ` 更新成功 `; this.$toast( text, { position: 'bottom', }); },
         positionChange(position) {
             console.log('change position')
 
