@@ -16,6 +16,7 @@ module.exports = {
           '/components/INPUT.md',
           '/components/GRID.md',
           '/components/LAYOUT.md',
+          '/components/TOAST.md',
         ],
       },
     ]
