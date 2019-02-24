@@ -3,7 +3,7 @@
         v-bind:class="toastPositionClass">
         <div class="text" 
             ref="text">
-            <div v-if="isHtml" v-html="this.$slots.default[0]"></div>
+            <div v-if="isHtml" v-html="this.$slots.default"></div>
             <slot v-else></slot>
         </div>
         <div class="line" 
