@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Min-Wheel',
   description: 'Just playing around',
+  plugins: ['demo-code'],
   themeConfig: {
     sidebar: [
       '/',
@@ -13,6 +14,7 @@ module.exports = {
           '/components/BUTTON.md',
           '/components/BUTTON-GROUP.md',
           '/components/INPUT.md',
+          '/components/GRID.md',
         ],
       },
     ]
