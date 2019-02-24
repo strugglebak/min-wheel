@@ -45,7 +45,8 @@ export default {
                 <mw-input value="这里只能读取" readonly></mw-input>
 
                 <mw-button @click="reset">reset</mw-button>
-                <mw-input placeholder="v-model双向绑定" v-model:value="message"></mw-input>
+                <mw-input placeholder="v-model双向绑定" 
+                    v-model:value="message"></mw-input>
                 <span>{{message}}</span>
 
                 <mw-input name="用户名/密码"></mw-input>
@@ -53,7 +54,9 @@ export default {
                 <mw-input info="提示信息"></mw-input>
                 <mw-input info="提示信息" alignment="vertical"></mw-input>
                 <mw-input name="用户名/密码" info="提示信息"></mw-input>
-                <mw-input name="用户名/密码" info="提示信息" alignment="vertical"></mw-input>
+                <mw-input name="用户名/密码" info="提示信息" 
+                    alignment="vertical">
+                </mw-input>
                 <mw-input value="" error="这不是个正常输入"></mw-input>
                 <mw-input value="" info="这是个正常输入"></mw-input>
               </div>
