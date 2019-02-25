@@ -2,6 +2,7 @@ module.exports = {
   title: 'Min-Wheel',
   description: 'Just playing around',
   plugins: ['demo-code'],
+  base: '/min-wheel/',
   themeConfig: {
     sidebar: [
       '/',
