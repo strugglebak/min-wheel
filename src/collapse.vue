@@ -27,28 +27,29 @@ export default {
                 this.$emit('update:selected', names);
             });
         },
-        listenAddUpdateSelected() {
+        listenAddUpdateSelected(selectedBackup) {
             this.eventHub.$on('update:addSelected', (vm, name)=> {
-                let selectedBackup;
                 if (this.accordion) {
                     selectedBackup = name;
                 } else {
-                    selectedBackup = JSON.parse(JSON.stringify(this.selected));
                     selectedBackup.push(name);
                 }
+                    console.log(this.selected)
+                    console.log(selectedBackup)
                 this.eventHub.$emit('update:selected', vm, selectedBackup);
             });
         },
-        listenRemoveUpdateSelected() {
+        listenRemoveUpdateSelected(selectedBackup) {
             this.eventHub.$on('update:removeSelected', (vm, name)=> {
-                let selectedBackup;
                 if (this.accordion) {
                     selectedBackup = '';
                 } else {
-                    selectedBackup = JSON.parse(JSON.stringify(this.selected));
                     let index = selectedBackup.indexOf(name);
+                    console.log('index', index)
                     selectedBackup.splice(index, 1);
                 }
+                    console.log(this.selected)
+                    console.log(selectedBackup)
                 this.eventHub.$emit('update:selected', vm, selectedBackup);
             });
         },
@@ -69,9 +70,10 @@ export default {
     },
     mounted() {
         if (!this.eventHub || !this.selected) { return }
+        let selectedBackup = JSON.parse(JSON.stringify(this.selected));
         this.listenUpdateSelected();
-        this.listenAddUpdateSelected();
-        this.listenRemoveUpdateSelected();
+        this.listenAddUpdateSelected(selectedBackup);
+        this.listenRemoveUpdateSelected(selectedBackup);
         this.emitSignal();
     }
 }

@@ -77,6 +77,8 @@ export default {
     },
     mounted() {
         this.eventHub && this.eventHub.$on('update:selected', (vm, names)=> {
+            // if (this !== vm) return;
+            // if (vm.$parent.accordion) return;
             if (names.includes(this.name)) {
                 this.open();
             } else {
