@@ -1,5 +1,6 @@
 ---
 title: 安装
+sidebarDepth: 0
 ---
 
 # 安装

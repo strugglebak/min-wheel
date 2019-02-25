@@ -1,5 +1,6 @@
 ---
 title: 介绍
+sidebarDepth: 0
 ---
 # min-wheel
 
