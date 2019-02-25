@@ -10,7 +10,6 @@
     </div>
 </template>
 <script>
-import 'babel-polyfill'
 export default {
     name: 'MwTabsNav',
     inject: ['eventHub'],
