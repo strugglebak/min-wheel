@@ -18,6 +18,7 @@ module.exports = {
           '/components/LAYOUT.md',
           '/components/TOAST.md',
           '/components/TABS.md',
+          '/components/POPOVER.md',
         ],
       },
     ]
