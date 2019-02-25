@@ -7,11 +7,11 @@ sidebarDepth: 0
 
 ## 前言
 在使用本框架前，我们默认您已经充分了解过 `Vue` 的基础知识，`Vue` 组件的相关技术。
-若您还不具备条件，我们建议您先从 `[vuejs.org](https://vuejs.org/)` 开始学习。
+若您还不具备条件，我们建议您先从 [vuejs.org](https://vuejs.org/) 开始学习。
 
 ## 提前准备
 由于组件样式基于 `box-sizing: border-box;` 盒模型,所以您**必须**要在您的样式中做如下 `css` 配置
-```
+``` css
 * { margin:0; padding: 0; box-sizing: border-box; }
 *::before, *::after { box-sizing: border-box; }
 ```
@@ -23,7 +23,7 @@ sidebarDepth: 0
 
 ## 如何使用
 您可以在您的`*.vue`单文件组件中直接做如下引用
-```
+``` js
 ...
 import Vue from 'vue'
 import {Button} from 'min-wheel'
@@ -38,7 +38,7 @@ export default {
 }
 ```
 或者在您的 `webpack` 构建工具的入口文件 `index.js` 中引入
-```
+``` js
 import Vue from 'vue'
 import {Button} from 'min-wheel'
 import 'min-wheel/dist/index.css'
@@ -51,7 +51,7 @@ new Vue({
 });
 ```
 在您的 `index.html` 中直接应用
-```
+``` html
 ...
 <mw-button>demo</mw-button>
 ...

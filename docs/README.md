@@ -17,5 +17,5 @@ min-wheel 是一个简单好用的 UI 框架，基于 Vue 开发，适用于移�
 
 ## 项目说明
 目前代码还未完全兼容各种测试环境，只在某些环境下可用，请勿在生产环境使用。接下来的目标是继续完善这个项目，我将会在后续添加更多的组件轮子和功能，
-欢迎大家来 `[PR](https://github.com/strugglebak/min-wheel/pulls)` 或 `[STAR](https://github.com/strugglebak/min-wheel)`
+欢迎大家来 [PR](https://github.com/strugglebak/min-wheel/pulls) 或 [STAR](https://github.com/strugglebak/min-wheel)
 

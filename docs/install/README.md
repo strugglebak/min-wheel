@@ -13,18 +13,18 @@ sidebarDepth: 0
 ## 下载
 
 ### git
-```
+``` bash
 git clone https://github.com/strugglebak/min-wheel.git
 ```
 或者[直接下载 zip 压缩包](https://github.com/strugglebak/min-wheel)
 
 ### npm
-```
+``` bash
 npm install min-wheel
 ```
 
 ### yarn
-```
+``` bash
 yarn add min-wheel
 ```
 
