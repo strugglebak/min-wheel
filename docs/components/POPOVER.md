@@ -30,7 +30,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <popover-demo></popover-demo>
+<popover-demo></popover-demo>
 </ClientOnly>
 
 ## Attributes

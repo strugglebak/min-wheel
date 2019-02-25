@@ -31,7 +31,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <icon-demo></icon-demo>
+<icon-demo></icon-demo>
 </ClientOnly>
 
 ## Attributes

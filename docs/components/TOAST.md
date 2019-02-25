@@ -31,7 +31,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <toast-demo></toast-demo>
+<toast-demo></toast-demo>
 </ClientOnly>
 
 ## Method

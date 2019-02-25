@@ -29,8 +29,9 @@ sidebarDepth: 0
 基础表单组件，支持 `v-model` 绑定以及原生 JS 事件。
 
 ## 基础用法
+
 <ClientOnly>
-    <input-demo></input-demo>
+<input-demo></input-demo>
 </ClientOnly>
 
 ## Atrributes

@@ -31,7 +31,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <button-group-demo></button-group-demo>
+<button-group-demo></button-group-demo>
 </ClientOnly>
 
 ## Atrributes

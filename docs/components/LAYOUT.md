@@ -34,6 +34,6 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <layout-demo></layout-demo>
+<layout-demo></layout-demo>
 </ClientOnly>
 

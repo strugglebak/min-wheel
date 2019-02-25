@@ -30,7 +30,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <grid-demo></grid-demo>
+<grid-demo></grid-demo>
 </ClientOnly>
 
 ## 响应式布局

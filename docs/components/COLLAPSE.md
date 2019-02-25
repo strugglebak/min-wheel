@@ -30,7 +30,7 @@ sidebarDepth: 0
 
 ## 基础用法
 <ClientOnly>
-    <collapse-demo></collapse-demo>
+<collapse-demo></collapse-demo>
 </ClientOnly>
 
 ## Attributes
