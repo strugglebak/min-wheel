@@ -34,8 +34,6 @@ export default {
                 } else {
                     selectedBackup.push(name);
                 }
-                    console.log(this.selected)
-                    console.log(selectedBackup)
                 this.eventHub.$emit('update:selected', vm, selectedBackup);
             });
         },
@@ -45,11 +43,8 @@ export default {
                     selectedBackup = '';
                 } else {
                     let index = selectedBackup.indexOf(name);
-                    console.log('index', index)
                     selectedBackup.splice(index, 1);
                 }
-                    console.log(this.selected)
-                    console.log(selectedBackup)
                 this.eventHub.$emit('update:selected', vm, selectedBackup);
             });
         },
