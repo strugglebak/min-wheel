@@ -1,5 +1,8 @@
 module.exports = {
   base: '/min-wheel/',
+  head: [
+    ['link', { rel: 'icon', href: 'http://pn6gsjdem.bkt.clouddn.com/favicon.png' }]
+  ],
   title: 'Min-Wheel',
   description: '一个简单小巧的 UI 框架',
   plugins: ['demo-code'],
