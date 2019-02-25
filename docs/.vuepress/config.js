@@ -4,7 +4,7 @@ module.exports = {
   description: 'Just playing around',
   plugins: ['demo-code'],
   themeConfig: {
-    repo: 'strugglebak/min-wheel
+    repo: 'strugglebak/min-wheel',
     repoLabel: 'Github',
     sidebar: [
       '/',
