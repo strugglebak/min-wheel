@@ -17,6 +17,7 @@ module.exports = {
           '/components/GRID.md',
           '/components/LAYOUT.md',
           '/components/TOAST.md',
+          '/components/TABS.md',
         ],
       },
     ]
