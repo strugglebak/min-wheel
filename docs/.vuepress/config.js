@@ -3,7 +3,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: 'http://pn6gsjdem.bkt.clouddn.com/favicon.png' }]
   ],
-  title: 'Min-Wheel',
+  title: 'MinWheel',
   description: '一个简单小巧的 UI 框架',
   plugins: ['demo-code'],
   themeConfig: {
