@@ -39,7 +39,7 @@ describe('Toast', () => {
       });
       vm.$slots.default = ['<strong id="test">hi</strong>'];
       vm.$mount();
-      let strong = vm.$el.querySelector('#test');
+      let strong = vm.$el.querySelector('strong');
       expect(strong).to.exist;
       vm.$el.remove();
       vm.$destroy();
