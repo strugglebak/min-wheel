@@ -38,8 +38,10 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
   ```
 
 ## 文档
-
-## 提问
+### 文档二维码
+![](http://pn6gsjdem.bkt.clouddn.com/min-wheel-qr.png)
+### 文档链接
+[文档官网](https://github.com/strugglebak/min-wheel)
 
 ## 变更记录
 - v 0.1.0
@@ -79,5 +81,5 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
     基本完成 button 以及 icon 组件，以及最后的四个测试用例
 
 ## 联系方式
+邮箱: strugglebak@gmail.com
 
-## 贡献代码
