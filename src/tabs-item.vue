@@ -57,8 +57,8 @@ export default {
 </script>
 <style lang="scss" scoped>
     $tabs-item-color-animation-delay: 0.3s;
-    $tabs-item-active-color: #1890ff;
-    $tabs-item-hover-color: #40a9ff;
+    $tabs-item-active-color:#35495e;
+    $tabs-item-hover-color: #41b883;
     $tabs-item-align-horizontal-padding: 0.8em 1em;
     $tabs-item-align-horizontal-margin-right: 2em;
     $tabs-item-align-vertical-padding: 0.5em 1.5em;

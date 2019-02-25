@@ -28,21 +28,29 @@ export default {
         },
         updateLineStyleInHorizontal(vm) {
             if (!this.$refs.line) { return }
-            let {width, left} = vm.$el.getBoundingClientRect();
+            let {width} = vm.$el.getBoundingClientRect();
+            let marginRight = getComputedStyle(vm.$el)['marginRight'].split('px')[0];
             let style = this.$refs.line.style;
             style.transitionProperty = 'left';
             style.height = '2px';
             style.width = `${width}px`;
-            style.left = `${left - this.parentLeft - this.parentPaddingLeft}px`;
+            let order = parseInt(vm.order - 1);
+            let offset = parseInt(width) + parseInt(marginRight);
+            let left = order * offset;
+            style.left = `${left}px`;
         },
         updateLineStyleInVertical(vm) {
             if (!this.$refs.line) { return }
-            let {height, top} = vm.$el.getBoundingClientRect();
+            let {height} = vm.$el.getBoundingClientRect();
+            let marginBottom = getComputedStyle(vm.$el)['marginBottom'].split('px')[0];
             let style = this.$refs.line.style;
             style.transitionProperty = 'top';
             style.width = '2px';
             style.height = `${height}px`;
-            style.top = `${top - this.parentTop - this.parentPaddingTop}px`;
+            let order = parseInt(vm.order - 1);
+            let offset = parseInt(height) + parseInt(marginBottom);
+            let top = order * offset;
+            style.top = `${top}px`;
         },
         updateLineStyle(vm) {
             if (vm.disabled) { return }
@@ -50,21 +58,6 @@ export default {
                 if (this.align === 'horizontal') { this.updateLineStyleInHorizontal(vm); } 
                 else if (this.align === 'vertical') { this.updateLineStyleInVertical(vm); }
             });
-        },
-        timeout(ms) {
-            return new Promise((resolve) => {
-                setTimeout(resolve, ms);
-            });
-        },
-        async asyncGetParentStyle(ms=5, element) {
-            let style = getComputedStyle(this.$parent.$el);
-            let {left, top} = this.$parent.$el.getBoundingClientRect();
-            await this.timeout(ms);
-            this.parentLeft = left;
-            this.parentTop = top;
-            this.parentPaddingLeft = style['paddingLeft'].split('px')[0];
-            this.parentPaddingTop = style['paddingTop'].split('px')[0];
-            this.updateLineStyle(element);
         },
         listenPositionChanged() {
             this.eventHub.$on('update:position-changed', (position, vm)=> {
@@ -76,7 +69,7 @@ export default {
                 this.align = container[position];
                 this.extra = this.$parent.enableExtra;
                 this.clearLineStyle();
-                this.asyncGetParentStyle(3, vm);
+                this.updateLineStyle(vm);
             });
         },
         listenTabSelected() {
@@ -86,13 +79,7 @@ export default {
         }
     },
     data() {
-        return {
-            align: '',
-            parentLeft: 0, parentTop: 0,
-            parentPaddingLeft: 0, parentPaddingTop: 0,
-            linePosition: '',
-            extra: false,
-        }
+        return { align: '', linePosition: '', extra: false, }
     },
     mounted() {
         this.listenPositionChanged();
@@ -108,7 +95,7 @@ export default {
         display: flex; flex-shrink: 0; position: relative;
         > .line { border: 1px solid $tabs-nav-line-color; position: absolute; transition-duration: $tabs-nav-line-animation-delay; }
 
-        &.align-horizontal { flex-direction: row;
+        &.align-horizontal { flex-direction: row; 
             &.line-top { border-bottom: 1px solid $tabs-nav-border-color;
                 > .line { top: 100%; }
             }
@@ -118,7 +105,7 @@ export default {
             > .actions-wrapper { margin-left: auto; }
         }
 
-        &.align-vertical { flex-direction: column;
+        &.align-vertical { flex-direction: column; 
             &.line-left { border-right: 1px solid $tabs-nav-border-color;
                 > .line { left: 100%; }
             }
