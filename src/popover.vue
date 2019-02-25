@@ -159,6 +159,8 @@ export default {
         border-radius: $content-wrapper-border-radius;
         box-shadow: $content-wrapper-box-shadow;
         padding: $content-wrapper-padding;
+        background: white;
+        z-index: 30;
     }
     .fade-enter-active, .fade-leave-active {
         transition: opacity 0.45s;
