@@ -30,7 +30,9 @@ sidebarDepth: 0
 基础组件，用来弹出用户提示信息。
 
 ## 基础用法
-<toast-demo></toast-demo>
+<ClientOnly>
+    <toast-demo></toast-demo>
+</ClientOnly>
 
 ## Method
 为了不污染 `Vue` 的全局属性，这里专门提供了一个 `$toast` 的方法，你所需要做的就是根据文档引入插件，然后配置参数来使用。

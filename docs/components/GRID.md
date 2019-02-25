@@ -29,7 +29,9 @@ sidebarDepth: 0
 该 `Grid` 组件分栏格子数为 24,可通过它快速构建网页布局。
 
 ## 基础用法
-<grid-demo></grid-demo>
+<ClientOnly>
+    <grid-demo></grid-demo>
+</ClientOnly>
 
 ## 响应式布局
 

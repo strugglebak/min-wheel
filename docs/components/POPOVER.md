@@ -29,7 +29,9 @@ sidebarDepth: 0
 用于展示提示信息。
 
 ## 基础用法
-<popover-demo></popover-demo>
+<ClientOnly>
+    <popover-demo></popover-demo>
+</ClientOnly>
 
 ## Attributes
 | 参数          | 说明          | 类型   | 默认值 | 可选值 |

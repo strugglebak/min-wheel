@@ -33,5 +33,7 @@ sidebarDepth: 0
 若使用嵌套结构，则 `mw-layout` 的子组件必须是 `mw-layout`,请在 `mw-layout` 的视图下进行布局操作。
 
 ## 基础用法
-<layout-demo></layout-demo>
+<ClientOnly>
+    <layout-demo></layout-demo>
+</ClientOnly>
 

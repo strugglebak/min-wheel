@@ -30,7 +30,9 @@ sidebarDepth: 0
 横向排列的按钮组合
 
 ## 基础用法
-<button-group-demo></button-group-demo>
+<ClientOnly>
+    <button-group-demo></button-group-demo>
+</ClientOnly>
 
 ## Atrributes
 组件将被渲染成 `button` 标签的集合，所以你也可以修改该组件内部集合的 `button` 的属性来自定义你的样式。

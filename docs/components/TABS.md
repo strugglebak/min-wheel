@@ -29,7 +29,9 @@ sidebarDepth: 0
 Tabs 标签用来分离内容上有关联的数据内容。
 
 ## 基础用法
-<tabs-demo></tabs-demo>
+<ClientOnly>
+    <tabs-demo></tabs-demo>
+</ClientOnly>
 
 ## Attributes
 ### mw-tabs

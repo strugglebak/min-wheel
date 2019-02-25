@@ -29,7 +29,9 @@ sidebarDepth: 0
 将内容区折叠或展开
 
 ## 基础用法
-<collapse-demo></collapse-demo>
+<ClientOnly>
+    <collapse-demo></collapse-demo>
+</ClientOnly>
 
 ## Attributes
 ### mw-collapse

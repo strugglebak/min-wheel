@@ -30,7 +30,9 @@ sidebarDepth: 0
 基础组件，点击触发业务逻辑。
 
 ## 基础用法
-<button-demo></button-demo>
+<ClientOnly>
+    <button-demo></button-demo>
+</ClientOnly>
 
 ## Atrributes
 组件将被渲染成 `button` 标签，所以该组件支持 `button` 标签所有的原生属性。

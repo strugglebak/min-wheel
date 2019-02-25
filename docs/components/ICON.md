@@ -30,7 +30,9 @@ sidebarDepth: 0
 基础组件，提供一些常用图标集合。
 
 ## 基础用法
-<icon-demo></icon-demo>
+<ClientOnly>
+    <icon-demo></icon-demo>
+</ClientOnly>
 
 ## Attributes
 `Icon` 图标实际上还是对 `svg` 标签的封装，所以你可以在它上面对其 `width`,`height`,`fill` 等属性样式进行设置。
