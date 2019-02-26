@@ -3,7 +3,7 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: 'https://i.loli.net/2019/02/26/5c75007ee8d4e.png' }]
   ],
-  title: 'MinWheel',
+  title: 'Min-Wheel',
   description: '一个简单小巧的 UI 框架',
   plugins: ['demo-code'],
   themeConfig: {
