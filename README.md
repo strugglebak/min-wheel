@@ -39,7 +39,7 @@ min-wheel 是一个小型的组件轮子，基于 vue 开发
 
 ## 文档
 ### 文档二维码
-![](http://pn6gsjdem.bkt.clouddn.com/min-wheel-qr.png)
+![](https://i.loli.net/2019/02/26/5c7501ce8716d.png)
 ### 文档链接
 [文档官网](https://github.com/strugglebak/min-wheel)
 
