@@ -1,13 +1,13 @@
 module.exports = {
   base: '/min-wheel/',
   head: [
-    ['link', { rel: 'icon', href: 'http://pn6gsjdem.bkt.clouddn.com/favicon.png' }]
+    ['link', { rel: 'icon', href: 'https://i.loli.net/2019/02/26/5c75007ee8d4e.png' }]
   ],
   title: 'MinWheel',
   description: '一个简单小巧的 UI 框架',
   plugins: ['demo-code'],
   themeConfig: {
-    logo: 'http://pn6gsjdem.bkt.clouddn.com/logo.png',
+    logo: 'https://i.loli.net/2019/02/26/5c7501431acc7.png',
     repo: 'strugglebak/min-wheel',
     repoLabel: 'Github',
     sidebar: [
