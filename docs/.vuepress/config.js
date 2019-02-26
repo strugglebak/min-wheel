@@ -7,6 +7,7 @@ module.exports = {
   description: '一个简单小巧的 UI 框架',
   plugins: ['demo-code'],
   themeConfig: {
+    logo: 'http://pn6gsjdem.bkt.clouddn.com/logo.png',
     repo: 'strugglebak/min-wheel',
     repoLabel: 'Github',
     sidebar: [
