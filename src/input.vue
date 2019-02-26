@@ -56,7 +56,7 @@ export default {
     $font-size: 12px;
     $label-font-size: 14px;
     $input-height: 32px;
-    $input-width: 350px;
+    $input-width: 128px;
     $input-padding: 8px;
     $input-bg-color: #FFFFFF;
     $input-border: 1px solid #C8C8C8;
