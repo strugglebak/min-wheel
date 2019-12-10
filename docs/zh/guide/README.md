@@ -4,7 +4,7 @@ sidebarDepth: 0
 ---
 # min-wheel
 
-min-wheel 是一个简单好用的 UI 框架，基于 Vue 开发，适用于移动端跟 PC 端
+min-wheel 是一个轻巧好用的 UI 框架，基于 Vue 开发，适用于移动端跟 PC 端
 
 ## 前言
 `Vue` 组件化是我一直想做的事情，通过这次实践，理解了组件开发的一些传统方法，提升了自己对 `Vue` 以及 `Vue` 组件的认识。
