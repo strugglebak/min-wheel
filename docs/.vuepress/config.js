@@ -1,5 +1,5 @@
 module.exports = {
-  base: '/min-wheel/',
+  base: '/',
   head: [
     ['link', { rel: 'icon', href: 'https://i.loli.net/2019/02/26/5c75007ee8d4e.png' }]
   ],
