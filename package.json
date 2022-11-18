@@ -54,7 +54,7 @@
     "vue-prism-component": "^1.1.1",
     "vue-server-renderer": "^2.5.21",
     "vue-template-compiler": "^2.5.21",
-    "vuepress": "^0.13.1"
+    "vuepress": "^1.9.7"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
